@@ -8,10 +8,12 @@ END=\033[0m
 
 CC = g++
 CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
-SRCS = megaphone.cpp 
+SRCS = main.cpp PhoneBook.cpp Contact.cpp
+HEADERS = PhoneBook.hpp Contact.hpp
+INCS = -I .
 OBJ = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR = obj
-NAME = megaphone
+NAME = phonebook
 
 ifdef DEBUG
 CFLAGS = -Wall -Werror -Wextra
@@ -23,12 +25,12 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "${MAGENTA}Creating $@${END}"
-	@$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
+	@$(CC) $(CPPFLAGS) $(INCS) $(OBJ) -o $(NAME)
 	@echo "${GREEN}Done!${END}"
 
-$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: %.cpp $(HEADERS) | $(OBJ_DIR)
 	@echo "${BLUE}Compiling $<${END}"
-	@$(CC) $(CPPFLAGS) -c -o $@ $<
+	@$(CC) $(CPPFLAGS) $(INCS) -c -o $@ $<
 
 $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)
