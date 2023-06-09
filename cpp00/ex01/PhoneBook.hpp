@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/08 21:33:50 by codespace     #+#    #+#                 */
-/*   Updated: 2023/06/09 11:41:05 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/06/09 16:54:57 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,9 @@
 class	PhoneBook
 {
 	private:
-		Contact contacts[8];
+		Contact	contacts[8];
+		int		nb_contacts;
+		int		get_nb_contacts();
 		void	display_details(int index);
 		void	simple_display();
 	
