@@ -12,7 +12,7 @@ HEADERS = PhoneBook.hpp Contact.hpp
 INCS = -I .
 OBJ = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR = obj
-NAME = phonebook
+NAME = ex01
 
 ifdef DEBUG
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -g -fsanitize=address

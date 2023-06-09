@@ -7,27 +7,29 @@ CYAN=\033[1;36m
 END=\033[0m
 
 CC = g++
-SRCS = megaphone.cpp 
+SRCS = tests.cpp Account.cpp
+HEADERS = Account.hpp
+INCS = -I .
 OBJ = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR = obj
-NAME = ex00
+NAME = phonebook
 
 ifdef DEBUG
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -g -fsanitize=address
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -g -fsanitize=address
 else
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic
 endif
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "${MAGENTA}Creating $@${END}"
-	@$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
+	@$(CC) $(CPPFLAGS) $(INCS) $(OBJ) -o $(NAME)
 	@echo "${GREEN}Done!${END}"
 
-$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: %.cpp $(HEADERS) | $(OBJ_DIR)
 	@echo "${BLUE}Compiling $<${END}"
-	@$(CC) $(CPPFLAGS) -c -o $@ $<
+	@$(CC) $(CPPFLAGS) $(INCS) -c -o $@ $<
 
 $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)
@@ -43,7 +45,7 @@ fclean: clean
 re: fclean all
 
 debug: fclean
-	@echo $(YELLOW)Debug Mode -g -fsanitize=address
+	@echo "$(YELLOW)Debug Mode -g -fsanitize=address$(END)"
 	@$(MAKE) DEBUG=1 all
 
 .PHONY: all clean fclean re debug
