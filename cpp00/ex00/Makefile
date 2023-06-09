@@ -7,16 +7,15 @@ CYAN=\033[1;36m
 END=\033[0m
 
 CC = g++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 SRCS = megaphone.cpp 
 OBJ = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR = obj
 NAME = megaphone
 
 ifdef DEBUG
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -g -fsanitize=address
 else
-CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
+CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 endif
 
 all: $(NAME)

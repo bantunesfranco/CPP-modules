@@ -7,7 +7,6 @@ CYAN=\033[1;36m
 END=\033[0m
 
 CC = g++
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 SRCS = main.cpp PhoneBook.cpp Contact.cpp
 HEADERS = PhoneBook.hpp Contact.hpp
 INCS = -I .
@@ -16,9 +15,9 @@ OBJ_DIR = obj
 NAME = phonebook
 
 ifdef DEBUG
-CFLAGS = -Wall -Werror -Wextra
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -g -fsanitize=address
 else
-CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
+CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic
 endif
 
 all: $(NAME)
@@ -46,7 +45,7 @@ fclean: clean
 re: fclean all
 
 debug: fclean
-	@echo $(YELLOW)Debug Mode -g -fsanitize=address
+	@echo "$(YELLOW)Debug Mode -g -fsanitize=address$(END)"
 	@$(MAKE) DEBUG=1 all
 
 .PHONY: all clean fclean re debug
