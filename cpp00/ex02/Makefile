@@ -12,7 +12,7 @@ HEADERS = Account.hpp
 INCS = -I .
 OBJ = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR = obj
-NAME = phonebook
+NAME = ex02
 
 ifdef DEBUG
 CPPFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -g -fsanitize=address
@@ -48,4 +48,11 @@ debug: fclean
 	@echo "$(YELLOW)Debug Mode -g -fsanitize=address$(END)"
 	@$(MAKE) DEBUG=1 all
 
-.PHONY: all clean fclean re debug
+diff:
+	@./$(NAME) > new.log
+	@cat 19920104_091532.log | cut -d ' ' -f2 > old_log
+	@cat new.log | cut -d ' ' -f2 > new_log
+	@diff old_log new_log
+	@rm -rf old_log new_log new.log
+
+.PHONY: all clean fclean re debug diff
