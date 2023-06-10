@@ -13,21 +13,21 @@ OBJ_DIR = obj
 NAME = ex00
 
 ifdef DEBUG
-CFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -g -fsanitize=address
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic -g -fsanitize=address
 else
-CPPFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
+CXXFLAGS = -Wall -Wextra -Werror -std=c++98 -pedantic
 endif
 
 all: $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "${MAGENTA}Creating $@${END}"
-	@$(CC) $(CPPFLAGS) $(OBJ) -o $(NAME)
+	@$(CC) $(CXXFLAGS) $(OBJ) -o $(NAME)
 	@echo "${GREEN}Done!${END}"
 
 $(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 	@echo "${BLUE}Compiling $<${END}"
-	@$(CC) $(CPPFLAGS) -c -o $@ $<
+	@$(CC) $(CXXFLAGS) -c -o $@ $<
 
 $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)

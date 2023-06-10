@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/08 21:33:55 by codespace     #+#    #+#                 */
-/*   Updated: 2023/06/09 16:47:04 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/06/10 13:00:43 by codespace     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@ int main(void)
 
 	while (1)
 	{
+		std::cout << "Enter a command : ADD | SEARCH | EXIT" << std::endl;
 		std::getline(std::cin, input);
 		if (!input.compare("ADD"))
 			phonebook.add();

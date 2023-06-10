@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/08 21:33:53 by codespace     #+#    #+#                 */
-/*   Updated: 2023/06/09 16:55:23 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/06/10 13:12:03 by codespace     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 #include "Contact.hpp"
 #include <iostream>
 #include <iomanip>
+#include <sstream>
 
 void	PhoneBook::add()
 {
 	Contact 	new_contact;
 	static int	i = 0;
 	
-	new_contact.init(i);
-	if (i + 1 <= 8)
+	new_contact.init(i % 8);
+	if (i < 8)
 		this->nb_contacts = i + 1;
 	else
 		this->nb_contacts = 8;
@@ -69,18 +70,26 @@ void	PhoneBook::simple_display()
 	}
 }
 
+int stoi(std::string &s)
+{
+	int i;
+
+	std::istringstream(s) >> i;
+	return i;
+}
+
 void	PhoneBook::search()
 {
-	int			index = 0;
+	int			index = -1;
 	std::string	input;
 
 	this->simple_display();
 	std::cout << "" << std::endl;
-	while (index < 0 || index > 7)
+	while (index < 0 || index > this->nb_contacts)
 	{
 		std::cout << "Please enter an index between 0 and 7" << std::endl;
 		std::getline(std::cin, input);
-		index = std::stol(input);
+		index = stoi(input);
 	}
 	this->display_details(index);
 }
