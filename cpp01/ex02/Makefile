@@ -7,9 +7,7 @@ CYAN=\033[1;36m
 END=\033[0m
 
 CC = g++
-SRCS = tests.cpp Account.cpp
-HEADERS = Account.hpp
-INCS = -I .
+SRCS = main.cpp
 OBJ = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR = obj
 NAME = ex02
@@ -24,12 +22,12 @@ all: $(NAME)
 
 $(NAME): $(OBJ)
 	@echo "${MAGENTA}Creating $@${END}"
-	@$(CC) $(CXXFLAGS) $(INCS) $(OBJ) -o $(NAME)
+	@$(CC) $(CXXFLAGS) $(OBJ) -o $(NAME)
 	@echo "${GREEN}Done!${END}"
 
-$(OBJ_DIR)/%.o: %.cpp $(HEADERS) | $(OBJ_DIR)
+$(OBJ_DIR)/%.o: %.cpp | $(OBJ_DIR)
 	@echo "${BLUE}Compiling $<${END}"
-	@$(CC) $(CXXFLAGS) $(INCS) -c -o $@ $<
+	@$(CC) $(CXXFLAGS) -c -o $@ $<
 
 $(OBJ_DIR):
 	@mkdir $(OBJ_DIR)
@@ -48,11 +46,5 @@ debug: fclean
 	@echo "$(YELLOW)Debug Mode -g -fsanitize=address$(END)"
 	@$(MAKE) DEBUG=1 all
 
-diff:
-	@./$(NAME) > new.log
-	@cat 19920104_091532.log | cut -d ' ' -f2 > old_log
-	@cat new.log | cut -d ' ' -f2 > new_log
-	@diff old_log new_log
-	@rm -rf old_log new_log new.log
 
-.PHONY: all clean fclean re debug diff
+.PHONY: all clean fclean re debug
