@@ -1,0 +1,6 @@
+*.out
+*.vscode
+obj
+*.o
+ex04
+*.txt
