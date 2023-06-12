@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/08 21:33:50 by codespace     #+#    #+#                 */
-/*   Updated: 2023/06/09 16:54:57 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/06/12 12:52:58 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,7 @@ class	PhoneBook
 		void	simple_display();
 	
 	public:
+		PhoneBook();
 		void	add();
 		void	search();
 		void	exit();

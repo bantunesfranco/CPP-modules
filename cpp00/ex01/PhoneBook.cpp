@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/08 21:33:53 by codespace     #+#    #+#                 */
-/*   Updated: 2023/06/10 13:12:03 by codespace     ########   odam.nl         */
+/*   Updated: 2023/06/12 12:55:23 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,14 @@
 #include <iomanip>
 #include <sstream>
 
+PhoneBook::PhoneBook()
+{
+	this->nb_contacts = 0;
+}
+
 void	PhoneBook::add()
 {
-	Contact 	new_contact;
+	Contact		new_contact;
 	static int	i = 0;
 	
 	new_contact.init(i % 8);
