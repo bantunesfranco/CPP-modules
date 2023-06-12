@@ -61,6 +61,6 @@ void	Harl::complain( std::string level )
 			return ;
 		}
 	}
-	std::cout << "There is no level \"" << level << "\"\n" << std::endl;
+	std::cout << "There is no level \"" << level << "\"" << std::endl;
 	return ;
 }
