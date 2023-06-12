@@ -2,5 +2,4 @@
 *.vscode
 obj
 *.o
-ex04
-*.txt
+ex05
