@@ -11,7 +11,7 @@ SRCS = main.cpp Fixed.cpp
 HEADERS = Fixed.hpp
 OBJ = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR = obj
-NAME = ex01
+NAME = ex02
 
 ifdef DEBUG
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -g -fsanitize=address

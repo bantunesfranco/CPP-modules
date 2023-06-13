@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/13 09:16:23 by bruno         #+#    #+#                 */
-/*   Updated: 2023/06/13 19:01:25 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/06/13 19:43:31 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,12 @@ class	Fixed
 		~Fixed();
 		
 		Fixed&			operator=(const Fixed& point);
+
+		bool			operator==(const Fixed& point);
+		bool			operator<=(const Fixed& point);
+		bool			operator>=(const Fixed& point);
+		bool			operator<(const Fixed& point);
+		bool			operator>(const Fixed& point);
 
 		int				getRawBits() const;
 		void			setRawBits(int const raw);
