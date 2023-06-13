@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/13 09:16:25 by bruno         #+#    #+#                 */
-/*   Updated: 2023/06/13 19:35:41 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/06/13 20:19:53 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,6 +74,5 @@ Fixed&	Fixed::operator=(const Fixed& point)
 
 std::ostream&	operator<<(std::ostream& out, const Fixed& point)
 {
-	out << point.toFloat();
-	return (out);
+	return (out << point.toFloat());
 }
