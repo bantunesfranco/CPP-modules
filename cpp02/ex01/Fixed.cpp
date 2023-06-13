@@ -6,7 +6,7 @@
 /*   By: bruno <bruno@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/13 09:16:25 by bruno         #+#    #+#                 */
-/*   Updated: 2023/06/13 16:56:00 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/06/13 17:52:54 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,15 +46,15 @@ Fixed&	Fixed::operator=(const Fixed& point)
 	return (*this);
 }
 
-std::ostream&	operator<<(std::ostream& out, const Fixed& point)
-{
-	out << point.toFloat();
-	return out;
-}
+// std::ostream&	operator<<(std::ostream& out, const Fixed& point)
+// {
+// 	out << point.toInt();
+// 	return (out);
+// }
 
 Fixed::~Fixed()
 {
-	std::cout << "Default destructor called" << std::endl;
+	std::cout << "Destructor called" << std::endl;
 }
 
 int	Fixed::getRawBits() const
@@ -74,5 +74,5 @@ int	Fixed::toInt() const
 
 float	Fixed::toFloat() const
 {
-	return (this->getRawBits() >> 8);
+	return (this->getRawBits());
 }
