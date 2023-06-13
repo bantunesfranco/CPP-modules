@@ -6,11 +6,12 @@
 /*   By: bruno <bruno@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/13 09:16:25 by bruno         #+#    #+#                 */
-/*   Updated: 2023/06/13 15:28:17 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/06/13 16:56:00 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <cmath>
 #include "Fixed.hpp"
 
 Fixed::Fixed()
@@ -37,7 +38,7 @@ Fixed::Fixed(const Fixed &point)
 	std::cout << "Copy constructor called" << std::endl;
 }
 
-Fixed& Fixed::operator=(const Fixed& point)
+Fixed&	Fixed::operator=(const Fixed& point)
 {
 	if (this != &point)
 		this->_value = point.getRawBits();
@@ -45,10 +46,10 @@ Fixed& Fixed::operator=(const Fixed& point)
 	return (*this);
 }
 
-float Fixed::operator<<(const Fixed& point)
+std::ostream&	operator<<(std::ostream& out, const Fixed& point)
 {
-	std::cout << "Insert assignment operator called" << std::endl;
-	return (this.toFloat());
+	out << point.toFloat();
+	return out;
 }
 
 Fixed::~Fixed()
@@ -58,11 +59,20 @@ Fixed::~Fixed()
 
 int	Fixed::getRawBits() const
 {
-	std::cout << "getRawBits member function called" << std::endl;
 	return (this->_value);
 }
 
 void	Fixed::setRawBits(int const raw)
 {
 	this->_value = raw;
+}
+
+int	Fixed::toInt() const
+{
+	return (this->getRawBits());
+}
+
+float	Fixed::toFloat() const
+{
+	return (this->getRawBits() >> 8);
 }
