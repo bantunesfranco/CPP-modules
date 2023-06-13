@@ -7,11 +7,11 @@ CYAN=\033[1;36m
 END=\033[0m
 
 CC = g++
-SRCS = main.cpp Weapon.cpp HumanA.cpp HumanB.cpp
-HEADERS = Weapon.hpp HumanA.hpp HumanB.hpp
+SRCS = main.cpp Fixed.cpp
+HEADERS = Fixed.hpp
 OBJ = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR = obj
-NAME = ex03
+NAME = ex00
 
 ifdef DEBUG
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -g -fsanitize=address
