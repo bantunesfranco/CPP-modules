@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/13 09:16:25 by bruno         #+#    #+#                 */
-/*   Updated: 2023/06/13 20:19:53 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/06/14 10:33:16 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ float	Fixed::toFloat() const
 {
 	return ((float)this->getRawBits()/ (float)(1 << this->_bits));
 }
-
 
 int	Fixed::getRawBits() const
 {

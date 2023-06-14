@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/13 19:25:41 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/06/13 20:37:46 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/06/14 10:53:33 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ Fixed	Fixed::operator*(const Fixed& point) const
 {
 	Fixed	res;
 
-	res.setRawBits((this->getRawBits() * point.getRawBits()) / (1 << _bits));
+	res.setRawBits(this->getRawBits() * point.getRawBits() / (1 << _bits));
 	return (res);
 }
 

@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/13 09:16:25 by bruno         #+#    #+#                 */
-/*   Updated: 2023/06/13 20:40:06 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/06/14 10:45:16 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,4 +84,28 @@ Fixed&	Fixed::operator=(const Fixed& point)
 std::ostream&	operator<<(std::ostream& out, const Fixed& point)
 {
 	return (out << point.toFloat());
+}
+
+
+Fixed&	Fixed::max(Fixed& p1, Fixed& p2)
+{
+	return ( p1 > p2 ? p1:p2);
+}
+
+
+const Fixed&	Fixed::max(Fixed const& p1, Fixed const& p2)
+{
+	return ( p1 > p2 ? p1:p2);
+}
+
+
+Fixed&	Fixed::min(Fixed& p1, Fixed& p2)
+{
+	return ( p1 < p2 ? p1:p2);
+}
+
+
+const Fixed&	Fixed::min(Fixed const& p1, Fixed const& p2)
+{
+	return ( p1 < p2 ? p1:p2);
 }
