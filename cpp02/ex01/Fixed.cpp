@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/13 09:16:25 by bruno         #+#    #+#                 */
-/*   Updated: 2023/06/14 10:33:16 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/06/14 16:49:13 by codespace     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ Fixed::Fixed(const int i)
 
 Fixed::Fixed(const float f)
 {
-	this->_value = (f * (1 << this->_bits));
+	this->_value = roundf(f * (1 << this->_bits));
 	std::cout << "Float constructor called" << std::endl;
 }
 

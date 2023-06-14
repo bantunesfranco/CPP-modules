@@ -7,8 +7,8 @@ CYAN=\033[1;36m
 END=\033[0m
 
 CC = g++
-SRCS = main.cpp Fixed.cpp Operators.cpp
-HEADERS = Fixed.hpp
+SRCS = main.cpp Fixed.cpp Operators.cpp Point.cpp
+HEADERS = Fixed.hpp Point.hpp
 OBJ = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR = obj
 NAME = ex03

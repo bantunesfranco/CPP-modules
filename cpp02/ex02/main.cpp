@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/13 09:16:28 by bruno         #+#    #+#                 */
-/*   Updated: 2023/06/14 14:08:55 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/06/14 16:49:56 by codespace     ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,9 +24,6 @@ int	main( void )
 	
 	std::cout << b << std::endl;
 	std::cout << Fixed::max( a, b ) << std::endl;
-	std::cout << Fixed::min( a, b ) << std::endl;
-
-	std::cout << a + b << std::endl;
 	
 	return (0);
 }
