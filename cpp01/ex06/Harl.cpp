@@ -64,3 +64,40 @@ void	Harl::complain( std::string level )
 	std::cout << "There is no level \"" << level << "\"" << std::endl;
 	return ;
 }
+
+void	Harl::filter(std::string level)
+{
+	std::string	levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
+	int			i = 0;
+
+	while (i < 4)
+	{
+		if (!levels[i].compare(level))
+			break ;
+		i++;
+	}
+	
+	switch (i)
+	{
+		case 0 :
+			for (int j = i; j < 4; j++)
+				this->complain(levels[j]);
+			break ;
+		case 1 :
+			for (int j = i; j < 4; j++)
+				this->complain(levels[j]);
+			break ;
+		case 2 :
+			for (int j = i; j < 4; j++)
+				this->complain(levels[j]);
+			break ;
+		case 3 :
+			for (int j = i; j < 4; j++)
+				this->complain(levels[j]);
+			break ;
+		default :
+			std::cout << "[ Bla bla bla, probably something irrelevant ]" << std::endl;
+			break ;
+	}
+	return ;
+}

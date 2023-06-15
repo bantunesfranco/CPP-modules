@@ -6,7 +6,7 @@
 /*   By: bruno <bruno@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/12 09:37:36 by bruno         #+#    #+#                 */
-/*   Updated: 2023/06/12 09:50:32 by bruno         ########   odam.nl         */
+/*   Updated: 2023/06/15 20:07:29 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class   Harl
 	public:
 		Harl();
 		~Harl();
+		void	filter(std::string level);
 		void	complain(std::string level);
 };
 

@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/11 17:06:25 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/06/11 18:50:28 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/06/15 19:30:57 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,8 @@ int	main(int argc, char **argv)
 	}
 
 	std::ifstream	inputFile(argv[1]);
-	std::ofstream	outputFile("outfile.txt");
+	std::string		string = argv[1];
+	std::ofstream	outputFile(string.append(".replace").c_str());
 	std::string		fileContent;
 	std::string		line;
 
@@ -46,6 +47,7 @@ int	main(int argc, char **argv)
 		std::cerr << "Failed to open outfile" << std::endl;
 		return (1);
 	}
+	
 	outputFile << fileContent;
 	outputFile.close();
 	return (0);
