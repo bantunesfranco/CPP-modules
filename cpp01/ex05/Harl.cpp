@@ -52,15 +52,13 @@ void	Harl::complain( std::string level )
 {
 	std::string	levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	void		(Harl::*fptr[4])(void) = {&Harl::debug, &Harl::info, &Harl::warning, &Harl::error};
+	int			i = 0;
 
-	for (int i = 0; i < 4; i++)
-	{
-		if (!level.compare(levels[i]))
-		{
-			(this->*fptr[i])();
-			return ;
-		}
-	}
-	std::cout << "There is no level \"" << level << "\"\n" << std::endl;
+	while (level != levels[i]  && i < 4)
+		i++;
+	if (i < 4)
+		(this->*fptr[i])();
+	else
+		std::cout << "There is no level \"" << level << "\"\n" << std::endl;
 	return ;
 }

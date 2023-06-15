@@ -70,13 +70,9 @@ void	Harl::filter(std::string level)
 	std::string	levels[4] = {"DEBUG", "INFO", "WARNING", "ERROR"};
 	int			i = 0;
 
-	while (i < 4)
-	{
-		if (!levels[i].compare(level))
-			break ;
+	while (level != levels[i] && i < 4)
 		i++;
-	}
-	
+
 	switch (i)
 	{
 		case 0 :
@@ -95,7 +91,7 @@ void	Harl::filter(std::string level)
 			for (int j = i; j < 4; j++)
 				this->complain(levels[j]);
 			break ;
-		default :
+		case 4:
 			std::cout << "[ Bla bla bla, probably something irrelevant ]" << std::endl;
 			break ;
 	}
