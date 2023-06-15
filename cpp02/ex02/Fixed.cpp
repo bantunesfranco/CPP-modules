@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/13 09:16:25 by bruno         #+#    #+#                 */
-/*   Updated: 2023/06/14 16:47:59 by codespace     ########   odam.nl         */
+/*   Updated: 2023/06/15 16:17:10 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ Fixed::Fixed()
 // int contructor
 Fixed::Fixed(const int i)
 {
-	this->_value = i * (float)(1 << this->_bits);
+	this->_value = i * (1 << this->_bits);
 	// std::cout << "Int constructor called" << std::endl;
 }
 
@@ -56,7 +56,7 @@ int	Fixed::toInt() const
 // fixed point to float conversion
 float	Fixed::toFloat() const
 {
-	return ((float)this->getRawBits()/ (float)(1 << this->_bits));
+	return (this->getRawBits() / (1 << this->_bits));
 }
 
 // getter member func
@@ -89,23 +89,23 @@ std::ostream&	operator<<(std::ostream& out, const Fixed& point)
 
 Fixed&	Fixed::max(Fixed& p1, Fixed& p2)
 {
-	return ( p1 > p2 ? p1:p2);
+	return (p1 > p2 ? p1:p2);
 }
 
 
 const Fixed&	Fixed::max(Fixed const& p1, Fixed const& p2)
 {
-	return ( p1 > p2 ? p1:p2);
+	return (p1 > p2 ? p1:p2);
 }
 
 
 Fixed&	Fixed::min(Fixed& p1, Fixed& p2)
 {
-	return ( p1 < p2 ? p1:p2);
+	return (p1 < p2 ? p1:p2);
 }
 
 
 const Fixed&	Fixed::min(Fixed const& p1, Fixed const& p2)
 {
-	return ( p1 < p2 ? p1:p2);
+	return (p1 < p2 ? p1:p2);
 }

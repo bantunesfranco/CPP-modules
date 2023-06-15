@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/13 09:16:25 by bruno         #+#    #+#                 */
-/*   Updated: 2023/06/14 16:49:13 by codespace     ########   odam.nl         */
+/*   Updated: 2023/06/15 16:15:30 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ Fixed::Fixed()
 
 Fixed::Fixed(const int i)
 {
-	this->_value = i << this->_bits;
+	this->_value = i * (1 << this->_bits);
 	std::cout << "Int constructor called" << std::endl;
 }
 
@@ -50,7 +50,7 @@ int	Fixed::toInt() const
 
 float	Fixed::toFloat() const
 {
-	return ((float)this->getRawBits()/ (float)(1 << this->_bits));
+	return (this->getRawBits() / (1 << this->_bits));
 }
 
 int	Fixed::getRawBits() const

@@ -6,7 +6,7 @@
 /*   By: bruno <bruno@student.codam.nl>               +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/13 09:16:25 by bruno         #+#    #+#                 */
-/*   Updated: 2023/06/13 15:10:02 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/06/15 16:11:17 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ Fixed::Fixed(const Fixed &point)
 {
 	this->_value = point.getRawBits();
 	std::cout << "Copy constructor called" << std::endl;
-
 }
 
 Fixed& Fixed::operator=(const Fixed& point)
