@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/16 10:15:22 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/06/16 12:55:59 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/06/18 21:09:10 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,20 +60,22 @@ void	ClapTrap::beRepaired(unsigned int amount)
 {
 	if (this->getHitPts() == 0)
 		return ;
-	if (this->getEnergy() > (int)amount)
+	if (this->getEnergy() < (int)amount)
 	{
 		std::cout << "ClapTrap " << this->getName() << " doesn't have enough energy to repair itself" << std::endl;
 		return ;
 	}
-	this->_energy -= amount;
-	this->_hitPts += amount;
 	if (this->getHitPts() + (int)amount > this->getMaxHitPts())
 	{
+		std::cout << "ClapTrap " << this->getName() << " repaired itself for " << this->getMaxHitPts() - this->getHitPts() \
+		<< " hit points" << std::endl;
 		this->_hitPts = this->getMaxHitPts();
-		std::cout << "ClapTrap " << this->getName() << " repaired itself for " << this->getMaxHitPts() - this->getHitPts() << std::endl;
+		this->_energy -= (this->getMaxHitPts() - this->getHitPts());
 		return ;
 	}
-	std::cout << "ClapTrap " << this->getName() << " repaired itself for " << amount << std::endl;
+	this->_hitPts += amount;
+	this->_energy -= amount;
+	std::cout << "ClapTrap " << this->getName() << " repaired itself for " << amount << " hit points" << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
@@ -81,13 +83,12 @@ void	ClapTrap::takeDamage(unsigned int amount)
 	if (this->getHitPts() == 0)
 		return ;
 	this->_hitPts -= amount;
-		std::cout << "ClapTrap " << this->getName() << " has taken " << amount << " points of damage!" << std::endl;
+	std::cout << "ClapTrap " << this->getName() << " has taken " << amount << " points of damage!" << std::endl;
 	if (this->getHitPts() < 0)
 	{
-		std::cout << "ClapTrap " << this->getName() << " died!" << std::endl;
 		this->_hitPts = 0;
+		std::cout << "ClapTrap " << this->getName() << " died!" << std::endl;
 	}
-
 }
 
 std::string	ClapTrap::getName() const
@@ -102,7 +103,7 @@ int	ClapTrap::getHitPts() const
 
 int	ClapTrap::getMaxHitPts() const
 {
-	return (this->_hitPts);
+	return (this->_maxHitPts);
 }
 
 int	ClapTrap::getEnergy() const
@@ -128,19 +129,19 @@ void	ClapTrap::setName(std::string name)
 void	ClapTrap::setHitPts(int hitPts)
 {
 	this->_hitPts = hitPts;
-	if (this->getHitPts() > this->getMaxHitPts())
+	if (hitPts > this->getMaxHitPts())
 		this->setMaxHitPts(hitPts);
 }
 
 void	ClapTrap::setMaxHitPts(int hitPts)
 {
-	this->_hitPts = hitPts;
+	this->_maxHitPts = hitPts;
 }
 
 void	ClapTrap::setEnergy(int energy)
 {
 	this->_energy = energy;
-	if (this->getEnergy() > this->getMaxEnergy())
+	if (energy > this->getMaxEnergy())
 		this->setMaxEnergy(energy);
 }
 
