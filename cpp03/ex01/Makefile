@@ -7,11 +7,11 @@ CYAN=\033[1;36m
 END=\033[0m
 
 CC = g++
-SRCS = main.cpp ClapTrap.cpp
-HEADERS = ClapTrap.hpp
+SRCS = main.cpp ClapTrap.cpp ScavTrap.cpp
+HEADERS = ClapTrap.hpp ScavTrap.hpp
 OBJ = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR = obj
-NAME = ex00
+NAME = ex01
 
 ifdef DEBUG
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -g -fsanitize=address

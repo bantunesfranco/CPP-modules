@@ -6,14 +6,14 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/19 09:39:17 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/06/19 10:04:10 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/06/19 10:18:03 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ScavTrap.hpp"
+#include <iostream>
 
-
-ScavTrap::ScavTrap(std::string name) : _name(name)
+ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 {
 	this->_hitPts = 10;
 	this->_maxHitPts = 10;
@@ -23,21 +23,26 @@ ScavTrap::ScavTrap(std::string name) : _name(name)
 	std::cout << "ScavTrap " << name << " has been created" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& scavtrap)
+ScavTrap::ScavTrap(const ScavTrap& scavtrap) : ClapTrap(scavtrap.getName())
 {
 	*this = scavtrap;
 }
 
-ScavTrap&	ScavTrap::operator=(const ScavTrap& scavtrap)
+// ScavTrap&	ScavTrap::operator=(const ScavTrap& scavtrap)
+// {
+// 	if (this != &scavtrap)
+// 	{
+// 		this->_name = scavtrap.getName();
+// 		this->_hitPts = scavtrap.getHitPts();
+// 		this->_maxHitPts = scavtrap.getMaxHitPts();
+// 		this->_energy = scavtrap.getEnergy();
+// 		this->_maxEnergy = scavtrap.getMaxEnergy();
+// 		this->_atkDmg = scavtrap.getAtkDmg();
+// 	}
+// 	return (*this);
+// }
+
+ScavTrap::~ScavTrap()
 {
-	if (this != &scavtrap)
-	{
-		this->_name = scavtrap.getName();
-		this->_hitPts = scavtrap.getHitPts();
-		this->_maxHitPts = scavtrap.getMaxHitPts();
-		this->_energy = scavtrap.getEnergy();
-		this->_maxEnergy = scavtrap.getMaxEnergy();
-		this->_atkDmg = scavtrap.getAtkDmg();
-	}
-	return (*this);
+		std::cout << "ScavTrap " << this->getName() << " has been destryed" << std::endl;
 }
