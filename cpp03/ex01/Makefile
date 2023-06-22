@@ -21,7 +21,7 @@ endif
 
 all: $(NAME)
 
-$(NAME): $(OBJ)
+$(NAME): $(OBJ) $(HEADERS)
 	@echo "${MAGENTA}Creating $@${END}"
 	@$(CC) $(CXXFLAGS) $(OBJ) -o $(NAME)
 	@echo "${GREEN}Done!${END}"

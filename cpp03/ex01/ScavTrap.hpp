@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/19 09:39:19 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/06/21 19:38:07 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/06/22 09:51:19 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,10 @@ class	ScavTrap : public ClapTrap
 		
 		ScavTrap& operator=(const ScavTrap& scavtrap);
 
-		void guardGate();
+		virtual void guardGate();
+		virtual void attack(const std::string& target);
+		virtual void takeDamage(unsigned int amount);
+		virtual void beRepaired(unsigned int amount);
 
 };
 
