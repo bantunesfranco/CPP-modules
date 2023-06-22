@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/19 09:39:17 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/06/19 10:18:03 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/06/21 19:42:43 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,26 +23,32 @@ ScavTrap::ScavTrap(std::string name) : ClapTrap(name)
 	std::cout << "ScavTrap " << name << " has been created" << std::endl;
 }
 
-ScavTrap::ScavTrap(const ScavTrap& scavtrap) : ClapTrap(scavtrap.getName())
+ScavTrap::ScavTrap(const ScavTrap& scavtrap) : ClapTrap(scavtrap)
 {
 	*this = scavtrap;
+	std::cout << "ScavTrap " << this->getName() << " has been copied" << std::endl;
 }
 
-// ScavTrap&	ScavTrap::operator=(const ScavTrap& scavtrap)
-// {
-// 	if (this != &scavtrap)
-// 	{
-// 		this->_name = scavtrap.getName();
-// 		this->_hitPts = scavtrap.getHitPts();
-// 		this->_maxHitPts = scavtrap.getMaxHitPts();
-// 		this->_energy = scavtrap.getEnergy();
-// 		this->_maxEnergy = scavtrap.getMaxEnergy();
-// 		this->_atkDmg = scavtrap.getAtkDmg();
-// 	}
-// 	return (*this);
-// }
+ScavTrap&	ScavTrap::operator=(const ScavTrap& scavtrap)
+{
+	if (this != &scavtrap)
+	{
+		this->_name = scavtrap.getName();
+		this->_hitPts = scavtrap.getHitPts();
+		this->_maxHitPts = scavtrap.getMaxHitPts();
+		this->_energy = scavtrap.getEnergy();
+		this->_maxEnergy = scavtrap.getMaxEnergy();
+		this->_atkDmg = scavtrap.getAtkDmg();
+	}
+	return (*this);
+}
 
 ScavTrap::~ScavTrap()
 {
-		std::cout << "ScavTrap " << this->getName() << " has been destryed" << std::endl;
+		std::cout << "ScavTrap " << this->getName() << " has been destroyed" << std::endl;
+}
+
+void	ScavTrap::guardGate()
+{
+	std::cout << "ScavTrap " << this->getName() << " has entered Guard Gate Mode" << std::endl;
 }

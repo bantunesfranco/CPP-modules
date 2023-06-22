@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/16 10:15:22 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/06/18 21:09:10 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/06/21 19:36:33 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ ClapTrap::ClapTrap(std::string name) : _name(name)
 ClapTrap::ClapTrap(const ClapTrap& claptrap)
 {
 	*this = claptrap;
+	std::cout << "ClapTrap " << this->getName() << " has been copied" << std::endl;
 }
 
 ClapTrap&	ClapTrap::operator=(const ClapTrap& claptrap)
@@ -44,7 +45,7 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap& claptrap)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap " << this->getName() << " has been destryed" << std::endl;
+	std::cout << "ClapTrap " << this->getName() << " has been destroyed" << std::endl;
 }
 
 void	ClapTrap::attack(const std::string& target)

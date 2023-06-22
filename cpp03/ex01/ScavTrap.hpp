@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/19 09:39:19 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/06/19 10:05:56 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/06/21 19:38:07 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,11 @@ class	ScavTrap : public ClapTrap
 		ScavTrap(std::string name);
 		~ScavTrap();
 		ScavTrap(const ScavTrap& scavtrap);
+		
+		ScavTrap& operator=(const ScavTrap& scavtrap);
+
+		void guardGate();
+
 };
 
 #endif
