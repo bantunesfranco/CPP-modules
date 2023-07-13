@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/10 18:11:50 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/06/15 18:31:34 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/07/13 19:16:00 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 int	main()
 {
-	Zombie zombie = Zombie("Bob");
-	zombie.announce();
+	Zombie* zombie = newZombie("Bob");
+	zombie->announce();
+	delete zombie;
 	randomChump("Jens");
 	return (0);
 }

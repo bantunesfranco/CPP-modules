@@ -16,7 +16,8 @@ NAME = ex04
 ifdef DEBUG
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -g -fsanitize=address
 else
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic
+CXXFLAGS = -Wall -Werror -Wextra 
+#-std=c++98 -pedantic
 endif
 
 all: $(NAME)

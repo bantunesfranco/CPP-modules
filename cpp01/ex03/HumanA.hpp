@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/11 08:26:50 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/06/15 18:58:38 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/07/13 19:43:39 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,6 @@ class HumanA
 	public:
 		HumanA(std::string name, Weapon& weapon);
 		~HumanA();
-
 		void	attack();
 };
 

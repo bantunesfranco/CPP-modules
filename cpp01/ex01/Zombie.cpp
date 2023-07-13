@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/10 15:41:42 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/06/10 20:29:56 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/07/13 19:14:48 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ void	Zombie::setName(std::string name)
 	this->_name = name;
 }
 
-std::string	Zombie::getName(void)
+std::string	const& Zombie::getName(void)
 {
 	return (this->_name);
 }

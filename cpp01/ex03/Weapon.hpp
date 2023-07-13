@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/11 08:27:06 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/06/11 13:47:48 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/07/13 19:41:24 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,8 +24,8 @@ class Weapon
 		Weapon(std::string type);
 		~Weapon();
 
-		void		setType(std::string type);
-		std::string	getType(void) const;
+		void				setType(std::string type);
+		std::string const&	getType(void) const;
 };
 
 #endif
