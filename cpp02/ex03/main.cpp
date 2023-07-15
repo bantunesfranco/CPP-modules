@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/13 09:16:28 by bruno         #+#    #+#                 */
-/*   Updated: 2023/07/15 08:47:36 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/07/15 10:21:06 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,45 @@
 
 int	main( void )
 {
-	Point		a(1.4f, 4.2f);
-	Point		b(2.1f, 3.3f);
-	Point		c(3.2f, 2.1f);
-	Point		d(4.2f, 1.4f);
+	{
+		Point		a(3.0f, 4.0f);
+		Point		b(6.0f, 8.0f);
+		Point		c(5.0f, 2.0f);
+		Point		d(4.0f, 4.0f);
 
-	bool		res = bsp(a, b, c, d);
-	std::cout << "Case 1 is " << (res ? "True":"False") << std::endl;
-	
+		bool		res = bsp(a, b, c, d);
+		std::cout << "Res = " << res << std::endl;
+		std::cout << "Case 1 is " << (res ? "True":"False") << "\n" << std::endl;
+	}
+	{	
+		Point		a(3.0f, 4.0f);
+		Point		b(6.0f, 8.0f);
+		Point		c(5.0f, 2.0f);
+		Point		d(-4.0f, -4.0f);
+
+		bool		res = bsp(a, b, c, d);
+		std::cout << "Res = " << res << std::endl;
+		std::cout << "Case 2 is " << (res ? "True":"False") << "\n" << std::endl;
+	}
+	{	
+		Point		a(3.0f, 4.0f);
+		Point		b(3.0f, 4.0f);
+		Point		c(3.0f, 4.0f);
+		Point		d(3.0f, 4.0f);
+
+		bool		res = bsp(a, b, c, d);
+		std::cout << "Res = " << res << std::endl;
+		std::cout << "Case 3 is " << (res ? "True":"False") << "\n" << std::endl;
+	}
+	{	
+		Point		a(3.0f, 1.0f);
+		Point		b(3.0f, 3.0f);
+		Point		c(3.0f, 7.0f);
+		Point		d(3.0f, 5.0f);
+
+		bool		res = bsp(a, b, c, d);
+		std::cout << "Res = " << res << std::endl;
+		std::cout << "Case 4 is " << (res ? "True":"False") << "\n" << std::endl;
+	}
 	return (0);
 }

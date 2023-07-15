@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/14 14:43:29 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/06/14 16:38:11 by codespace     ########   odam.nl         */
+/*   Updated: 2023/07/15 09:58:24 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ class	Point
 		float	getY(void) const;
 };
 
-bool	bsp( Point const a, Point const b, Point const c, Point const point);
+bool			bsp(Point const a, Point const b, Point const c, Point const point);
 std::ostream&	operator<<(std::ostream& out, const Point& point);
 
 #endif
