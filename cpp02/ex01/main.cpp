@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/13 09:16:28 by bruno         #+#    #+#                 */
-/*   Updated: 2023/06/13 19:20:49 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/07/15 08:35:17 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@
 int	main( void )
 {
 	Fixed a;
-	Fixed const b( 10 );
-	Fixed const c( 42.42f );
-	Fixed const d( b );
+	Fixed const b(10);
+	Fixed const c(42.42f);
+	Fixed const d(b);
 
-	a = Fixed( 1234.4321f );
+	a = Fixed(1234.4321f);
 	
 	std::cout << "a is " << a << std::endl;
 	std::cout << "b is " << b << std::endl;
@@ -31,5 +31,6 @@ int	main( void )
 	std::cout << "b is " << b.toInt() << " as integer" << std::endl;
 	std::cout << "c is " << c.toInt() << " as integer" << std::endl;
 	std::cout << "d is " << d.toInt() << " as integer" << std::endl;
+
 	return (0);
 }

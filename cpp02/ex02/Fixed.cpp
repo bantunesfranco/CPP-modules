@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/13 09:16:25 by bruno         #+#    #+#                 */
-/*   Updated: 2023/06/15 16:17:10 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/07/15 08:37:15 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ int	Fixed::toInt() const
 // fixed point to float conversion
 float	Fixed::toFloat() const
 {
-	return (this->getRawBits() / (1 << this->_bits));
+	return ((float)this->getRawBits() / (1 << this->_bits));
 }
 
 // getter member func
