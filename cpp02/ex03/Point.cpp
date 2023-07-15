@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/14 14:43:26 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/07/15 10:33:30 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/07/15 18:57:32 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,9 +94,7 @@ bool	bsp(Point const a, Point const b, Point const c, Point const point)
 
 	bool	pos = (ab > 0 && bc > 0 && ca > 0);
 	bool	neg = (ab < 0 && bc < 0 && ca < 0);
+	bool	collinear = (ab == 0 && bc == 0 && ca == 0);
 
-	std::cout << "pos: " << pos << std::endl;
-	std::cout << "neg: " << neg << std::endl;
-	
-	return ((pos && !neg) || (!pos && neg));
+	return (pos != neg && !collinear);
 }
