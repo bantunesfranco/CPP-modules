@@ -15,9 +15,9 @@ OBJ_DIR = obj
 NAME = ex01
 
 ifdef DEBUG
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -g -fsanitize=address
+CXXFLAGS = -Wall -Werror -Wextra -pedantic -g -fsanitize=address
 else
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic
+CXXFLAGS = -Wall -Werror -Wextra -pedantic
 endif
 
 all: $(NAME)

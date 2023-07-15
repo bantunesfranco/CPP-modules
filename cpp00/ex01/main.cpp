@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/08 21:33:55 by codespace     #+#    #+#                 */
-/*   Updated: 2023/06/10 13:00:43 by codespace     ########   odam.nl         */
+/*   Updated: 2023/07/15 19:14:44 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,15 +18,15 @@ int main(void)
 	PhoneBook	phonebook;
 	std::string	input;
 
-	while (1)
+	while (!std::cin.eof())
 	{
 		std::cout << "Enter a command : ADD | SEARCH | EXIT" << std::endl;
 		std::getline(std::cin, input);
-		if (!input.compare("ADD"))
+		if (input == "ADD")
 			phonebook.add();
-		else if (!input.compare("SEARCH"))
+		else if (input == "SEARCH")
 			phonebook.search();
-		else if (!input.compare("EXIT"))
+		else if (input == "EXIT")
 			return (0);
 	}
 	return (0);

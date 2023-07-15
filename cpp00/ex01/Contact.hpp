@@ -6,7 +6,7 @@
 /*   By: codespace <codespace@student.codam.nl>       +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/08 21:33:58 by codespace     #+#    #+#                 */
-/*   Updated: 2023/06/09 10:21:59 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/07/15 20:01:39 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,14 +24,16 @@ class	Contact
 		std::string	_nickname;
 		std::string	_phone_number;
 		std::string	_secret;
+		bool		isWhitespaceString(const std::string& str);
 
 	public:
 		void		init(int index);
-		std::string	get_first_name();
-		std::string	get_last_name();
-		std::string	get_nickname();
-		std::string	get_phone_number();
-		std::string	get_secret();
+		bool		isValid();
+		std::string	getFirstName();
+		std::string	getLastName();
+		std::string	getNickname();
+		std::string	getPhoneNumber();
+		std::string	getSecret();
 
 };
 
