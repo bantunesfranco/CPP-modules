@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/09 17:44:19 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/06/10 12:40:52 by codespace     ########   odam.nl         */
+/*   Updated: 2023/07/16 14:45:31 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,8 +84,25 @@ void	Account::_displayTimestamp( void )
 	time_t	now = time(0);
 	tm 		*ltm = localtime(&now);
 	
-	std::cout << "[" << ltm->tm_year << ltm->tm_mon << ltm->tm_mday \
-	<< "_" << ltm->tm_hour << ltm->tm_min << ltm->tm_sec << "]";
+	std::cout << "[";
+	std::cout << ltm->tm_year + 1900;
+	if (ltm->tm_mon < 10)
+		std::cout << "0";
+	std::cout << ltm->tm_mon + 1;
+	if (ltm->tm_mday < 10)
+		std::cout << "0";
+	std::cout << ltm->tm_mday;
+	std::cout << "_";
+	if (ltm->tm_hour < 10)
+		std::cout << "0";
+	std::cout << ltm->tm_hour + 2;
+	if (ltm->tm_min < 10)
+		std::cout << "0";
+	std::cout << ltm->tm_min;
+	if (ltm->tm_sec < 10)
+		std::cout << "0";
+	std::cout << ltm->tm_sec;
+	std::cout << "]";
 }
 
 
