@@ -6,17 +6,17 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/16 12:29:37 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/07/22 12:45:26 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/09 16:56:19 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ClapTrap.hpp"
+#include "DiamondTrap.hpp"
 #include <iostream>
 
 int	main()
 {
-	ClapTrap	bob("bob");
-	ClapTrap	joe(bob);
+	DiamondTrap	bob("bob");
+	DiamondTrap	joe(bob);
 
 	std::cout << "\nBob: " << "hp = " << bob.getHitPts() << " atk = " \
 	<< bob.getAtkDmg() << " energy = " << bob.getEnergy() << std::endl;
@@ -45,6 +45,10 @@ int	main()
 	joe.setHitPts(2);
 	joe.setEnergy(0);
 	joe.beRepaired(2);
+	std::cout << "" << std::endl;
+
+	bob.highFivesGuys();
+	joe.highFivesGuys();
 	std::cout << "" << std::endl;
 
 	return (0);

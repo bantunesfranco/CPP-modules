@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/16 10:15:22 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/06/21 19:36:33 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/09 16:42:16 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,17 +20,18 @@ ClapTrap::ClapTrap(std::string name) : _name(name)
 	this->_energy = 10;
 	this->_maxEnergy = 10;
 	this->_atkDmg = 0;
-	std::cout << "ClapTrap " << name << " has been created" << std::endl;
+	std::cout << "ClapTrap default constructor" << std::endl;
 }
 
 ClapTrap::ClapTrap(const ClapTrap& claptrap)
 {
+	std::cout << "ClapTrap copy constructor" << std::endl;
 	*this = claptrap;
-	std::cout << "ClapTrap " << this->getName() << " has been copied" << std::endl;
 }
 
 ClapTrap&	ClapTrap::operator=(const ClapTrap& claptrap)
 {
+	std::cout << "ClapTrap assignment operator" << std::endl;
 	if (this != &claptrap)
 	{
 		this->_name = claptrap.getName();
@@ -45,50 +46,51 @@ ClapTrap&	ClapTrap::operator=(const ClapTrap& claptrap)
 
 ClapTrap::~ClapTrap()
 {
-	std::cout << "ClapTrap " << this->getName() << " has been destroyed" << std::endl;
+	std::cout << "ClapTrap default destructor" << std::endl;
 }
 
 void	ClapTrap::attack(const std::string& target)
 {
-	if (this->getHitPts() == 0 && this->getEnergy() == 0)
+	if (this->_hitPts == 0)
 		return ;
-	this->_energy -= this->getAtkDmg();
-	std::cout << "ClapTrap " << this->getName() << " attacks " << target \
-	<< " causing " << this->getAtkDmg() << " points of damage!" << std::endl;
+	std::cout << "ClapTrap " << this->_name;
+	if (this->_energy == 0)
+	{
+		std::cout << " is out of energy!" << std::endl;
+		return ;
+	}
+	this->_energy -= 1;
+	std::cout << " attacks " << target << " causing " << this->_atkDmg << " points of damage!" << std::endl;
 }
 
 void	ClapTrap::beRepaired(unsigned int amount)
 {
-	if (this->getHitPts() == 0)
+	int	diff = this->_maxHitPts - this->_hitPts;
+	if (this->_hitPts == 0 || diff == 0)
 		return ;
-	if (this->getEnergy() < (int)amount)
+	std::cout << "ClapTrap " << this->_name;
+	if (this->_energy == 0)
 	{
-		std::cout << "ClapTrap " << this->getName() << " doesn't have enough energy to repair itself" << std::endl;
+		std::cout << " is out of energy!" << std::endl;
 		return ;
 	}
-	if (this->getHitPts() + (int)amount > this->getMaxHitPts())
-	{
-		std::cout << "ClapTrap " << this->getName() << " repaired itself for " << this->getMaxHitPts() - this->getHitPts() \
-		<< " hit points" << std::endl;
-		this->_hitPts = this->getMaxHitPts();
-		this->_energy -= (this->getMaxHitPts() - this->getHitPts());
-		return ;
-	}
+	this->_energy -= 1;
+	if (this->_hitPts + (int)amount > this->_maxHitPts)
+		amount = diff;
 	this->_hitPts += amount;
-	this->_energy -= amount;
-	std::cout << "ClapTrap " << this->getName() << " repaired itself for " << amount << " hit points" << std::endl;
+	std::cout << " repaired itself for " << amount << " hit points" << std::endl;
 }
 
 void	ClapTrap::takeDamage(unsigned int amount)
 {
-	if (this->getHitPts() == 0)
+	if (this->_hitPts == 0)
 		return ;
 	this->_hitPts -= amount;
-	std::cout << "ClapTrap " << this->getName() << " has taken " << amount << " points of damage!" << std::endl;
-	if (this->getHitPts() < 0)
+	std::cout << "ClapTrap " << this->_name << " has taken " << amount << " points of damage!" << std::endl;
+	if (this->_hitPts < 0)
 	{
 		this->_hitPts = 0;
-		std::cout << "ClapTrap " << this->getName() << " died!" << std::endl;
+		std::cout << "ClapTrap " << this->_name << " died!" << std::endl;
 	}
 }
 
@@ -130,7 +132,7 @@ void	ClapTrap::setName(std::string name)
 void	ClapTrap::setHitPts(int hitPts)
 {
 	this->_hitPts = hitPts;
-	if (hitPts > this->getMaxHitPts())
+	if (hitPts > this->_maxHitPts)
 		this->setMaxHitPts(hitPts);
 }
 
@@ -142,7 +144,7 @@ void	ClapTrap::setMaxHitPts(int hitPts)
 void	ClapTrap::setEnergy(int energy)
 {
 	this->_energy = energy;
-	if (energy > this->getMaxEnergy())
+	if (energy > this->_maxEnergy)
 		this->setMaxEnergy(energy);
 }
 
