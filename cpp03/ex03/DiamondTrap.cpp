@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/09 17:28:02 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/11 09:37:05 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/11 14:11:16 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ DiamondTrap&	DiamondTrap::operator=(const DiamondTrap& diamondtrap)
 		this->_hitPts = diamondtrap._hitPts;
 		this->_maxHitPts = diamondtrap._maxHitPts;
 		this->_energy = diamondtrap._energy;
-		this->_maxEnergy = diamondtrap._maxEnergy;
+		this->_maxEnergy = diamondtrap._mmaaaaaxEnergy;
 		this->_atkDmg = diamondtrap._atkDmg;
 		this->setName(diamondtrap.getName());
 	}
