@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/16 12:29:37 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/09 16:56:19 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/11 09:29:30 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,16 @@
 int	main()
 {
 	DiamondTrap	bob("bob");
-	DiamondTrap	joe(bob);
+	DiamondTrap	joe("joe");
+	DiamondTrap	test(joe);
 
 	std::cout << "\nBob: " << "hp = " << bob.getHitPts() << " atk = " \
 	<< bob.getAtkDmg() << " energy = " << bob.getEnergy() << std::endl;
 	bob.attack("target");
 	std::cout << "" << std::endl;
 
-	joe.setName("joe");
+	test.setRealName("test1234");
+
 	bob.setAtkDmg(2);
 	bob.setEnergy(2);
 	
@@ -48,7 +50,15 @@ int	main()
 	std::cout << "" << std::endl;
 
 	bob.highFivesGuys();
-	joe.highFivesGuys();
+	joe.guardGate();
+	std::cout << "" << std::endl;
+
+	bob.whoAmI();
+	joe.whoAmI();
+	test.whoAmI();
+
+	joe = bob;
+	joe.whoAmI();
 	std::cout << "" << std::endl;
 
 	return (0);

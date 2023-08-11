@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/09 17:24:29 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/09 17:27:09 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/11 09:26:53 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,15 @@
 #include "ScavTrap.hpp"
 #include <string>
 
-class	ScavTrap : public FragTrap, public ScavTrap
+class	DiamondTrap : public FragTrap, public ScavTrap
 {
 	private:
-		_name;
+		std::string	_name;
+		int			_hitPts;
+		int			_maxHitPts;
+		int			_energy;
+		int			_maxEnergy;
+		int			_atkDmg;
 
 	public:
 		DiamondTrap(std::string name);
@@ -29,8 +34,10 @@ class	ScavTrap : public FragTrap, public ScavTrap
 		
 		DiamondTrap& operator=(const DiamondTrap& diamondtrap);
 
-		void guardGate();
-		void attack(const std::string& target);
+		void		whoAmI(void);
+		void		attack(const std::string& target);
+		std::string	getRealName(void) const;
+		void		setRealName(std::string name);
 };
 
 #endif
