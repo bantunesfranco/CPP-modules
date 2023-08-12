@@ -38,7 +38,7 @@ WrongAnimal&	WrongAnimal::operator=(const WrongAnimal& wronganimal)
 {
 	if (this != &wronganimal)
 		this->_type = wronganimal.getType();
-	std::cout << "WrongAnimal copy constructor" << std::endl;
+	std::cout << "WrongAnimal assignment operator" << std::endl;
 	return (*this);
 }
 

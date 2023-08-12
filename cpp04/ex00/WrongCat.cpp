@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/11 18:52:03 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/11 19:03:15 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/12 12:17:40 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ WrongCat&	WrongCat::operator=(const WrongCat& wrongcat)
 {
 	if (this != &wrongcat)
 		this->_type = wrongcat.getType();
-	std::cout << "WrongCat copy constructor" << std::endl;
+	std::cout << "WrongCat assignment operator" << std::endl;
 	return (*this);
 }
 void	WrongCat::makeSound(void) const
