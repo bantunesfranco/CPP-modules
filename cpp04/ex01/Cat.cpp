@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/11 14:18:11 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/12 12:44:37 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/13 20:31:00 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,12 +39,32 @@ Cat&	Cat::operator=(const Cat& cat)
 		this->_type = cat.getType();
 		if (this->_brain)
 			delete this->_brain;
-		this->_brain = new Brain(*dog._brain)
+		this->_brain = new Brain(*cat._brain);
 	}
 	std::cout << "Cat assignment operator" << std::endl;
 	return (*this);
 }
+
 void	Cat::makeSound(void) const
 {
 	std::cout << "Miau Miau" << std::endl;
+}
+
+void	Cat::setIdea(std::string idea)
+{
+	static int i = 0;
+	if (i >= 100)
+	{
+		std::cout << "Brain is full of ideas" << std::endl;
+		return ;
+	}
+	this->_brain->_ideas[i] = idea;
+	i++;
+}
+
+void	Cat::getIdea(int i)
+{
+	if (i < 0 || i >= 100)
+		throw std::exception()
+		
 }

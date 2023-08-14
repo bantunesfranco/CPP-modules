@@ -1,56 +1,56 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Dog.cpp                                            :+:    :+:            */
+/*   Cat.cpp                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/08/11 14:18:16 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/13 20:12:41 by bfranco       ########   odam.nl         */
+/*   Created: 2023/08/11 14:18:11 by bfranco       #+#    #+#                 */
+/*   Updated: 2023/08/13 20:19:43 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Dog.hpp"
+#include "Cat.hpp"
 #include <iostream>
 
-Dog::Dog(void) : Animal("Dog")
+Cat::Cat(void) : AAnimal("Cat")
 {
 	this->_brain = new Brain();
-	std::cout << "Dog default constructor" << std::endl;
+	std::cout << "Cat default constructor" << std::endl;
 }
 
-Dog::Dog(const Dog& dog) : Animal(dog.getType())
+Cat::Cat(const Cat& cat) : AAnimal(cat.getType())
 {
-	*this = dog;
-	std::cout << "Dog copy constructor" << std::endl;
+	*this = cat;
+	std::cout << "Cat copy constructor" << std::endl;
 }
 
-Dog::~Dog(void)
+Cat::~Cat(void)
 {
 	if (this->_brain)
 		delete this->_brain;
-	std::cout << "Dog default destructor" << std::endl;
+	std::cout << "Cat default destructor" << std::endl;
 }
 
-Dog&	Dog::operator=(const Dog& dog)
+Cat&	Cat::operator=(const Cat& cat)
 {
-	if (this != &dog)
+	if (this != &cat)
 	{
-		this->_type = dog.getType();
+		this->_type = cat.getType();
 		if (this->_brain)
 			delete this->_brain;
-		this->_brain = new Brain(*dog._brain);
+		this->_brain = new Brain(*cat._brain);
 	}
-	std::cout << "Dog assignment operator" << std::endl;
+	std::cout << "Cat assignment operator" << std::endl;
 	return (*this);
 }
 
-void	Dog::makeSound(void) const
+void	Cat::makeSound(void) const
 {
-	std::cout << "Woof Woof" << std::endl;
+	std::cout << "Miau Miau" << std::endl;
 }
 
-void	Dog::setIdea(std::string idea)
+void	Cat::setIdea(std::string idea)
 {
 	static int i = 0;
 	if (i >= 100)
