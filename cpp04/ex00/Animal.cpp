@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/11 14:18:07 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/12 12:17:00 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/14 15:16:11 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,6 @@
 Animal::Animal(void) : _type("Animal")
 {
 	std::cout << "Animal default constructor" << std::endl;
-}
-
-Animal::Animal(std::string type) : _type(type)
-{
-	std::cout << "Animal string constructor" << std::endl;
 }
 
 Animal::Animal(const Animal& animal)

@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/11 14:18:22 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/13 20:19:15 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/14 16:24:19 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,9 @@ class	Dog : public AAnimal
 		Dog& operator=(const Dog& dog);
 		
 		void	makeSound() const;
-		void	setIdea(std::string);
+		void	setIdea(size_t i, std::string idea);
+		void	getIdeas(void) const;
+
 };
 
 #endif

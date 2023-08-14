@@ -6,20 +6,21 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/11 14:18:16 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/13 20:12:41 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/14 15:31:14 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 #include <iostream>
 
-Dog::Dog(void) : Animal("Dog")
+Dog::Dog(void) : Animal()
 {
+	this->_type = "Dog";
 	this->_brain = new Brain();
 	std::cout << "Dog default constructor" << std::endl;
 }
 
-Dog::Dog(const Dog& dog) : Animal(dog.getType())
+Dog::Dog(const Dog& dog) : Animal()
 {
 	*this = dog;
 	std::cout << "Dog copy constructor" << std::endl;
@@ -37,8 +38,6 @@ Dog&	Dog::operator=(const Dog& dog)
 	if (this != &dog)
 	{
 		this->_type = dog.getType();
-		if (this->_brain)
-			delete this->_brain;
 		this->_brain = new Brain(*dog._brain);
 	}
 	std::cout << "Dog assignment operator" << std::endl;
@@ -50,14 +49,18 @@ void	Dog::makeSound(void) const
 	std::cout << "Woof Woof" << std::endl;
 }
 
-void	Dog::setIdea(std::string idea)
+void	Dog::getIdeas(void) const
 {
-	static int i = 0;
-	if (i >= 100)
+	for (int i = 0; i < 100; i++)
 	{
-		std::cout << "Brain is full of ideas" << std::endl;
-		return ;
+		const std::string	idea = this->_brain->getIdea(i);
+		if (idea.length() == 0)
+			continue ;
+		std::cout << "Idea " << i << " is: \"" << idea << "\" at the address " << this->_brain->getIdeaAddress(i) << std::endl;
 	}
-	this->_brain->_ideas[i] = idea;
-	i++;
+}
+
+void	Dog::setIdea(size_t i, std::string idea)
+{
+	this->_brain->setIdea(i, idea);
 }

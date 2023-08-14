@@ -6,19 +6,20 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/11 14:18:11 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/12 12:17:07 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/14 14:44:17 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include <iostream>
 
-Cat::Cat(void) : Animal("Cat")
+Cat::Cat(void) : Animal()
 {
+	this->_type = "Cat";
 	std::cout << "Cat default constructor" << std::endl;
 }
 
-Cat::Cat(const Cat& cat) : Animal(cat.getType())
+Cat::Cat(const Cat& cat) : Animal()
 {
 	*this = cat;
 	std::cout << "Cat copy constructor" << std::endl;

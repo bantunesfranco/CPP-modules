@@ -6,20 +6,21 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/11 14:18:11 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/13 20:31:00 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/14 15:29:51 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Cat.hpp"
 #include <iostream>
 
-Cat::Cat(void) : Animal("Cat")
+Cat::Cat(void) : Animal()
 {
+	this->_type = "Cat";
 	this->_brain = new Brain();
 	std::cout << "Cat default constructor" << std::endl;
 }
 
-Cat::Cat(const Cat& cat) : Animal(cat.getType())
+Cat::Cat(const Cat& cat) : Animal()
 {
 	*this = cat;
 	std::cout << "Cat copy constructor" << std::endl;
@@ -50,21 +51,18 @@ void	Cat::makeSound(void) const
 	std::cout << "Miau Miau" << std::endl;
 }
 
-void	Cat::setIdea(std::string idea)
+void	Cat::getIdeas(void) const
 {
-	static int i = 0;
-	if (i >= 100)
+	for (int i = 0; i < 100; i++)
 	{
-		std::cout << "Brain is full of ideas" << std::endl;
-		return ;
+		const std::string	idea = this->_brain->getIdea(i);
+		if (idea.length() == 0)
+			continue ;
+		std::cout << "Idea " << i << " is: \"" << idea << "\" at the address " << this->_brain->getIdeaAddress(i) << std::endl;
 	}
-	this->_brain->_ideas[i] = idea;
-	i++;
 }
 
-void	Cat::getIdea(int i)
+void	Cat::setIdea(size_t i, std::string idea)
 {
-	if (i < 0 || i >= 100)
-		throw std::exception()
-		
+	this->_brain->setIdea(i, idea);
 }

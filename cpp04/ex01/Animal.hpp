@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/11 14:18:13 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/12 11:45:58 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/14 14:41:23 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ class	Animal
 
 	public:
 		Animal();
-		Animal(std::string);
 		virtual ~Animal();
 		Animal(const Animal& animal);
 		

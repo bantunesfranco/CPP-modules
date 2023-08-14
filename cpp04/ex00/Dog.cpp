@@ -6,19 +6,21 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/11 14:18:16 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/12 12:17:22 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/14 14:43:53 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Dog.hpp"
 #include <iostream>
 
-Dog::Dog(void) : Animal("Dog")
+Dog::Dog(void) : Animal()
 {
+	this->_type = "Dog";
+	this->_brain = new Brain();
 	std::cout << "Dog default constructor" << std::endl;
 }
 
-Dog::Dog(const Dog& dog) : Animal(dog.getType())
+Dog::Dog(const Dog& dog) : Animal()
 {
 	*this = dog;
 	std::cout << "Dog copy constructor" << std::endl;

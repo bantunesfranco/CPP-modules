@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/11 14:26:21 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/13 20:18:34 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/14 16:16:41 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,10 +42,15 @@ int main(void)
 	std::cout << "" << std::endl;
 
 	Dog* 	dog1 = new Dog();
+	dog1->setIdea(0, "Am good doggo");
+	dog1->setIdea(1, "Am not bad doggo");
 	Dog* 	dog2 = new Dog(*dog1);
+	dog1->setIdea(0, "Munchies");
+	dog2->setIdea(1, "Am very good doggo");
 	std::cout << "Address dog1 = " << dog1 << std::endl;
+	dog1->getIdeas();
 	std::cout << "Address dog2 = " << dog2 << std::endl;
-	dog1->setIdea("Am good doggo");
+	dog2->getIdeas();
 	delete dog1;
 	delete dog2;
 
@@ -55,7 +60,14 @@ int main(void)
 	Cat*	cat2 = NULL;
 	cat2 = cat1;
 	std::cout << "Address cat1 = " << cat1 << std::endl;
+	cat1->setIdea(1, "Am good catto");
+	cat1->getIdeas();
+	cat2->getIdeas();
 	std::cout << "Address cat2 = " << cat2 << std::endl;
+	cat1->setIdea(1, "Am not good catto");
+	cat1->getIdeas();
+	cat2->getIdeas();
+	cat1->setIdea(101, "Am hungry");
 	delete cat2;
 
 	return (0);
