@@ -76,24 +76,16 @@ void	Harl::filter(std::string level)
 	switch (i)
 	{
 		case 0 :
-			for (int j = i; j < 4; j++)
-				this->complain(levels[j]);
-			break ;
+			this->debug();
 		case 1 :
-			for (int j = i; j < 4; j++)
-				this->complain(levels[j]);
-			break ;
+			this->info();
 		case 2 :
-			for (int j = i; j < 4; j++)
-				this->complain(levels[j]);
-			break ;
+			this->warning();
 		case 3 :
-			for (int j = i; j < 4; j++)
-				this->complain(levels[j]);
-			break ;
-		case 4:
+			this->error();
+			break;
+		default:
 			std::cout << "[ Bla bla bla, probably something irrelevant ]" << std::endl;
-			break ;
 	}
 	return ;
 }
