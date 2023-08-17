@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/19 09:39:17 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/09 16:44:39 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/17 12:11:32 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,4 +62,3 @@ void	ScavTrap::attack(const std::string& target)
 	std::cout << "ScavTrap " << this->_name << " attacks " << target \
 	<< " causing " << this->_atkDmg << " points of damage!" << std::endl;
 }
-

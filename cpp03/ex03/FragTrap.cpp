@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/19 09:39:17 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/11 09:14:26 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/17 12:12:04 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,4 +61,3 @@ void	FragTrap::attack(const std::string& target)
 	std::cout << "FragTrap " << this->_name << " attacks " << target \
 	<< " causing " << this->_atkDmg << " points of damage!" << std::endl;
 }
-
