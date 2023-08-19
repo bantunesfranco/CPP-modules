@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/09 17:28:02 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/17 12:12:58 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/19 16:15:23 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,11 +53,7 @@ DiamondTrap::~DiamondTrap()
 
 void	DiamondTrap::attack(const std::string& target)
 {
-	if (this->_hitPts == 0 && this->_energy == 0)
-		return ;
-	this->_energy -= this->_atkDmg;
-	std::cout << "DiamondTrap " << this->_name << " attacks " << target \
-	<< " causing " << this->_atkDmg << " points of damage!" << std::endl;
+	ScavTrap::attack(target);
 }
 
 void	DiamondTrap::whoAmI(void)

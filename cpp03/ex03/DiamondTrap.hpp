@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/09 17:24:29 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/17 12:12:01 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/19 16:14:17 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,6 @@ class	DiamondTrap : public FragTrap, public ScavTrap
 {
 	private:
 		std::string	_name;
-		int			_hitPts;
-		int			_maxHitPts;
-		int			_energy;
-		int			_maxEnergy;
-		int			_atkDmg;
 
 	public:
 		DiamondTrap(std::string name);
