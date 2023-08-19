@@ -7,8 +7,8 @@ CYAN=\033[1;36m
 END=\033[0m
 
 CC = g++
-SRCS = main.cpp AAnimal.cpp Cat.cpp Dog.cpp Brain.cpp
-HEADERS = AAnimal.hpp Cat.hpp Dog.hpp Brain.hpp
+SRCS = main.cpp AMateria.cpp Character.cpp Cure.cpp Ice.cpp
+HEADERS = AMateria.hpp Character.hpp Cure.hpp ICharacter.hpp Ice.hpp
 OBJ = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR = obj
 NAME = ex03

@@ -1,39 +1,37 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   AMateria.hpp                                       :+:    :+:            */
+/*   Character.hpp                                      :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/08/19 16:21:26 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/19 19:20:29 by bfranco       ########   odam.nl         */
+/*   Created: 2023/08/19 18:41:50 by bfranco       #+#    #+#                 */
+/*   Updated: 2023/08/19 18:45:25 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef AMATERIA_HPP
-# define AMATERIA_HPP
+#ifndef CHARACTER_HPP
+#define CHARACTER_HPP
 
 #include "ICharacter.hpp"
-#include <string>
 
-class ICharacter;
-
-class AMateria
+class Character : public ICharacter
 {
-	protected:
-		std::string _type;
+	private:
+		std::string	_name;
+		AMateria*	_inventory[4];
 
 	public:
-		AMateria();
-		AMateria(std::string const & type);
-		AMateria(AMateria const& src);
-		virtual ~AMateria();
-		
-		AMateria&	operator=(AMateria const& src);
-		
-		std::string const&	getType() const;
-		virtual AMateria*	clone() const = 0;
-		virtual void		use(ICharacter& target);
+		Character(std::string name);
+		Character(Character const &src);
+		~Character();
+
+		Character& operator=(Character const &src);
+
+		std::string const &	getName() const;
+		void				equip(AMateria* m);
+		void				unequip(int idx);
+		void				use(int idx, ICharacter& target);
 };
 
 #endif
