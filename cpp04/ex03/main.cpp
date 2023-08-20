@@ -6,72 +6,73 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/11 14:26:21 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/19 19:24:14 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/20 13:47:40 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
 #include "Character.hpp"
+#include "MateriaSource.hpp"
 #include "Ice.hpp"
 #include "Cure.hpp"
 
 int main(void) 
 {
 	// subject
-	IMateriaSource* src = new MateriaSource();
-	src->learn_materia(new Ice());
-	src->learn_materia(new Cure());
+	MateriaSource* src = new MateriaSource();
+	src->learnMateria(new Ice());
+	src->learnMateria(new Cure());
 
-	Character* bilbo = new Character("Bilbo");
+	Character* mage = new Character("Mage");
 	AMateria* tmp;
-	tmp = src->create_materia("ice");
-	bilbo->equip(tmp);
-	tmp = src->create_materia("cure");
-	bilbo->equip(tmp);
+	tmp = src->createMateria("ice");
+	mage->equip(tmp);
+	tmp = src->createMateria("cure");
+	mage->equip(tmp);
 
-	ICharacter* gandalf = new Character("Gandalf");
-	bilbo->use(0, *gandalf);
-	bilbo->use(1, *gandalf);
+	ICharacter* wizard = new Character("Wizard");
+	mage->use(0, *wizard);
+	mage->use(1, *wizard);
 
 	// deep copy MateriaSource
 	MateriaSource* src2 = new MateriaSource();
-	src2->learn_materia(new Ice());
-	src2->learn_materia(new Cure());
+	src2->learnMateria(new Ice());
+	src2->learnMateria(new Cure());
 	MateriaSource* src_copy = new MateriaSource(*src2);
 	delete src2;
 
 	// full inventory and unequip
-	tmp = src_copy->create_materia("ice");
-	bilbo->equip(tmp);
+	tmp = src_copy->createMateria("ice");
+	mage->equip(tmp);
 
-	AMateria *last_item = src_copy->create_materia("cure");
-	bilbo->equip(last_item);
+	AMateria *last_item = src_copy->createMateria("cure");
+	mage->equip(last_item);
 
-	bilbo->equip(tmp);
+	mage->equip(tmp);
 
-	bilbo->unequip(3);
+	mage->unequip(3);
 
 	delete last_item;
 
 	// deep copy Character
-	Character* bilbo_copy = new Character(*bilbo);
-	delete bilbo;
+	Character* mage_copy = new Character(*mage);
+	delete mage;
 
-	bilbo_copy->use(0, *gandalf);
-	bilbo_copy->use(1, *gandalf);
+	mage_copy->use(0, *wizard);
+	mage_copy->use(1, *wizard);
 	// empty
-	bilbo_copy->use(3, *gandalf);
+	mage_copy->use(3, *wizard);
 
 	// materia that does not exist
-	tmp = src->create_materia("does_not_exist");
-	tmp = src->create_materia("ice");
+	tmp = src->createMateria("invalid");
+	tmp = src->createMateria("ice");
 
-	bilbo_copy->equip(tmp);
-	bilbo_copy->use(3, *gandalf);
+	mage_copy->equip(tmp);
+	mage_copy->use(3, *wizard);
 
 	// delete objects
-	delete gandalf;
-	delete bilbo_copy;
+	delete wizard;
+	delete mage_copy;
 	delete src;
 	delete src_copy;
 	return (0);
