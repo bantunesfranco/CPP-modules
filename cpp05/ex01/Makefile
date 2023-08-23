@@ -7,11 +7,11 @@ CYAN=\033[1;36m
 END=\033[0m
 
 CC = g++
-SRCS = main.cpp Animal.cpp Cat.cpp Dog.cpp WrongAnimal.cpp WrongCat.cpp
-HEADERS = Animal.hpp Cat.hpp Dog.hpp WrongAnimal.hpp WrongCat.hpp
+SRCS = main.cpp Bureaucrat.cpp Form.cpp
+HEADERS = Bureaucrat.hpp Form.hpp
 OBJ = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR = obj
-NAME = ex00
+NAME = ex01
 
 ifdef DEBUG
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -g -fsanitize=leak
