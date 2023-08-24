@@ -51,6 +51,11 @@ const char * Form::GradeTooLowException::what() const throw()
 	return ("Grade too low");
 }
 
+const char * Form::FormNotSignedException::what() const throw()
+{
+	return ("Form was not signed");
+}
+
 void	Form::_checkLow(int grade)
 {
 	try

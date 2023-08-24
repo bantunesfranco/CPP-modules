@@ -29,20 +29,6 @@ class AForm
 		void			_checkLow(int grade);
 		void			_checkHigh(int grade);
 		
-		class GradeTooHighException : public std::exception
-		{
-			virtual const char* what(void) const throw();
-		};
-
-		class GradeTooLowException : public std::exception
-		{
-			virtual const char* what(void) const throw();
-		};
-
-		class FormNotSignedException : public std::exception
-		{
-			virtual const char* what(void) const throw();
-		};
 
 	public:
 		AForm();
@@ -59,7 +45,22 @@ class AForm
 
 		void			beSigned(const Bureaucrat& src);
 		virtual void	beExecuted(const Bureaucrat& src) const = 0;
-};
+
+		class GradeTooHighException : public std::exception
+		{
+			virtual const char* what(void) const throw();
+		};
+
+		class GradeTooLowException : public std::exception
+		{
+			virtual const char* what(void) const throw();
+		};
+
+		class FormNotSignedException : public std::exception
+		{
+			virtual const char* what(void) const throw();
+		};
+	};
 
 std::ostream&		operator<<(std::ostream& out, const AForm& src);
 

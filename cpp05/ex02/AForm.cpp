@@ -43,12 +43,17 @@ AForm&	AForm::operator=(const AForm& src)
 
 const char * AForm::GradeTooHighException::what() const throw()
 {
-	return ("Grade too high (<1)");
+	return ("Grade too high");
 }
 
 const char * AForm::GradeTooLowException::what() const throw()
 {
-	return ("Grade too low (>150)");
+	return ("Grade too low");
+}
+
+const char * AForm::FormNotSignedException::what() const throw()
+{
+	return ("Form was not signed");
 }
 
 void	AForm::_checkLow(int grade)
@@ -116,5 +121,5 @@ void	AForm::beSigned(const Bureaucrat& src)
 	if (src.getGrade() <= this->_signGrade)
 		this->_isSigned = true;
 	else
-		throw "it's grade too low to sign it";
+		throw GradeTooLowException();
 }

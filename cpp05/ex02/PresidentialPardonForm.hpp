@@ -6,23 +6,26 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/23 15:18:14 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/23 16:33:57 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/24 16:42:49 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef PRESIDENTIALPARDONFORM_HPP
 #define PRESIDENTIALPARDONFORM_HPP
 
-#include "Form.hpp"
+#include "AForm.hpp"
 
-class PresidentialPardonForm : public Form
+class PresidentialPardonForm : public AForm
 {
+	private:
+		std::string	_target;
+
 	public:
-		PresidentialPardonForm(std::string& target);
+		PresidentialPardonForm(std::string target);
 		PresidentialPardonForm(const PresidentialPardonForm& src);
 		~PresidentialPardonForm();
 
-		PresidentialPardonForm&	PresidentialPardonForm::operator=(const PresidentialPardonForm& src);
+		PresidentialPardonForm&	operator=(const PresidentialPardonForm& src);
 
 		void	beExecuted(const Bureaucrat& src) const;
 };

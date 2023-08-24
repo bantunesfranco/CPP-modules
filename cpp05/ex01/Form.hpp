@@ -38,6 +38,11 @@ class Form
 		{
 			virtual const char* what(void) const throw();
 		};
+		
+		class FormNotSignedException : public std::exception
+		{
+			virtual const char* what(void) const throw();
+		};
 
 	public:
 		Form();

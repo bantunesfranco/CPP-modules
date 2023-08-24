@@ -11,12 +11,12 @@ SRCS = main.cpp Bureaucrat.cpp AForm.cpp ShrubberyCreationForm.cpp RobotomyReque
 HEADERS =  Bureaucrat.hpp AForm.hpp ShrubberyCreationForm.hpp RobotomyRequestForm.hpp PresidentialPardonForm.hpp
 OBJ = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR = obj
-NAME = ex00
+NAME = ex02
 
 ifdef DEBUG
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -g -fsanitize=leak
+CXXFLAGS = -Wall -Werror -Wextra -pedantic -g -fsanitize=leak
 else
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic
+CXXFLAGS = -Wall -Werror -Wextra -pedantic
 endif
 
 all: $(NAME)
