@@ -6,14 +6,14 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/21 11:45:20 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/24 17:08:51 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/24 18:05:15 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Bureaucrat.hpp"
 #include "PresidentialPardonForm.hpp"
 #include "RobotomyRequestForm.hpp"
-// #include "ShrubberyCreationForm.hpp"
+#include "ShrubberyCreationForm.hpp"
 #include <iostream>
 
 int	main(void)
@@ -50,6 +50,14 @@ int	main(void)
 	bob.executeForm(dynamic_cast<AForm&>(form2));
 	}
 	std::cout << std::endl;
+	
+	ShrubberyCreationForm	form3 = ShrubberyCreationForm("Home");
+	std::cout << form3 << std::endl;
+	bob2.signForm(&form3);
+	bob2.executeForm(dynamic_cast<AForm&>(form3));
+	bob.signForm(&form3);
+	bob.executeForm(dynamic_cast<AForm&>(form3));
 
+	std::cout << std::endl;
 	return (0);
 }

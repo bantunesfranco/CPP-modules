@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/23 16:38:46 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/24 16:42:45 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/24 18:13:54 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ PresidentialPardonForm&	PresidentialPardonForm::PresidentialPardonForm::operator
 	return (*this);
 }
 
+std::string	PresidentialPardonForm::getTarget() const
+{
+	return (this->_target);
+}
+
 void	PresidentialPardonForm::beExecuted(const Bureaucrat& src) const
 {
 	if (this->getIsSigned() == false)
@@ -46,4 +51,10 @@ void	PresidentialPardonForm::beExecuted(const Bureaucrat& src) const
 	if (src.getGrade() > this->getExecuteGrade())
 		throw GradeTooLowException();
 	std::cout << this->_target << " has been pardoned by Zafod Beeblebrox" << std::endl;
+}
+
+std::ostream&		operator<<(std::ostream& out, const PresidentialPardonForm& src)
+{
+	std::cout << src.getTarget() << std::endl;
+	return (out);
 }

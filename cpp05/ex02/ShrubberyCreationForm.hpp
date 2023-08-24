@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/24 16:40:56 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/24 16:46:14 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/24 18:12:00 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ class ShrubberyCreationForm : public AForm
 		ShrubberyCreationForm&	operator=(const ShrubberyCreationForm& src);
 
 		void	beExecuted(const Bureaucrat& src) const;
+		std::string	getTarget() const;
 };
+
+std::ostream&		operator<<(std::ostream& out, const ShrubberyCreationForm& src);
 
 #endif

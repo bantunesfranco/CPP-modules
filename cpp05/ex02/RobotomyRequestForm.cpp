@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/24 16:40:49 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/24 17:07:56 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/24 18:13:49 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,11 @@ RobotomyRequestForm&	RobotomyRequestForm::RobotomyRequestForm::operator=(const R
 	return (*this);
 }
 
+std::string	RobotomyRequestForm::getTarget() const
+{
+	return (this->_target);
+}
+
 void	RobotomyRequestForm::beExecuted(const Bureaucrat& src) const
 {
 	if (this->getIsSigned() == false)
@@ -50,4 +55,10 @@ void	RobotomyRequestForm::beExecuted(const Bureaucrat& src) const
 		std::cout << this->_target << " has been robotomized successfully" << std::endl;
 	else
 		std::cout << "The robotomization has failed" << std::endl;
+}
+
+std::ostream&		operator<<(std::ostream& out, const RobotomyRequestForm& src)
+{
+	std::cout << src.getTarget() << std::endl;
+	return (out);
 }

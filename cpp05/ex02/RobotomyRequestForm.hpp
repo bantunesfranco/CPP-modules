@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/24 16:40:52 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/24 16:42:42 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/24 18:11:51 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,9 @@ class RobotomyRequestForm : public AForm
 		RobotomyRequestForm&	operator=(const RobotomyRequestForm& src);
 
 		void	beExecuted(const Bureaucrat& src) const;
+		std::string	getTarget() const;
 };
+
+std::ostream&		operator<<(std::ostream& out, const RobotomyRequestForm& src);
 
 #endif

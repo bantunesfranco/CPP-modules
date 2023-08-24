@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/23 15:18:14 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/24 16:42:49 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/24 18:11:46 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,10 @@ class PresidentialPardonForm : public AForm
 
 		PresidentialPardonForm&	operator=(const PresidentialPardonForm& src);
 
-		void	beExecuted(const Bureaucrat& src) const;
+		void		beExecuted(const Bureaucrat& src) const;
+		std::string	getTarget() const;
 };
+
+std::ostream&		operator<<(std::ostream& out, const PresidentialPardonForm& src);
 
 #endif
