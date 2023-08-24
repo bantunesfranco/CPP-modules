@@ -3,4 +3,5 @@
 *.o
 *.a
 obj
-ex00
+ex03
+*_shrubbery

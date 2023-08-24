@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/21 11:45:20 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/23 12:50:26 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/24 20:49:48 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,22 +15,22 @@
 
 int	main(void)
 {
-	Bureaucrat	bob = Bureaucrat("Bob", 1);
+	Bureaucrat	bob("Bob", 1);
 	std::cout << bob << std::endl;
-	Bureaucrat	bob2 = Bureaucrat("Bob2", 150);
+	Bureaucrat	bob2("Bob2", 150);
 	std::cout << bob2 << std::endl;
 
 	Form	defaultForm;
 	std::cout << defaultForm << std::endl;
-	Form	form1 = Form("form1", 1, 1);
+	Form	form1("form1", 1, 1);
 	std::cout << form1 << std::endl;
-	Form	form2 = Form("form2", 0, 1);
+	Form	form2("form2", 0, 1);
 	std::cout << form2 << std::endl;
 	
-	Form	form3 = Form("form3", 0, 1);
-	Form	form4 = Form("form4", 151, 1);
-	Form	form5 = Form("form5", 1, 0);
-	Form	form6 = Form("form6", 1, 151);
+	Form	form3("form3", 0, 1);
+	Form	form4("form4", 151, 1);
+	Form	form5("form5", 1, 0);
+	Form	form6("form6", 1, 151);
 
 	std::cout << "" << std::endl;
 
@@ -41,7 +41,7 @@ int	main(void)
 
 	std::cout << "" << std::endl;
 
-	Form	form7 = Form(form1);
+	Form	form7(form1);
 	std::cout << form7 << std::endl;
 	form7 = form2;
 	std::cout << form7 << std::endl;
