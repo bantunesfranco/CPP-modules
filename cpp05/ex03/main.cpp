@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/21 11:45:20 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/24 21:03:29 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/25 09:59:06 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,33 +31,37 @@ int	main(void)
 	bob2.executeForm(*form1);
 	bob.signForm(form1);
 	bob.executeForm(*form1);
+	delete form1;
 
 	std::cout << std::endl;
-	{
-		AForm*	form2 = intern.makeForm("RobotomyRequestForm", "Joe");
-		std::cout << *form2 << std::endl;
-		bob2.signForm(form2);
-		bob2.executeForm(*form2);
-		bob.signForm(form2);
-		bob.executeForm(*form2);
-	}
-	std::cout << std::endl;
-	{
-		AForm*	form2 = intern.makeForm("RobotomyRequestForm", "Joe");
-		std::cout << *form2 << std::endl;
-		bob2.signForm(form2);
-		bob2.executeForm(*form2);
-		bob.signForm(form2);
-		bob.executeForm(*form2);
-	}
+	
+	AForm*	form2 = intern.makeForm("RobotomyRequestForm", "Joe");
+	std::cout << *form2 << std::endl;
+	bob2.signForm(form2);
+	bob2.executeForm(*form2);
+	bob.signForm(form2);
+	bob.executeForm(*form2);
+	delete form2;
+
 	std::cout << std::endl;
 	
-	AForm*	form3 = intern.makeForm("ShrubberyCreationForm", "Home");
+	AForm*	form3 = intern.makeForm("RobotomyRequestForm", "Joe");
 	std::cout << *form3 << std::endl;
 	bob2.signForm(form3);
 	bob2.executeForm(*form3);
 	bob.signForm(form3);
 	bob.executeForm(*form3);
+	delete form3;
+
+	std::cout << std::endl;
+	
+	AForm*	form4 = intern.makeForm("ShrubberyCreationForm", "Home");
+	std::cout << *form4 << std::endl;
+	bob2.signForm(form4);
+	bob2.executeForm(*form4);
+	bob.signForm(form4);
+	bob.executeForm(*form4);
+	delete form4;
 
 	std::cout << std::endl;
 	return (0);
