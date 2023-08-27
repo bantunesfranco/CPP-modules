@@ -7,16 +7,16 @@ CYAN=\033[1;36m
 END=\033[0m
 
 CC = g++
-SRCS = main.cpp 
-HEADERS = 
+SRCS = main.cpp Classes.cpp
+HEADERS = Classes.hpp
 OBJ = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR = obj
-NAME = ex02
+NAME = identity
 
 ifdef DEBUG
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -g -fsanitize=leak
+CXXFLAGS = -Wall -Werror -Wextra -pedantic -g -fsanitize=leak
 else
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic
+CXXFLAGS = -Wall -Werror -Wextra -pedantic
 endif
 
 all: $(NAME)

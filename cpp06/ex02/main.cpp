@@ -5,27 +5,30 @@
 /*                                                     +:+                    */
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/08/27 17:52:42 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/27 18:41:50 by bfranco       ########   odam.nl         */
+/*   Created: 2023/08/27 18:42:47 by bfranco       #+#    #+#                 */
+/*   Updated: 2023/08/27 19:37:46 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Serializer.hpp"
-#include "Data.hpp"
+#include "Classes.hpp"
+#include <iostream>
 
 int	main(void)
 {
-	Data*		data = new Data();
-	
-	std::cout << "\n" << *data << std::endl;
+	Base* base = generate();
+	Base& ref = *base;
 
-	uintptr_t	serialized = Serializer::serialize(data);
-	Data*		deserialized = Serializer::deserialize(serialized);
+	identify(base);
+	identify(ref);
 
-	std::cout << *deserialized << std::endl;
+	std::cout << std::endl;
 
-	std::cout << "data: 		" << data << std::endl;
-	std::cout << "deserialized:	" << deserialized << std::endl;
+	Base* base2 = generate();
+	Base& ref2 = *base2;
 
-	delete	deserialized;
+	identify(base2);
+	identify(ref2);
+
+	delete base;
+	delete base2;
 }
