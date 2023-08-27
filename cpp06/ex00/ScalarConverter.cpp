@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/25 13:41:35 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/27 12:57:21 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/27 16:27:50 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,15 +42,15 @@ void	ScalarConverter::convert(std::string input)
 	for (size_t i = 0; i < input.length(); i++)
 		input[i] = std::tolower(input[i]);
 	if (isInt(input))
-		printInt();
-	else if (isFloat(input))
-		printFloat();
-	else if (isDouble(input))
-		printDouble();
+		printInt(input);
 	else if (isChar(input))
-		printChar();
+		printChar(input);
+	else if (isFloat(input))
+		printFloat(input);
+	else if (isDouble(input))
+		printDouble(input);
 	else if (isPseudoLiteral(input))
-		printPseudoLiteral();
+		printPseudoLiteral(input);
 	else
-		std::cerr << "Error: invalid input" << std::endl;
+		std::cerr << "Error: \"" << input << "\" : Invalid Input" << std::endl;
 }

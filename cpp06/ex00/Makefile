@@ -11,7 +11,7 @@ SRCS = main.cpp ScalarConverter.cpp Parsing.cpp
 HEADERS = ScalarConverter.hpp Parsing.hpp
 OBJ = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR = obj
-NAME = ex00
+NAME = convert
 
 ifdef DEBUG
 CXXFLAGS = -Wall -Werror -Wextra -pedantic -g -fsanitize=leak
