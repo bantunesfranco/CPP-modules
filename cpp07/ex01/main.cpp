@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   whatever.hpp                                       :+:    :+:            */
+/*   main.cpp                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/08/27 20:11:11 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/28 11:28:01 by bfranco       ########   odam.nl         */
+/*   Created: 2023/08/27 20:02:41 by bfranco       #+#    #+#                 */
+/*   Updated: 2023/08/28 12:37:20 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WHATEVER_HPP
-#define WHATEVER_HPP
+#include "Iter.hpp"
+#include <iostream>
 
-template <typename T>
-void	swap(T* a, T* b)
+int	main(void)
 {
-	T temp = *a;
-	*a = *b;
-	*b = temp;
-}
+	int	intArray[5] = {0, 1, 2, 3, 4};
+	iter(intArray, 5, print);
 
-template <typename T>
-T&	max(T& a, T& b)
-{
-	return (a > b ? a:b);
-}
+	std::cout << std::endl;
 
-template <typename T>
-T&	min(T& a, T& b)
-{
-	return (a < b ? a:b);
-}
+	char	str[6] = "hello";
+	iter(str, 6, print);
+	
+	std::cout << std::endl;
 
-#endif
+	std::string array[4] = {"This", "is", "a", "test"};
+	iter(array, 4, print);
+}

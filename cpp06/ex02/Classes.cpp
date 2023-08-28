@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/27 18:44:17 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/27 19:28:31 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/28 11:25:41 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,24 +61,27 @@ void	identify(Base& ref)
 {
 	try
 	{
-		dynamic_cast<A&>(ref);
+		A& a = dynamic_cast<A&>(ref);
 		std::cout << "Ref is of type A" << std::endl;
+		(void)a;
 	}
 	catch (std::exception& e)
 	{
 		(void)e;
 		try
 		{
-			dynamic_cast<B&>(ref);
+			B& b = dynamic_cast<B&>(ref);
 			std::cout << "Ref is of type B" << std::endl;
+			(void)b;
 		}
 		catch (std::exception& e)
 		{
 			(void)e;
 			try
 			{
-				dynamic_cast<C&>(ref);
+				C& c = dynamic_cast<C&>(ref);
 				std::cout << "Ref is of type C" << std::endl;
+				(void)c;
 			}
 			catch(const std::exception& e)
 			{

@@ -1,36 +1,34 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   whatever.hpp                                       :+:    :+:            */
+/*   Iter.hpp                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/08/27 20:11:11 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/28 11:28:01 by bfranco       ########   odam.nl         */
+/*   Created: 2023/08/28 11:35:10 by bfranco       #+#    #+#                 */
+/*   Updated: 2023/08/28 12:29:13 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef WHATEVER_HPP
-#define WHATEVER_HPP
+#ifndef ITER_HPP
+#define ITER_HPP
+
+#include <array>
+#include <iostream>
 
 template <typename T>
-void	swap(T* a, T* b)
+void	iter(T array[], size_t len, void (*f)(T))
 {
-	T temp = *a;
-	*a = *b;
-	*b = temp;
+	if (!f)
+		return ;
+	for (size_t i = 0; i < len; i++)
+		f(array[i]);
 }
 
 template <typename T>
-T&	max(T& a, T& b)
+void	print(T t)
 {
-	return (a > b ? a:b);
-}
-
-template <typename T>
-T&	min(T& a, T& b)
-{
-	return (a < b ? a:b);
+	std::cout << t << std::endl;
 }
 
 #endif
