@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/28 12:39:07 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/28 16:09:11 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/28 17:07:58 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ class Array
 			}
 		};
 
-		Array(void) : _arr(NULL), _n(0)
+		Array(void) : _arr(0), _n(0)
 		{
 			std::cout << "Default constructor called" << std::endl;
 		}
@@ -42,16 +42,16 @@ class Array
 			std::cout << "Constructor called" << std::endl;
 		}
 
-		Array(const Array& src)
+		Array(const Array& src) : _arr(new T[0]),  _n(src._n)
 		{
 			std::cout << "Copy constructor called" << std::endl;
 			*this = src;
 		}
 
-		virtual ~Array(void)
+		~Array(void)
 		{
-			if (this->_arr != 0)
-				delete [] this->_arr;
+			if (this->_arr)
+				delete[] this->_arr;
 			std::cout << "Destructor called" << std::endl;
 		}
 
@@ -60,8 +60,13 @@ class Array
 			std::cout << "Constructor called" << std::endl;
 			if (this != &src)
 			{
+				std::cout << "delete" << std::endl;
+				if (this->_arr)
+					delete[] this->_arr;
 				this->_n = src._n;
-				this->_arr = src._arr;
+				this->_arr = new T[this->_n];
+				for (unsigned int i = 0; i < this->_n; i++)
+					this->_arr[i] = src._arr[i];
 			}
 			return (*this);
 		}
