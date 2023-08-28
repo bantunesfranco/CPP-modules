@@ -27,5 +27,7 @@ int	main(void)
 	std::cout << "data: 		" << data << std::endl;
 	std::cout << "deserialized:	" << deserialized << std::endl;
 
+	// Serializer a;
+
 	delete	deserialized;
 }

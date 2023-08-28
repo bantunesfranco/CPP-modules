@@ -18,11 +18,11 @@
 class Serializer
 {
 	public:
-		Serializer() = delete;
-		Serializer(const Serializer &src) = delete;
-		~Serializer() = delete;
+		Serializer();
+		Serializer(const Serializer &src);
+		virtual ~Serializer() = 0;
 
-		Serializer&			operator=(const Serializer &src) = delete;
+		virtual Serializer&			operator=(const Serializer &src) = 0;
 
 		static Data*		deserialize(uintptr_t raw);
 		static uintptr_t	serialize(Data* ptr);
