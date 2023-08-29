@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/29 12:37:14 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/29 13:14:30 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/29 14:11:16 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,21 +25,16 @@ class ElementNotFoundException : public std::exception
 };
 
 template <typename T>
-void	easyfind(T& container, unsigned int i)
+typename T::iterator	easyfind(T& container, unsigned int i)
 {
-	try
-	{
-		typename T::iterator it;
-		it = std::find(container.begin(), container.end(), i);
-		if (it != container.end())
-			std::cout << "Found " << i << " at index " << it - container.begin() << std::endl;
-		else
-			throw (ElementNotFoundException());
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
-	}
+	typename T::iterator it;
+
+	it = std::find(container.begin(), container.end(), i);
+	if (it != container.end())
+		return it;
+	else
+		throw (ElementNotFoundException());
+	return (it);
 }
 
 #endif

@@ -11,7 +11,7 @@ SRCS = main.cpp
 HEADERS = whatever.hpp
 OBJ = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR = obj
-NAME = ex00
+NAME = ex01
 
 ifdef DEBUG
 CXXFLAGS = -Wall -Werror -Wextra -pedantic -g -fsanitize=leak
