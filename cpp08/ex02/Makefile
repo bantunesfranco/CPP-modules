@@ -8,7 +8,7 @@ END=\033[0m
 
 CC = g++
 SRCS = main.cpp
-HEADERS = whatever.hpp
+HEADERS = MutantStack.hpp
 OBJ = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR = obj
 NAME = ex00

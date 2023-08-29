@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/29 14:34:58 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/29 17:16:58 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/29 19:05:21 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ class Span
 		Span &operator=(Span const &src);
 
 		void	addNumber(int i);
-		void	fillSpan(int i, int j);
+		void	addNumber(std::vector<int>::iterator start, std::vector<int>::iterator end);
 		size_t	shortestSpan(void);
 		size_t	longestSpan(void);
 	

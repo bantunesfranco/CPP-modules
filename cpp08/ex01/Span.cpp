@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/29 14:35:01 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/29 17:25:13 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/29 19:27:41 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,48 +64,36 @@ void	Span::addNumber(int i)
 		this->_vec.push_back(i);
 }
 
-void	Span::fillSpan(int i, int j)
+void	Span::addNumber(std::vector<int>::iterator start, std::vector<int>::iterator end)
 {
-	std::random_device dev;
-	std::mt19937 rng(dev());
-	std::uniform_int_distribution<std::mt19937::result_type> dist(i,j);
-
-	std::vector<int>::iterator start = this->_vec.begin();
-	std::vector<int>::iterator end = this->_vec.end();
-
-	while (start != end)
+	if (this->_vec.size() + std::distance(start, end) > this->_N)
+		throw(CannotAddElementException());
+	else
 	{
-		int i = dist(rng);
-		std::cout << "i = " << i << std::endl;
-		this->addNumber(i);
-		start++;
+		for (int i = 0; start + i != end; i++)
+		this->_vec.push_back(*(start + i));
 	}
 }
 
 size_t	Span::longestSpan(void)
 {
-	size_t	span = 0;
 	if (this->_vec.size() < 2)
 		throw(NotEnoughElementsException());
-	for (std::vector<int>::iterator it = this->_vec.begin(); (it + 1) != this->_vec.end(); it++)
-	{
-		size_t diff = std::abs(*(it + 1) - *it);
-		if (diff >= span)
-			span = diff;
-	}
+	std::sort(this->_vec.begin(), this->_vec.end());
+	size_t	span = max_element(this->_vec.begin(), this->_vec.end()) - min_element(this->_vec.begin(), this->_vec.end());
 	return (span);
 }
 
 size_t	Span::shortestSpan(void)
 {
-	size_t	span;
 	if (this->_vec.size() < 2)
 		throw(NotEnoughElementsException());
+	std::sort(this->_vec.begin(), this->_vec.end());
+	std::vector<int> diff;
 	for (std::vector<int>::iterator it = this->_vec.begin(); (it + 1) != this->_vec.end(); it++)
 	{
-		size_t diff = std::abs(*(it + 1) - *it);
-		if (diff < span)
-			span = diff;
+		diff.push_back(*(it + 1) - *it);
 	}
+	size_t	span = *min_element(diff.begin(), diff.end());
 	return (span);
 }
