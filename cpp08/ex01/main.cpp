@@ -6,55 +6,116 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/29 12:35:14 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/29 14:20:35 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/29 17:23:04 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "easyfind.hpp"
-#include <vector>
-#include <list>
-#include <array>
+#include "Span.hpp"
+#include <iostream>
 
 int	main(void)
 {
-	std::vector<int> container = {1, 2 , 3, 4, 5, 6, 7, 8};
-	try
 	{
-		std::vector<int>::iterator it = easyfind(container, 7);
-		std::cout << "Found " << *it << std::endl;
-		easyfind(container, 100);
+		Span sp = Span(5);
+
+		sp.addNumber(6);
+		sp.addNumber(3);
+		sp.addNumber(17);
+		sp.addNumber(9);
+		sp.addNumber(11);
+		
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
 	}
-	catch (const std::exception& e)
+
+	std::cout << std::endl;
+
 	{
-		std::cerr << e.what() << std::endl;
+		Span sp = Span(5);
+
+		for (int i = 0; i < 5; i++)
+		{
+			sp.addNumber(42);
+		}
+		
+		try
+		{
+			std::cout << sp.shortestSpan() << std::endl;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
+
+	std::cout << std::endl;
 	
+	{
+		Span sp = Span(5);
+		
+
+		try
+		{
+			for (int i = 0; i < 6; i++)
+			{
+				sp.addNumber(i*i);
+			}
+		}
+		catch (std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
+	}
+
 	std::cout << std::endl;
 
-	std::array<int, 8> container2 = {1, 2 , 3, 4, 5, 6, 7, 8};
-	try
 	{
-		std::array<int, 8>::iterator it = easyfind(container2, 7);
-		std::cout << "Found " << *it << std::endl;
-		easyfind(container2, 100);
-	}
-	catch (const std::exception& e)
-	{
-		std::cerr << e.what() << std::endl;
+		Span sp = Span(10);
+
+		try
+		{
+			std::cout << sp.shortestSpan() << std::endl;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+		try
+		{		
+			sp.addNumber(6);
+			std::cout << sp.shortestSpan() << std::endl;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
+
+		sp.fillSpan(0, 10000);
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
 	}
 
 	std::cout << std::endl;
 
-	std::list<int> container3 = {1, 2 , 3, 4, 5, 6, 7, 8};	
-	try
 	{
-		std::list<int>::iterator it = easyfind(container3, 7);
-		std::cout << "Found " << *it << std::endl;
-		easyfind(container3, 100);
+		Span sp = Span(10000);
+
+		sp.fillSpan(0, 10000);
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
 	}
-	catch (const std::exception& e)
+
+	std::cout << std::endl;
+
 	{
-		std::cerr << e.what() << std::endl;
+		Span sp = Span(100000);
+
+		sp.fillSpan(0, 100000);
+		std::cout << sp.shortestSpan() << std::endl;
+		std::cout << sp.longestSpan() << std::endl;
 	}
 
 	return (0);
