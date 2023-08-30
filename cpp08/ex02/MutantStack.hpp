@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/29 20:08:03 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/29 21:07:11 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/30 16:51:30 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,17 +14,48 @@
 #define MUTANTSTACK_HPP
 
 #include <stack>
+#include <deque>
 
 template <typename T>
-class MutatntStack : public std::stack
+class MutantStack : public std::stack<T>
 {
 	public:
-		MutantStack();
-		MutantStack(const MutantStack& src);
-		~MutantStack();
+		MutantStack() : std::stack<T>
+		{
+			return ;
+		}
 
-		MutantStack &operator=(const MutantStack& src);
+		MutantStack(const MutantStack& src) : std::stack<T>
+		{
+			*this = src;
+		}
 
-}
+		~MutantStack()
+		{
+			return ;
+		}
+
+		MutantStack &operator=(const MutantStack& src) : std::stack<T>
+		{
+			if (this != src)
+			{
+				std::stack<T>::operator=(src);
+			}
+			return (*this);
+		}
+
+		typedef typename std::deque<T>::iterator iterator;
+		
+		// iterator begin()
+		// {
+		// 	return (std::deque<T>::begin());
+		// }
+		
+		// iterator end()
+		// {
+		// 	return (std::deque<T>::end());
+		// }
+
+};
 
 #endif
