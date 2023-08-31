@@ -7,8 +7,8 @@ CYAN=\033[1;36m
 END=\033[0m
 
 CC = g++
-SRCS = main.cpp
-HEADERS = easyfind.hpp
+SRCS = main.cpp BitcoinExchange.cpp
+HEADERS = BitcoinExchange.hpp
 OBJ = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR = obj
 NAME = btc
