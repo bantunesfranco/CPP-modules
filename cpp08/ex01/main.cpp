@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/29 12:35:14 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/29 19:52:22 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/31 11:46:54 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,7 +89,7 @@ int	main(void)
 	std::vector<int> vec;
 	srand((unsigned)time(NULL));
 	for (int i=0; i < 10000; i++)
-		vec.push_back(rand() % 10000000);
+		vec.push_back(rand() % 2000000);
 	{
 		Span sp = Span(10000);
 		sp.addNumber(vec.begin(), vec.end());
@@ -100,7 +100,7 @@ int	main(void)
 	std::cout << std::endl;
 
 	for (int i=0; i < 200000; i++)
-		vec.push_back(rand() % 10000000);
+		vec.push_back(rand() % 2000000);
 	{
 		Span sp = Span(300000);
 		sp.addNumber(vec.begin(), vec.end());

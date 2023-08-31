@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/29 14:35:01 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/29 19:27:41 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/31 11:37:42 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,8 +79,12 @@ size_t	Span::longestSpan(void)
 {
 	if (this->_vec.size() < 2)
 		throw(NotEnoughElementsException());
-	std::sort(this->_vec.begin(), this->_vec.end());
-	size_t	span = max_element(this->_vec.begin(), this->_vec.end()) - min_element(this->_vec.begin(), this->_vec.end());
+
+	std::vector<int>::iterator start = this->_vec.begin();
+	std::vector<int>::iterator end = this->_vec.end();
+	std::sort(start, end);
+
+	size_t	span = *std::max_element(start, end) - *std::min_element(start, end);
 	return (span);
 }
 
@@ -88,12 +92,16 @@ size_t	Span::shortestSpan(void)
 {
 	if (this->_vec.size() < 2)
 		throw(NotEnoughElementsException());
-	std::sort(this->_vec.begin(), this->_vec.end());
+
 	std::vector<int> diff;
-	for (std::vector<int>::iterator it = this->_vec.begin(); (it + 1) != this->_vec.end(); it++)
-	{
+	std::vector<int>::iterator start = this->_vec.begin();
+	std::vector<int>::iterator end = this->_vec.end();
+
+	std::sort(start, end);
+
+	for (std::vector<int>::iterator it = start; (it + 1) != end; it++)
 		diff.push_back(*(it + 1) - *it);
-	}
+
 	size_t	span = *min_element(diff.begin(), diff.end());
 	return (span);
 }
