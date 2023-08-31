@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/31 13:46:05 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/31 14:48:00 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/31 17:54:20 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,7 +47,7 @@ class BitcoinExchange
 			size_t	year;
 			size_t	month;
 			size_t	day;
-		};
+		} ;
 
 		BitcoinExchange();
 		BitcoinExchange(BitcoinExchange const &src);

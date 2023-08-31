@@ -6,13 +6,29 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/31 13:46:07 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/31 15:10:06 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/31 18:28:01 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "BitcoinExchange.hpp"
 #include <iostream>
 #include <fstream>
+
+BitcoinExchange::s_date	createDate(std::string line)
+{
+	BitcoinExchange::s_date	date;
+
+	date.year = std::stoi(line.substr(0, line.find('-')));
+	line = line.substr(line.find('-') + 1, std::string::npos);
+	date.month = std::stoi(line.substr(0, line.find('-')));
+	line = line.substr(line.find('-') + 1, std::string::npos);
+	date.day = std::stoi(line.substr(0, line.find(',')));
+
+	std::cout << "Year: " << date.year << std::endl;
+	std::cout << "Month: " << date.month << std::endl;
+	std::cout << "Day: " << date.day << std::endl;
+	return (date);
+}
 
 void	BitcoinExchange::_dataParser()
 {
@@ -25,13 +41,12 @@ void	BitcoinExchange::_dataParser()
 	std::getline(file, line);
 	while (std::getline(file, line))
 	{
-		std::string	date = line.substr(0, line.find(','));
-		long double		rate = std::stod(line.substr(line.find(',') + 1, std::string::npos));
+		double		rate = std::stod(line.substr(line.find(',') + 1, std::string::npos));
+		s_date		date = createDate(line);
 
-		std::cout << date << std::endl;
-		std::cout << rate << std::endl;
-		// this->_rateDB.insert(std::pair<BitcoinExchange::s_date, double>(date, rate));
+		this->_rateDB.insert(std::make_pair(date, rate));
 	}
+	std::cout << "RateDB size: " << this->_rateDB.size() << std::endl;
 }
 
 
