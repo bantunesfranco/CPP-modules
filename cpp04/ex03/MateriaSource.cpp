@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/20 12:45:16 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/20 14:58:39 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/01 13:44:48 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,10 +70,7 @@ AMateria* MateriaSource::createMateria(std::string const& type)
 	{
 		if (this->_materia[i] && this->_materia[i]->getType() == type)
 		{
-			if (type == "ice")
-				return (dynamic_cast<Ice*>(this->_materia[i])->clone());
-			else if (type == "cure")
-				return (dynamic_cast<Cure*>(this->_materia[i])->clone());
+			return (this->_materia[i]->clone());
 		}
 	}
 	std::cout << "Unknown materia" << std::endl;

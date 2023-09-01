@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/19 18:21:24 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/20 14:52:26 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/01 13:51:13 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,11 +20,11 @@ class Ice : public AMateria
 	public:
 		Ice();
 		Ice(Ice const& src);
-		~Ice();
+		virtual ~Ice();
 		
 		Ice&	operator=(Ice const& src);
 		
-		Ice*	clone() const;
+		AMateria*	clone() const;
 };
 
 #endif

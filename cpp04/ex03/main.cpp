@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/11 14:26:21 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/20 13:47:40 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/01 13:54:43 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,42 +38,42 @@ int main(void)
 	MateriaSource* src2 = new MateriaSource();
 	src2->learnMateria(new Ice());
 	src2->learnMateria(new Cure());
-	MateriaSource* src_copy = new MateriaSource(*src2);
+	// MateriaSource* src_copy = new MateriaSource(*src2);
 	delete src2;
 
-	// full inventory and unequip
-	tmp = src_copy->createMateria("ice");
-	mage->equip(tmp);
+	// // full inventory and unequip
+	// tmp = src_copy->createMateria("ice");
+	// mage->equip(tmp);
 
-	AMateria *last_item = src_copy->createMateria("cure");
-	mage->equip(last_item);
+	// AMateria *last_item = src_copy->createMateria("cure");
+	// mage->equip(last_item);
 
-	mage->equip(tmp);
+	// mage->equip(tmp);
 
-	mage->unequip(3);
+	// mage->unequip(3);
 
-	delete last_item;
+	// delete last_item;
 
-	// deep copy Character
-	Character* mage_copy = new Character(*mage);
+	// // deep copy Character
+	// Character* mage_copy = new Character(*mage);
 	delete mage;
 
-	mage_copy->use(0, *wizard);
-	mage_copy->use(1, *wizard);
-	// empty
-	mage_copy->use(3, *wizard);
+	// mage_copy->use(0, *wizard);
+	// mage_copy->use(1, *wizard);
+	// // empty
+	// mage_copy->use(3, *wizard);
 
-	// materia that does not exist
-	tmp = src->createMateria("invalid");
-	tmp = src->createMateria("ice");
+	// // materia that does not exist
+	// tmp = src->createMateria("invalid");
+	// tmp = src->createMateria("ice");
 
-	mage_copy->equip(tmp);
-	mage_copy->use(3, *wizard);
+	// mage_copy->equip(tmp);
+	// mage_copy->use(3, *wizard);
 
-	// delete objects
+	// // delete objects
 	delete wizard;
-	delete mage_copy;
+	// delete mage_copy;
 	delete src;
-	delete src_copy;
+	// delete src_copy;
 	return (0);
 }

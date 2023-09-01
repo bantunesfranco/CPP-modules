@@ -1,30 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   Cure.hpp                                           :+:    :+:            */
+/*   main.cpp                                           :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/08/19 18:30:09 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/01 13:51:18 by bfranco       ########   odam.nl         */
+/*   Created: 2023/09/01 07:59:16 by bfranco       #+#    #+#                 */
+/*   Updated: 2023/09/01 08:15:24 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef CURE_HPP
-#define CURE_HPP
+#include "RPN.hpp"
 
-#include "AMateria.hpp"
-
-class Cure : public AMateria
+int	main(int argc, char **argv)
 {
-	public:
-		Cure();
-		Cure(Cure const& src);
-		virtual ~Cure();
-		
-		Cure&	operator=(Cure const& src);
-		
-		AMateria*	clone() const;
-};
+	if (argc != 2)
+	{
+		std::cout << "Usage: ./RPN \"<expression>\"" << std::endl;
+		return (1);
+	}
 
-#endif
+	RPN::calculate(argv[1]);
+	
+	return (0);
+}

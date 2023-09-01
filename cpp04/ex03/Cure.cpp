@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/19 18:30:41 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/20 12:14:03 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/01 13:49:48 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ Cure&	Cure::operator=(Cure const& src)
 	return (*this);
 }
 
-Cure*	Cure::clone() const
+AMateria*	Cure::clone() const
 {
-	return (new Cure(*this));
+	AMateria* newMateria = new Cure();
+	return (newMateria);
 }

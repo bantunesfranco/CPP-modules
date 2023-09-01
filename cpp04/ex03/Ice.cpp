@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/19 18:21:26 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/19 19:21:06 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/01 13:49:54 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,8 @@ Ice&	Ice::operator=(Ice const& src)
 	return (*this);
 }
 
-Ice*	Ice::clone() const
+AMateria*	Ice::clone() const
 {
-	return (new Ice(*this));
+	AMateria* newMateria = new Ice();
+	return (newMateria);
 }
