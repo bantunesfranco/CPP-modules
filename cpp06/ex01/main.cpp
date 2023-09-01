@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/27 17:52:42 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/27 18:41:50 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/01 17:39:45 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ int	main(void)
 	std::cout << "data: 		" << data << std::endl;
 	std::cout << "deserialized:	" << deserialized << std::endl;
 
+	std::cout << std::endl;
 	// Serializer a;
 
 	delete	deserialized;

@@ -14,7 +14,7 @@ OBJ_DIR = obj
 NAME = btc
 
 ifdef DEBUG
-CXXFLAGS = -Wall -Werror -Wextra -pedantic -g -fsanitize=leak
+CXXFLAGS = -Wall -Werror -Wextra -pedantic -g -fsanitize=address
 else
 CXXFLAGS = -Wall -Werror -Wextra -pedantic
 endif

@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/11 14:18:18 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/14 16:23:24 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/01 17:09:23 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 class	Cat : public AAnimal
 {
 	private:
-		Brain* _brain = NULL;
+		Brain* _brain;
 
 	public:
 		Cat();

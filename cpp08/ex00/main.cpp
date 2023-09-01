@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/29 12:35:14 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/29 14:20:35 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/01 17:44:45 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,9 @@
 
 int	main(void)
 {
-	std::vector<int> container = {1, 2 , 3, 4, 5, 6, 7, 8};
+	std::vector<int> container;
+	for (int i = 0; i < 10; i++)
+		container.push_back(i);
 	try
 	{
 		std::vector<int>::iterator it = easyfind(container, 7);
@@ -45,7 +47,9 @@ int	main(void)
 
 	std::cout << std::endl;
 
-	std::list<int> container3 = {1, 2 , 3, 4, 5, 6, 7, 8};	
+	std::list<int> container3;
+	for (int i = 0; i < 10; i++)
+		container3.push_back(i);
 	try
 	{
 		std::list<int>::iterator it = easyfind(container3, 7);

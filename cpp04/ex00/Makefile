@@ -14,7 +14,7 @@ OBJ_DIR = obj
 NAME = ex00
 
 ifdef DEBUG
-CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -g -fsanitize=leak
+CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic -g -fsanitize=address
 else
 CXXFLAGS = -Wall -Werror -Wextra -std=c++98 -pedantic
 endif

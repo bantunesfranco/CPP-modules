@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/11 14:18:16 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/14 14:43:53 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/01 16:58:08 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,6 @@
 Dog::Dog(void) : Animal()
 {
 	this->_type = "Dog";
-	this->_brain = new Brain();
 	std::cout << "Dog default constructor" << std::endl;
 }
 

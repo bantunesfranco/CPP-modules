@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/11 14:26:21 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/14 16:25:08 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/01 17:48:19 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@
 int main(void)
 {
 	// const AAnimal*	animal = new AAnimal();
-	
 	const AAnimal*	dog = new Dog();
 	const AAnimal*	cat = new Cat();
 

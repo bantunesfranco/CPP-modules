@@ -4,14 +4,8 @@
 #include "Fixed.hpp" // remove
 #define MAX_VAL 750
 
-void lks(void)
-{
-	system("leaks -q ex02");
-}
-
 int main(int, char**)
 {
-	atexit(lks);
 	Array<int> numbers(MAX_VAL);
 	int* mirror = new int[MAX_VAL];
 	srand(time(NULL));

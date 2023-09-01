@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/20 12:10:42 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/20 13:37:36 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/01 17:16:41 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ class MateriaSource
 	public:
 		MateriaSource();
 		MateriaSource(MateriaSource const& src);
-		~MateriaSource();
+		virtual ~MateriaSource();
 
 		MateriaSource&	operator=(MateriaSource const& src);
 

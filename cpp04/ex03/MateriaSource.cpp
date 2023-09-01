@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/20 12:45:16 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/01 13:44:48 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/01 17:33:10 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ MateriaSource::MateriaSource()
 MateriaSource::MateriaSource(MateriaSource const& src)
 {
 	std::cout << "MateriaSource copy constructor called" << std::endl;
+	for (int i = 0; i < 4; i++)
+		this->_materia[i] = NULL;
 	*this = src;
 }
 
@@ -33,8 +35,13 @@ MateriaSource::~MateriaSource()
 {
 	std::cout << "MateriaSource destructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
+	{
 		if (this->_materia[i])
+		{
 			delete this->_materia[i];
+			this->_materia[i] = NULL;
+		}
+	}
 }
 
 MateriaSource&	MateriaSource::operator=(MateriaSource const& src)
@@ -43,11 +50,17 @@ MateriaSource&	MateriaSource::operator=(MateriaSource const& src)
 	if (this != &src)
 	{
 		for (int i = 0; i < 4; i++)
+		{
 			if (this->_materia[i])
+			{
 				delete this->_materia[i];
+				this->_materia[i] = NULL;
+			}
+		}
 		this->_count = src._count;
 		for (int i = 0; i < 4; i++)
-			this->_materia[i] = src._materia[i];
+			if (src._materia[i])
+				this->_materia[i] = src._materia[i]->clone();
 	}
 	return (*this);
 }
