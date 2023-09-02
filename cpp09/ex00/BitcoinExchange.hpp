@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/31 13:46:05 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/31 17:54:20 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/02 18:42:17 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,37 +17,44 @@
 
 class BitcoinExchange
 {
+	private:
+		std::map<std::string, double> _rateDB;
+		std::map<std::string, double> _priceDB;
+
+		void	_dataParser();
+
 	public:
 		class InvalidDataBaseException : public std::exception
 		{
 			virtual const char *what() const throw()
-			{ return ("Invalid DataBase File"); }
+			{ return ("Error: Invalid DataBase File"); }
 		};
 
-		class InvalidRateException : public std::exception
+		class NegativeValueException : public std::exception
 		{
 			virtual const char *what() const throw()
-			{ return ("Invalid Rate Value"); }
+			{ return ("Error: not a positive number."); }
 		};
 
-		class InvalidPriceException : public std::exception
+		class ValueTooLargeException : public std::exception
 		{
 			virtual const char *what() const throw()
-			{ return ("Invalid Price Value"); }
+			{ return ("Error: Invalid Price Value"); }
 		};
 
-		class InvalidDateException : public std::exception
+		class InvalidInputException : public std::exception
 		{
-			virtual const char *what() const throw()
-			{ return ("Invalid Date"); }
+			private:
+				std::string _msg;
+
+			public:
+				InvalidInputException(std::string msg) : _msg(msg) {}
+				virtual const char *what(std::string msg) const throw()
+				{ 
+					std::string err = "Error: bad input => " + msg;
+					return (err.c_str());
+				}
 		};
-		
-		struct s_date
-		{
-			size_t	year;
-			size_t	month;
-			size_t	day;
-		} ;
 
 		BitcoinExchange();
 		BitcoinExchange(BitcoinExchange const &src);
@@ -56,14 +63,8 @@ class BitcoinExchange
 		BitcoinExchange &operator=(BitcoinExchange const &rhs);
 
 		void							run();
-		std::map<s_date, double>	getRateDB() const;
-		std::map<s_date, double>	getPriceDB() const;
-
-	private:
-		std::map<s_date, double> _rateDB;
-		std::map<s_date, double> _priceDB;
-
-		void	_dataParser();
+		std::map<std::string, double>	getRateDB() const;
+		std::map<std::string, double>	getPriceDB() const;
 };
 
 #endif
