@@ -1,25 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   main.cpp                                           :+:    :+:            */
+/*   PmergeMe.hpp                                       :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/08/27 18:42:47 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/03 17:51:12 by bfranco       ########   odam.nl         */
+/*   Created: 2023/09/03 16:11:18 by bfranco       #+#    #+#                 */
+/*   Updated: 2023/09/03 16:18:23 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Classes.hpp"
-#include <iostream>
+#ifndef PMERGEME_HPP
+#define PMERGEME_HPP
 
-int	main(void)
+#include <set>
+
+class PmergeMe
 {
-	Base* base = generate();
-	Base& ref = *base;
+	public:
+		PmergeMe();
+		PmergeMe(const PmergeMe& src);
+		~PmergeMe();
 
-	identify(base);
-	identify(ref);
+		PmergeMe&	operator=(const PmergeMe& src);
+	
+	private:
+		std::set<int>	_set;
+};
 
-	delete base;
-}
+#endif

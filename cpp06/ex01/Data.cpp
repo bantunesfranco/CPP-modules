@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/27 17:15:28 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/27 17:57:17 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/03 17:26:39 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,16 @@
 Data::Data() : _name("John Doe"), _balance(0), _accountNumber(42069), _pinCode(1234)
 {
 	std::cout << "Default constructor called" << std::endl;
-	return ;
 }
 Data::Data(const Data &src)
 {
 	std::cout << "Copy constructor called" << std::endl;
 	*this = src;
-	return ;
 }
 
 Data::~Data()
 {
 	std::cout << "Destructor called" << std::endl;
-	return ;
 }
 
 Data&	Data::operator=(const Data& src)

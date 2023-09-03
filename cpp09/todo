@@ -1,0 +1,54 @@
+-------------ex00---------------
+
+Container : map
+
+How: map imput to key:date, value:number
+
+Iterate over both maps, if date is the same 
+perform the rate conversion
+otherwise look for date in previous entries
+if no match print error
+
+
+Extra: check valid date
+check valid rate and value
+
+
+
+--------------------------------
+-------------ex01---------------
+
+Container : stack
+
+How: Last in First out
+ex: 345-+ --> 5 - 4 - > 3-1+ --> 3 + -1 --> 2
+
+Operator removes top 2 elements (4,5)
+performs the calculation
+and places the result on top (3-1+)
+continues until size is 1 (Final result)
+
+Extra: division by 0 exception
+input 0 to 9
+operators + - * / 
+ratio 2:1 (number:operator)
+
+--------------------------------
+-------------ex02---------------
+
+
+Container : set + vector
+
+
+
+
+
+
+
+
+
+
+
+
+
+--------------------------------

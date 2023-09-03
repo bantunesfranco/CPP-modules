@@ -5,21 +5,29 @@
 /*                                                     +:+                    */
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/08/27 18:42:47 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/03 17:51:12 by bfranco       ########   odam.nl         */
+/*   Created: 2023/09/03 15:59:48 by bfranco       #+#    #+#                 */
+/*   Updated: 2023/09/03 16:03:27 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "Classes.hpp"
+// #include "PmergeMe.hpp"
 #include <iostream>
+#include <sstream>
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	Base* base = generate();
-	Base& ref = *base;
-
-	identify(base);
-	identify(ref);
-
-	delete base;
+	
+	if (argc == 1)
+	{
+		std::cerr << "Please enter a list of numbers to sort." << std::endl;
+		return (1);
+	}
+	for (int i = 1; i < argc; i++)
+	{
+		std::stringstream ss(argv[i]);
+		int num;
+		ss >> num;
+		std::cout << num << std::endl;
+	}
+	return (0);
 }

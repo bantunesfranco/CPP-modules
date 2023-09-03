@@ -6,21 +6,18 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/27 18:44:17 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/28 11:25:41 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/03 17:49:45 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Classes.hpp"
 #include <iostream>
-#include <random>
+#include <cstdlib>
 
 Base*	generate(void)
 {
-	std::random_device dev;
-	std::mt19937 rng(dev());
-	std::uniform_int_distribution<std::mt19937::result_type> dist(0,100);
-
-	int	i = dist(rng) % 3;
+	std::srand(time(NULL));
+	int i = std::rand() % 3;
 	switch (i)
 	{
 		case 0:

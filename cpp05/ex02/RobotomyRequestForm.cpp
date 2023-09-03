@@ -6,12 +6,13 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/24 16:40:49 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/24 19:28:13 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/03 17:04:32 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RobotomyRequestForm.hpp"
 #include <iostream>
+#include <cstdlib>
 
 RobotomyRequestForm::RobotomyRequestForm(std::string target) : AForm("RobotomyRequestForm", 72, 45) , _target(target)
 {

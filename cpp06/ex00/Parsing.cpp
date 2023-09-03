@@ -6,12 +6,13 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/27 10:45:02 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/27 16:38:37 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/03 17:36:13 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Parsing.hpp"
 #include <iostream>
+#include <sstream>
 
 bool	isInt(std::string input)
 {
@@ -79,8 +80,10 @@ bool isPseudoLiteral(std::string input)
 
 void	printInt(std::string input)
 {
-	int i = std::stoi(input);
+	std::stringstream ss(input);
+	int i;
 
+	ss >> i;
 	if (isprint(i))
 		std::cout << "char: '" << static_cast<char>(i) << "'" << std::endl;
 	else if (i < 0 || i > 127)
@@ -108,8 +111,10 @@ void	printChar(std::string input)
 
 void	printFloat(std::string input)
 {
-	float f = std::stof(input);
+	std::stringstream ss(input);
+	float f;
 
+	ss >> f;
 	if (isprint(static_cast<int>(f)))
 		std::cout << "char: '" << static_cast<char>(f) << "'" << std::endl;
 	else if (f < 0 || f > 127)
@@ -131,8 +136,10 @@ void	printFloat(std::string input)
 
 void	printDouble(std::string input)
 {
-	double d = std::stod(input);
+	std::stringstream ss(input);
+	double d;
 
+	ss >> d;
 	if (isprint(static_cast<int>(d)))
 		std::cout << "char: '" << static_cast<char>(d) << "'" << std::endl;
 	else if (d < 0 || d > 127)

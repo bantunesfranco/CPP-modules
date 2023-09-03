@@ -6,14 +6,13 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/28 11:35:10 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/28 12:29:13 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/03 17:57:12 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef ITER_HPP
 #define ITER_HPP
 
-#include <array>
 #include <iostream>
 
 template <typename T>
