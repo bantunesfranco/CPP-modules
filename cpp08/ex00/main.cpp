@@ -6,14 +6,14 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/29 12:35:14 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/01 17:44:45 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/03 18:30:02 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "easyfind.hpp"
 #include <vector>
 #include <list>
-#include <array>
+#include <set>
 
 int	main(void)
 {
@@ -33,10 +33,12 @@ int	main(void)
 	
 	std::cout << std::endl;
 
-	std::array<int, 8> container2 = {1, 2 , 3, 4, 5, 6, 7, 8};
+	std::set<int> container2;
+	for (int i = 0; i < 10; i++)
+		container2.insert(i);
 	try
 	{
-		std::array<int, 8>::iterator it = easyfind(container2, 7);
+		std::set<int>::iterator it = easyfind(container2, 7);
 		std::cout << "Found " << *it << std::endl;
 		easyfind(container2, 100);
 	}

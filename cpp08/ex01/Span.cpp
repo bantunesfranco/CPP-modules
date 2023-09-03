@@ -6,12 +6,11 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/29 14:35:01 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/31 11:37:42 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/03 18:22:13 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
-#include <random>
 #include <iostream>
 
 const char* Span::CannotAddElementException::what() const throw()

@@ -6,12 +6,13 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/29 12:35:14 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/01 08:35:54 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/03 18:22:59 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Span.hpp"
 #include <iostream>
+#include <cstdlib>
 
 int	main(void)
 {
@@ -87,9 +88,9 @@ int	main(void)
 	std::cout << std::endl;
 
 	std::vector<int> vec;
-	srand((unsigned)time(NULL));
+	std::srand((unsigned)time(NULL));
 	for (int i=0; i < 10000; i++)
-		vec.push_back(rand() % 2000000);
+		vec.push_back(std::rand() % 2000000);
 	{
 		Span sp = Span(10000);
 		sp.addNumber(vec.begin(), vec.end());
@@ -100,7 +101,7 @@ int	main(void)
 	std::cout << std::endl;
 
 	for (int i=0; i < 200000; i++)
-		vec.push_back(rand() % 2000000);
+		vec.push_back(std::rand() % 2000000);
 	{
 		Span sp = Span(300000);
 		sp.addNumber(vec.begin(), vec.end());
