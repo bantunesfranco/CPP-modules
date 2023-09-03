@@ -7,8 +7,8 @@ CYAN=\033[1;36m
 END=\033[0m
 
 CC = g++
-SRCS = main.cpp
-HEADERS = easyfind.hpp
+SRCS = main.cpp PmergeMe.cpp
+HEADERS = PmergeMe.hpp
 OBJ = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR = obj
 NAME = PmergeMe
@@ -47,5 +47,8 @@ debug: fclean
 	@echo "$(YELLOW)Debug Mode -g -fsanitize=address$(END)"
 	@$(MAKE) DEBUG=1 all
 
+run:
+	@ARG=`seq -w 1 100000 | shuf -n 10 | paste -s -d ' '`; \
+	./PmergeMe $$ARG
 
 .PHONY: all clean fclean re debug

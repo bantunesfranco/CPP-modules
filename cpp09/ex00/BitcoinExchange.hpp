@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/31 13:46:05 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/03 12:27:41 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/03 16:49:21 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,16 @@
 #define BITCOINEXCHANGE_HPP
 
 #include <map>
+#include <string>
 
 class BitcoinExchange
 {
 	private:
-		std::map<std::string, double> _rateDB;
-		std::map<std::string, double> _priceDB;
+		BitcoinExchange();
+		BitcoinExchange(BitcoinExchange const &src);
+		~BitcoinExchange();
 
-		void	_dataParser();
+		BitcoinExchange &operator=(BitcoinExchange const &src);
 
 	public:
 		class InvalidDataBaseException : public std::exception
@@ -50,15 +52,8 @@ class BitcoinExchange
 			}
 		};
 
-		BitcoinExchange();
-		BitcoinExchange(BitcoinExchange const &src);
-		~BitcoinExchange();
-
-		BitcoinExchange &operator=(BitcoinExchange const &rhs);
-
-		void							run(const std::string &inputFile);
-		std::map<std::string, double>	getRateDB() const;
-		std::map<std::string, double>	getPriceDB() const;
+		static std::map<std::string, double>	dataParser();
+		static void	run(const char* inputFile, std::map<std::string, double> rateDB);
 };
 
 #endif

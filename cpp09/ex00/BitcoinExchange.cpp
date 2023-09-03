@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/31 13:46:07 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/03 12:28:01 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/03 16:47:59 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,13 @@
 #include <fstream>
 #include <sstream>
 
-void	BitcoinExchange::_dataParser()
+std::map<std::string, double>	BitcoinExchange::dataParser()
 {
-	std::ifstream		file("data.csv");
-	std::string			line;
-	std::string			date;
-	double				rate;
+	std::map<std::string, double>	rateDB;
+	std::ifstream					file("data.csv");
+	std::string						line;
+	std::string						date;
+	double							rate;
 
 	if (!file.is_open())
 		throw (BitcoinExchange::InvalidDataBaseException());
@@ -30,37 +31,10 @@ void	BitcoinExchange::_dataParser()
 	{
 		std::stringstream	ss(line);
 		if (std::getline(ss, date, ',') && ss >> rate)
-			this->_rateDB.insert(std::make_pair(date, rate));
+			rateDB.insert(std::make_pair(date, rate));
 	}
-}
-
-BitcoinExchange::~BitcoinExchange() {}
-
-BitcoinExchange::BitcoinExchange()
-{
-	try
-	{
-		this->_dataParser();
-	}
-	catch(const std::exception& e)
-	{
-		std::cerr <<  e.what() << std::endl;
-	}
-}
-
-BitcoinExchange::BitcoinExchange(BitcoinExchange const &src)
-{
-	*this = src;
-}
-
-BitcoinExchange &BitcoinExchange::operator=(BitcoinExchange const &src)
-{
-	if (this != &src)
-	{
-		_rateDB = src._rateDB;
-		_priceDB = src._priceDB;
-	}
-	return (*this);
+	file.close();
+	return (rateDB);
 }
 
 bool	isValidDate(std::string date)
@@ -117,7 +91,7 @@ double	findClosestDate(std::map<std::string, double> db, std::string date, doubl
 	return (it->second);
 }
 
-void	BitcoinExchange::run(const std::string &inputFile)
+void	BitcoinExchange::run(const char* inputFile, std::map<std::string, double> rateDB)
 {
 	std::ifstream	file(inputFile);
 	std::string		line;
@@ -138,7 +112,7 @@ void	BitcoinExchange::run(const std::string &inputFile)
 
 			try
 			{
-				double	rate = findClosestDate(this->_rateDB, date, price);
+				double	rate = findClosestDate(rateDB, date, price);
 				std::cout << date << " => " << price << " = " << price * rate << std::endl;
 			}
 			catch(const std::exception& e)
@@ -149,4 +123,5 @@ void	BitcoinExchange::run(const std::string &inputFile)
 		else
 			std::cerr << "Error: bad input => " << line << std::endl;
 	}
+	file.close();
 }
