@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/31 13:46:05 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/02 18:42:17 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/03 12:27:41 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,21 +39,15 @@ class BitcoinExchange
 		class ValueTooLargeException : public std::exception
 		{
 			virtual const char *what() const throw()
-			{ return ("Error: Invalid Price Value"); }
+			{ return ("Error: too large a number."); }
 		};
 
-		class InvalidInputException : public std::exception
+		class InvalidDateException : public std::exception
 		{
-			private:
-				std::string _msg;
-
-			public:
-				InvalidInputException(std::string msg) : _msg(msg) {}
-				virtual const char *what(std::string msg) const throw()
-				{ 
-					std::string err = "Error: bad input => " + msg;
-					return (err.c_str());
-				}
+			virtual const char *what() const throw()
+			{ 
+				return ("Error: Invalid Date.");
+			}
 		};
 
 		BitcoinExchange();
@@ -62,7 +56,7 @@ class BitcoinExchange
 
 		BitcoinExchange &operator=(BitcoinExchange const &rhs);
 
-		void							run();
+		void							run(const std::string &inputFile);
 		std::map<std::string, double>	getRateDB() const;
 		std::map<std::string, double>	getPriceDB() const;
 };
