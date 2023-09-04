@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/11 14:26:21 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/01 17:47:11 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/04 08:18:18 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 int main(void) 
 {
 	// subject
-
 	MateriaSource* src = new MateriaSource();
 	src->learnMateria(new Ice());
 	src->learnMateria(new Cure());

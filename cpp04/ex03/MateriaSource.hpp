@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/20 12:10:42 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/01 17:16:41 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/04 12:27:52 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 #include "IMateriaSource.hpp"
 
-class MateriaSource
+class MateriaSource : public IMateriaSource
 {
 	private:
 		AMateria*	_materia[4];

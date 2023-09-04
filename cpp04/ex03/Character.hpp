@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/19 18:41:50 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/19 18:45:25 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/04 08:14:46 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,11 @@ class Character : public ICharacter
 	private:
 		std::string	_name;
 		AMateria*	_inventory[4];
+		AMateria*	_floor[1000];
+		int			_floorSize;
+		
+		void	_floorResize(int newSize);
+		void	_addToFloor(AMateria* m);
 
 	public:
 		Character(std::string name);

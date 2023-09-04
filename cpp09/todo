@@ -9,11 +9,8 @@ perform the rate conversion
 otherwise look for date in previous entries
 if no match print error
 
-
 Extra: check valid date
 check valid rate and value
-
-
 
 --------------------------------
 -------------ex01---------------
@@ -31,11 +28,9 @@ continues until size is 1 (Final result)
 Extra: division by 0 exception
 input 0 to 9
 operators + - * / 
-ratio 2:1 (number:operator)
 
 --------------------------------
 -------------ex02---------------
-
 
 Container : set + vector
 

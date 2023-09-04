@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/19 18:41:42 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/01 17:34:22 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/04 08:16:40 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,8 @@ Character::Character(Character const &src)
 	std::cout << "Character copy constructor called" << std::endl;
 	for (int i = 0; i < 4; i++)
 		this->_inventory[i] = NULL;
+	for (int i = 0; i < 1000; i++)
+		this->_floor[i] = NULL;
 	*this = src;
 }
 
@@ -37,6 +39,14 @@ Character::~Character()
 		{
 			delete this->_inventory[i];
 			this->_inventory[i] = NULL;
+		}
+	}
+	for (int i = 0; i < this->_floorSize; i++)
+	{
+		if (this->_floor[i] != NULL)
+		{
+			delete this->_floor[i];
+			this->_floor[i] = NULL;
 		}
 	}
 }
@@ -55,6 +65,17 @@ Character& Character::operator=(Character const &src)
 			}
 			if (src._inventory[i] != NULL)
 				this->_inventory[i] = src._inventory[i]->clone();
+		}
+		// this->_floor = new AMateria*[src._floorSize];
+		for (int i = 0; i < this->_floorSize; i++)
+		{
+			if (this->_floor[i] != NULL)
+			{
+				delete this->_floor[i];
+				this->_floor[i] = NULL;
+			}
+			if (src._floor[i] != NULL)
+				this->_floor[i] = src._floor[i]->clone();
 		}
 	}
 	return (*this);
@@ -85,6 +106,7 @@ void	Character::unequip(int idx)
 		std::cerr << "Index out of range" << std::endl;
 		return ;
 	}
+	this->_addToFloor(this->_inventory[idx]);
 	this->_inventory[idx] = NULL;
 }
 
@@ -99,4 +121,30 @@ void	Character::use(int idx, ICharacter& target)
 		this->_inventory[idx]->use(target);
 	else
 		std::cout << "Slot is empty" << std::endl;
+}
+
+// void	Character::_floorResize(int newSize)
+// {
+// 	AMateria** newFloor = static_cast<AMateria**>(new AMateria*[newSize]);
+// 	for (int i = 0; i < newSize; i++)
+// 		newFloor[i] = NULL;
+// 	for (int i = 0; i < this->_floorSize; i++)
+// 		newFloor[i] = this->_floor[i];
+// 	delete[] this->_floor;
+// 	this->_floor = newFloor;
+// }
+
+void	Character::_addToFloor(AMateria* m)
+{
+	for (int i = 0; i < this->_floorSize; i++)
+	{
+		if (this->_floor[i] == NULL)
+		{
+			this->_floor[i] = m;
+			this->_floorSize++;
+			return ;
+		}
+	}
+	// this->_floorResize(this->_floorSize + 1);
+	// this->_addToFloor(m);
 }
