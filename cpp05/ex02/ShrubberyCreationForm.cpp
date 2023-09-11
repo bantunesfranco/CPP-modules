@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/24 16:40:54 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/11 08:22:45 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/11 10:44:57 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,7 @@ void	ShrubberyCreationForm::beExecuted(const Bureaucrat& src) const
 
 std::ostream&		operator<<(std::ostream& out, const ShrubberyCreationForm& src)
 {
-	std::cout << "Traget is: " << src.getTarget() << std::endl;
+	std::cout << "Target is: " << src.getTarget() << std::endl;
 	out << "AForm name: " << src.getName() << std::endl;
 	out << "AForm sign grade: " << src.getSignGrade() << std::endl;
 	out << "AForm execute grade: " << src.getExecuteGrade() << std::endl;
