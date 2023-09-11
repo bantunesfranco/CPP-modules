@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/27 17:32:49 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/11 09:28:34 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/11 10:53:28 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 #define SERIALIZER_HPP
 
 #include "Data.hpp"
+
+typedef	unsigned long	uintptr_t;
 
 class Serializer
 {

@@ -6,7 +6,7 @@ MAGENTA=\033[1;35m
 CYAN=\033[1;36m
 END=\033[0m
 
-CC = g++
+CC = c++
 SRCS = main.cpp Data.cpp Serializer.cpp
 HEADERS = Data.hpp Serializer.hpp
 OBJ = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
