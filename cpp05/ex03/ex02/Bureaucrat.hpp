@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/21 11:34:24 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/11 08:24:25 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/08/23 13:28:21 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ class Bureaucrat
 
 		void	_checkLow(int grade);
 		void	_checkHigh(int grade);
+
 
 		class GradeTooHighException : public std::exception
 		{

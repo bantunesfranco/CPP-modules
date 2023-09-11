@@ -34,12 +34,12 @@ operators + - * /
 
 Container : set + vector
 
-
-
-
-
-
-
+make n/2 pairs
+get bigger value in each pair
+make an ordered set from these values
+add to start of the set the pair to the smallest value in set
+insert the remaining values from the pairs
+    -
 
 
 

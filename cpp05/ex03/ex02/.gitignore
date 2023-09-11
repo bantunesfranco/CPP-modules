@@ -1,0 +1,7 @@
+*.vscode
+*.out
+*.o
+*.a
+obj
+ex02
+*_shrubbery

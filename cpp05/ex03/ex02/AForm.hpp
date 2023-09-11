@@ -28,12 +28,13 @@ class AForm
 
 		void			_checkLow(int grade);
 		void			_checkHigh(int grade);
+		
 
 	public:
 		AForm();
 		AForm(std::string name, int signGrade, int executeGrade);
 		AForm(const AForm& src);
-		virtual ~AForm();
+		~AForm();
 
 		AForm&			operator=(const AForm& src);
 		

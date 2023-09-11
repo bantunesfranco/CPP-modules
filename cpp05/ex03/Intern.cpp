@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/24 19:38:58 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/01 17:37:35 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/11 08:30:02 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 #include "RobotomyRequestForm.hpp"
 #include "ShrubberyCreationForm.hpp"
 #include <iostream>
-#include <map>
 
 Intern::Intern()
 {
@@ -47,16 +46,16 @@ const char* Intern::InvalidFormNameException::what(void) const throw()
 
 AForm*	Intern::makeForm(std::string name, std::string target)
 {
-	std::map<std::string, int> forms;
-	forms["PresidentialPardonForm"] = 0;
-	forms["RobotomyRequestForm"] = 1;
-	forms["ShrubberyCreationForm"] = 2;
+	std::string	formNames[3] = {"PresidentialPardonForm", "RobotomyRequestForm", "ShrubberyCreationForm"};
+	AForm*		form = NULL;
+	int			i;
 
-	AForm* form = NULL;
-	int type = forms.find(name)->second;
+	for (i = 0; i < 3; i++)
+		if (name == formNames[i])
+			break;
 	try
 	{
-		switch (type)
+		switch (i)
 		{
 			case 0:
 				form = new PresidentialPardonForm(target);

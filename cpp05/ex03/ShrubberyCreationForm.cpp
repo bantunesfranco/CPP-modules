@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/24 16:40:54 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/24 19:28:16 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/11 08:23:44 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	ShrubberyCreationForm::beExecuted(const Bureaucrat& src) const
 	file << "\\  Y  |  \\__,dHHFdHH|HHhoHHb.__       Y " << std::endl;
 	file << "########################################## " << std::endl;
 
+	file.close();
 }
 
 std::ostream&		operator<<(std::ostream& out, const ShrubberyCreationForm& src)
