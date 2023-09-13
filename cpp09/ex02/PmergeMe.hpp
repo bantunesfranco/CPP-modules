@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/09/03 16:11:18 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/08 11:20:48 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/13 17:57:32 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 #include <list>
 #include <string>
 #include <ctime>
+#include <sstream>
+#include <iostream>
+#include <algorithm>
 
 class PmergeMe
 {
@@ -29,10 +32,41 @@ class PmergeMe
 	
 	public:
 		static std::vector<int>	parseInput(int argc, char **argv);
-		static void				printOutput(std::vector<int> vec);
-		static void				printOutput(std::list<int> list);
-		static void				sortInput(std::vector<int>* vec);
-		static void				sortInput(std::list<int>* list);
+		// static std::list<int>	parseInput(int argc, char **argv);
+		
+		template <typename T>
+		static void				printOutput(T container)
+		{
+			typename T::iterator it = container.begin();
+			while (it != container.end())
+			{
+				std::cout << *it;
+				it++;
+				if (it != container.end())
+					std::cout << " ";
+			}
+			std::cout << std::endl;
+		}
+
+		template <typename T>
+		static void				sortInput(T* container)
+		{
+			std::vector< T> sortVector;
+			typename T::iterator it = container->begin();
+			while (it != container->end())
+			{
+				std::vector<int> temp;
+
+				temp.push_back(*it);
+				if (it + 1 != container->end())
+					temp.push_back(*(it + 1));
+				if (temp[0] < temp[1])
+					temp.swap(temp);
+				sortVector.push_back(temp);
+				it += 2;
+			}
+		}
+
 		static void				printTime(clock_t start, clock_t end, int size, std::string type);
 
 		class NaNException : public std::exception
