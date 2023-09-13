@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/09/03 16:11:18 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/13 17:57:32 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/13 20:51:47 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,7 +51,7 @@ class PmergeMe
 		template <typename T>
 		static void				sortInput(T* container)
 		{
-			std::vector< T> sortVector;
+			std::vector<T> sortVector;
 			typename T::iterator it = container->begin();
 			while (it != container->end())
 			{
@@ -62,9 +62,24 @@ class PmergeMe
 					temp.push_back(*(it + 1));
 				if (temp[0] < temp[1])
 					temp.swap(temp);
-				sortVector.push_back(temp);
+				insert_pair(&sortVector, temp);
 				it += 2;
 			}
+		}
+
+		template <typename T>
+		static void				insert_pair(std::vector<T>* container, std::vector<int> pair)
+		{
+			typename std::vector<T>::iterator it = container->begin();
+			while (it != container->end())
+			{
+				if (pair[1] <= (*it)[1]) {
+					container->insert(it, pair);
+					return ;
+				}
+				it++;
+			}
+			container->push_back(pair);
 		}
 
 		static void				printTime(clock_t start, clock_t end, int size, std::string type);
