@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/09/03 16:11:18 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/13 20:51:47 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/14 10:21:15 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ class PmergeMe
 				insert_pair(&sortVector, temp);
 				it += 2;
 			}
+			*container = crateMainArray(sortVector);
 		}
 
 		template <typename T>
@@ -81,6 +82,36 @@ class PmergeMe
 			}
 			container->push_back(pair);
 		}
+
+		template <typename T>
+		static T			crateMainArray(std::vector<T> sortVector)
+		{
+			std::vector<int> mainArray;
+			typename std::vector<T>::iterator it = sortVector.begin();
+
+			while(it != sortVector.end() && (*it).size() > 1)
+			{
+				mainArray.push_back((*it)[1]);
+				it++;		
+			}
+			// insertOthers(&mainArray, sortVector);
+			return (static_cast<T>(mainArray));
+		}
+
+		// template <typename T>
+		// static void			insertOthers(T* mainArray, std::vector<T> sortVector)
+		// {
+		// 	end_sequence = []
+		// 	jacob_index = 3;
+			
+		// 	while (jacobsthal(jacob_index) < array_len -1)
+		// 	{
+				
+		// 		end_sequence.append(jacobsthal(jacob_index))
+		// 		jacob_index += 1
+		// 	}
+		// 	return (end_sequence);
+		// }
 
 		static void				printTime(clock_t start, clock_t end, int size, std::string type);
 
@@ -99,5 +130,7 @@ class PmergeMe
 			virtual const char* what() const throw();
 		};
 };
+
+int	jacobsthal(int n);
 
 #endif
