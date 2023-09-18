@@ -48,7 +48,7 @@ debug: fclean
 	@$(MAKE) DEBUG=1 all
 
 run:
-	@ARG=`seq -w 1 100000 | shuf -n 10 | paste -s -d ' '`; \
+	@ARG=`seq -w 1 10000 | shuf -n 3000 | paste -s -d ' '`; \
 	./PmergeMe $$ARG
 
 .PHONY: all clean fclean re debug

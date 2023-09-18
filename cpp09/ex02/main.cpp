@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/09/03 15:59:48 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/13 17:49:26 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/18 12:13:43 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	main(int argc, char **argv)
 	
 	std::clock_t start = clock();
 	std::vector<int> inputVector = PmergeMe::parseInput(argc, argv);
-	PmergeMe::sortInput(&inputVector);
+	sortInput(&inputVector);
 	std::clock_t end = clock();
 	
 	PmergeMe::printOutput(inputVector);
@@ -37,5 +37,15 @@ int	main(int argc, char **argv)
 	
 	// PmergeMe::printTime(start, end, inputList.size(), std::string("list"));
 	// PmergeMe::printOutput(inputList);
+	std::vector<int>::iterator it = inputVector.begin();
+	while (it != inputVector.end())
+	{
+		if (it != inputVector.begin() && *it < *(it - 1))
+		{
+			std::cout << "Error: " << *it << " is not sorted." << std::endl;
+			return (1);
+		}
+		it++;
+	}
 	return (0);
 }

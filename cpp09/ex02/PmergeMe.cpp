@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/09/03 16:11:10 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/14 10:08:04 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/18 12:38:02 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,4 +41,81 @@ int	jacobsthal(int n)
 		return 1;
 
 	return jacobsthal(n - 1) + 2 * jacobsthal(n - 2);
+}
+
+static void				insert_pair(std::vector< std::vector<int> >* container, std::vector<int> pair)
+{
+	std::vector< std::vector<int> >::iterator it = container->begin();
+	while (it != container->end())
+	{
+		if (pair[1] <= (*it)[1]) {
+			container->insert(it, pair);
+			return ;
+		}
+		it++;
+	}
+	container->push_back(pair);
+}
+
+static void insertOthers(std::vector<int>* mainArray, std::vector< std::vector<int> > sortVector)
+{
+	std::vector< std::vector<int> >::iterator it2 = sortVector.begin();
+	while (it2 != sortVector.end())
+	{
+		std::vector<int>::iterator it = std::lower_bound(mainArray->begin(), (mainArray->end()), (*it2)[0]);
+		mainArray->insert(it, (*it2)[0]);
+		it2++;
+	}
+	// int size = sortVector.size();
+	// int i = 0;
+	// int index = 2;
+	// int prev = -1;
+	// while (size - i >= 0)
+	// {
+	// 	int jacob = jacobsthal(index);
+	// 	while (jacob > prev && i <= size)
+	// 	{
+	// 		if (jacob >= size)
+	// 			jacob = size - 1;
+	// 		std::vector<int>::iterator it = std::lower_bound(mainArray->begin(), mainArray->end(), (sortVector[jacob])[0]);
+	// 		mainArray->insert(it, (sortVector[jacob])[0]);
+	// 		i++;
+	// 		jacob--;
+	// 	}
+	// 	index++;
+	// 	prev = jacobsthal(index - 1);
+	// }
+}
+
+static std::vector<int>			crateMainArray(std::vector< std::vector<int> > sortVector)
+{
+	std::vector<int> mainArray;
+	std::vector< std::vector<int> >::iterator it = sortVector.begin();
+
+	while(it != sortVector.end() && (*it).size() > 1)
+	{
+		mainArray.push_back((*it)[1]);
+		it++;		
+	}
+	insertOthers(&mainArray, sortVector);
+	return (mainArray);
+}
+
+void				sortInput(std::vector<int>* container)
+{
+	std::vector< std::vector<int> > sortVector;
+	std::vector<int>::iterator it = container->begin();
+	while (it != container->end())
+	{
+		std::vector<int> temp;
+
+		temp.push_back(*it);
+		if (it + 1 != container->end())
+			temp.push_back(*(it + 1));
+		if (temp[0] < temp[1])
+			temp.swap(temp);
+		insert_pair(&sortVector, temp);
+		it += 2;
+	}
+	*container = crateMainArray(sortVector);
 }
