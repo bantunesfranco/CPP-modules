@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/28 12:39:07 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/25 12:11:39 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/25 14:48:38 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #define ARRAY_HPP
 
 #include <iostream>
+#include <climits>
 
 template <typename T>
 class Array
@@ -32,12 +33,12 @@ class Array
 			}
 		};
 
-		Array(void) : _arr(0), _n(0)
+		Array(void) : _arr(new T[0]), _n(0)
 		{
 			std::cout << "Default constructor called" << std::endl;
 		}
 
-		Array(unsigned int n) : _arr(new T[n]), _n(n)
+		Array(unsigned int n) : _arr(new T[n > INT_MAX ? INT_MAX:n]), _n(n > INT_MAX ? INT_MAX:n)
 		{
 			std::cout << "Constructor called" << std::endl;
 		}
@@ -60,7 +61,6 @@ class Array
 			std::cout << "Constructor called" << std::endl;
 			if (this != &src)
 			{
-				std::cout << "delete" << std::endl;
 				if (this->_arr)
 					delete[] this->_arr;
 				this->_n = src._n;
@@ -72,6 +72,14 @@ class Array
 		}
 
 		T& operator[](int index)
+		{
+			if (index < 0 || index >= static_cast<int>(this->_n))
+				throw (Array::IndexOutOfRangeException());
+			return (this->_arr[index]);
+		}
+
+
+		const T& operator[](int index) const
 		{
 			if (index < 0 || index >= static_cast<int>(this->_n))
 				throw (Array::IndexOutOfRangeException());

@@ -121,5 +121,13 @@ int main(int, char**)
 
 	std::cout << "fixed is: " << fixedArr[1] << std::endl;
 	std::cout << fixedArr[0] + fixedArr[1] << std::endl;
+	std::cout << std::endl;
+
+	const Array<std::string> test(strArr);
+	std::cout << test[1] << std::endl;
+	std::cout << std::endl;
+
+	Array<int> test2(-1);
+	std::cout << std::endl;
 	return 0;
 }
