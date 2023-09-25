@@ -124,10 +124,24 @@ int main(int, char**)
 	std::cout << std::endl;
 
 	const Array<std::string> test(strArr);
+	// test[1] = "Changed";
 	std::cout << test[1] << std::endl;
 	std::cout << std::endl;
 
-	Array<int> test2(-1);
+	// Array<int> test2(-1);
+	// std::cout << std::endl;
+
+	try
+	{
+		unsigned int *a = new unsigned int();
+		Array<int> test3(*a);
+		std::cout << "size of test3: " << test3.size() << std::endl;
+		delete a;
+		test3[0] = 0;
+	} catch (std::exception &e)
+	{
+		std::cout << e.what() << std::endl;
+	}
 	std::cout << std::endl;
 	return 0;
 }

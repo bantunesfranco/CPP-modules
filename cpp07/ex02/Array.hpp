@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/28 12:39:07 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/25 14:48:38 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/25 15:54:07 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,17 +33,17 @@ class Array
 			}
 		};
 
-		Array(void) : _arr(new T[0]), _n(0)
+		Array(void) : _arr(0), _n(0)
 		{
 			std::cout << "Default constructor called" << std::endl;
 		}
 
-		Array(unsigned int n) : _arr(new T[n > INT_MAX ? INT_MAX:n]), _n(n > INT_MAX ? INT_MAX:n)
+		Array(unsigned int n) : _arr(new T[n > INT_MAX / 10 ? (INT_MAX / 10):n]()), _n(n > INT_MAX / 10 ? (INT_MAX / 10):n)
 		{
 			std::cout << "Constructor called" << std::endl;
 		}
 
-		Array(const Array& src) : _arr(new T[0]),  _n(src._n)
+		Array(const Array& src) : _arr(0),  _n(src._n)
 		{
 			std::cout << "Copy constructor called" << std::endl;
 			*this = src;
@@ -78,7 +78,6 @@ class Array
 			return (this->_arr[index]);
 		}
 
-
 		const T& operator[](int index) const
 		{
 			if (index < 0 || index >= static_cast<int>(this->_n))
@@ -86,7 +85,7 @@ class Array
 			return (this->_arr[index]);
 		}
 
-		unsigned int	size(void)
+		unsigned int	size(void) const
 		{
 			return (this->_n);
 		}
