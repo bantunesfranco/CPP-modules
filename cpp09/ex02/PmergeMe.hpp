@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/09/03 16:11:18 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/18 12:04:35 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/10/12 15:13:31 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,9 +31,8 @@ class PmergeMe
 		PmergeMe&	operator=(const PmergeMe& src);
 	
 	public:
-		static std::vector<int>	parseInput(int argc, char **argv);
-
-		// static std::list<int>	parseInput(int argc, char **argv);
+		static std::vector<int>	parseInputVector(int argc, char **argv);
+		static std::list<int>	parseInputList(int argc, char **argv);
 		
 		template <typename T>
 		static void				printOutput(T container)
@@ -43,77 +42,13 @@ class PmergeMe
 			{
 				std::cout << *it;
 				it++;
-				std::cout << std::endl;
-				// if (it != container.end())
-				// 	std::cout << " ";
+				if (it != container.end())
+					std::cout << " ";
 			}
+			std::cout << std::endl;
 		}
 
-		// template <typename T>
-		// static void				sortInput(T* container)
-		// {
-		// 	std::vector<T> sortVector;
-		// 	typename T::iterator it = container->begin();
-		// 	while (it != container->end())
-		// 	{
-		// 		std::vector<int> temp;
-
-		// 		temp.push_back(*it);
-		// 		if (it + 1 != container->end())
-		// 			temp.push_back(*(it + 1));
-		// 		if (temp[0] < temp[1])
-		// 			temp.swap(temp);
-		// 		insert_pair(&sortVector, temp);
-		// 		it += 2;
-		// 	}
-		// 	*container = crateMainArray(sortVector);
-		// }
-
-		// template <typename T>
-		// static void				insert_pair(std::vector<T>* container, std::vector<int> pair)
-		// {
-		// 	typename std::vector<T>::iterator it = container->begin();
-		// 	while (it != container->end())
-		// 	{
-		// 		if (pair[1] <= (*it)[1]) {
-		// 			container->insert(it, pair);
-		// 			return ;
-		// 		}
-		// 		it++;
-		// 	}
-		// 	container->push_back(pair);
-		// }
-
-		// template <typename T>
-		// static T			crateMainArray(std::vector<T> sortVector)
-		// {
-		// 	std::vector<int> mainArray;
-		// 	typename std::vector<T>::iterator it = sortVector.begin();
-
-		// 	while(it != sortVector.end() && (*it).size() > 1)
-		// 	{
-		// 		mainArray.push_back((*it)[1]);
-		// 		it++;		
-		// 	}
-		// 	// insertOthers(&mainArray, sortVector);
-		// 	return (static_cast<T>(mainArray));
-		// }
-
-		// template <typename T>
-		// static void			insertOthers(T* mainArray, std::vector<T> sortVector)
-		// {
-		// 	end_sequence = []
-		// 	jacob_index = 3;
-			
-		// 	while (jacobsthal(jacob_index) < array_len -1)
-		// 	{
-				
-		// 		end_sequence.append(jacobsthal(jacob_index))
-		// 		jacob_index += 1
-		// 	}
-		// 	return (end_sequence);
-		// }
-
+		static void				sortInputVector(std::vector<int>* container);
 		static void				printTime(clock_t start, clock_t end, int size, std::string type);
 
 		class NaNException : public std::exception
@@ -132,6 +67,4 @@ class PmergeMe
 		};
 };
 
-int	jacobsthal(int n);
-void				sortInput(std::vector<int>* container);
 #endif

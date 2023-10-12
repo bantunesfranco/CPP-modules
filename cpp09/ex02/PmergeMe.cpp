@@ -6,116 +6,200 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/09/03 16:11:10 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/18 14:32:59 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/10/12 15:18:30 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
+#include <cmath>
 
-std::vector<int> PmergeMe::parseInput(int argc, char **argv)
+const char* PmergeMe::ValueOutOfRangeException::what() const throw()
 {
-	std::vector<int> input;
+	return ("Error: Value out of range.");
+}
+
+const char* PmergeMe::NaNException::what() const throw()
+{
+	return ("Error: Input is not a number.");
+}
+
+// const char* PmergeMe::DuplicateException::what() const throw()
+// {
+// 	return ("Error: Duplicate value.");
+// }
+
+std::vector<int> PmergeMe::parseInputVector(int argc, char **argv)
+{
+	std::vector<int>	input;
 	for (int i = 1; i < argc; i++)
 	{
-		std::stringstream ss(argv[i]);
-		int num;
+		std::stringstream	ss(argv[i]);
+		unsigned long		num;
 		ss >> num;
+		try
+		{
+			if (ss.fail())
+				throw PmergeMe::NaNException();
+		if (num > 2147483647 || (num < 2147483647 && std::to_string(num).length() > 10))
+				throw PmergeMe::ValueOutOfRangeException();
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+			exit(1);
+		}
 		input.push_back(num);
 	}
 	return (input);
 }
 
-void	PmergeMe::printTime(clock_t start, clock_t end, int size, std::string type)
+std::list<int> PmergeMe::parseInputList(int argc, char **argv)
 {
-	double time = static_cast<double>(end - start) / CLOCKS_PER_SEC;
-	std::cout << "Time taken to sort " << size << " elements with std::" \
-	<< type << ":  " << time * 1000000 << " us" << std::endl;
-}
-
-int	jacobsthal(int n)
-{
-	if (n == 0)
-		return 0;
-
-	if (n == 1)
-		return 1;
-
-	return jacobsthal(n - 1) + 2 * jacobsthal(n - 2);
-}
-
-static void				insert_pair(std::vector< std::vector<int> >* container, std::vector<int> pair)
-{
-	std::vector< std::vector<int> >::iterator it = container->begin();
-	while (it != container->end())
+	std::list<int>	input;
+	for (int i = 1; i < argc; i++)
 	{
-		if (pair[1] <= (*it)[1]) {
-			container->insert(it, pair);
-			return ;
+		std::stringstream	ss(argv[i]);
+		unsigned long		num;
+		ss >> num;
+		try
+		{
+			if (ss.fail())
+				throw PmergeMe::NaNException();
+		if (num > 2147483647 || (num < 2147483647 && std::to_string(num).length() > 10))
+				throw PmergeMe::ValueOutOfRangeException();
 		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+			exit(1);
+		}
+		input.push_back(num);
+	}
+	return (input);
+}
+
+int	jacobsthal(int i)
+{
+	if (i == 0)
+		return (0);
+	if (i == 1)
+		return (1);
+	return ((std::pow(2, i) - std::pow(-1, i)) / 3);
+}
+
+void	checkStraggler(std::vector<int>* container, int *straggler, bool *hasStraggler)
+{
+	if (container->size() % 2 == 1)
+	{
+		*straggler = container->back();
+		container->pop_back();
+		*hasStraggler = true;
+	}
+}
+
+void	insertOthers(std::vector<int> others, std::vector<int>* sorted)
+{
+	std::vector<int>::iterator	it = others.begin();
+	std::vector<int>::iterator	it2 = sorted->begin();
+	size_t						jacob1, jacob2, temp;
+	int							i = 0;
+	
+	sorted->insert(it2, *it);
+	it++;
+	jacob2 = 0;
+	while (jacob2 < others.size() && it != others.end())
+	{
+		jacob1 = jacobsthal(i);
+		temp = jacobsthal(i - 1);
+		jacob2 = jacob1;
+		if (jacob1 > others.size())
+			jacob1 = others.size() - 2;
+		while (jacob1 > temp && it != others.end())
+		{
+			sorted->insert(sorted->begin(), *(it + jacob1 ));
+			--jacob1;
+			it++;
+		}
+		i++;
+	}
+	
+}
+
+void	sortPairs(std::vector< std::vector<int> >* pairs)
+{
+	std::vector< std::vector<int> >::iterator	it = pairs->begin();
+	std::vector< std::vector<int> >				temp;
+
+	temp.push_back(*it);
+	it++;
+	while (it != pairs->end())
+	{
+		std::vector< std::vector<int> >::iterator	it2 = temp.begin();
+		while (it2 != temp.end())
+		{
+			if ((*it)[1] <= (*it2)[1])
+			{
+				temp.insert(it2, *it);
+				break ;
+			}
+			it2++;
+		}
+		if (it2 == temp.end())
+			temp.push_back(*it);
 		it++;
 	}
-	container->push_back(pair);
+	*pairs = temp;
 }
 
-static void insertOthers(std::vector<int>* mainArray, std::vector< std::vector<int> > sortVector)
+void	makePairs(std::vector<int>* container, std::vector<int>* otherContainer, std::vector<int>* sortedContainer)
 {
-	std::vector< std::vector<int> >::iterator it2 = sortVector.begin();
-	while (it2 != sortVector.end())
-	{
-		std::vector<int>::iterator it = std::lower_bound(mainArray->begin(), (mainArray->end()), (*it2)[0]);
-		mainArray->insert(it, (*it2)[0]);
-		it2++;
-	}
-	// int size = sortVector.size();
-	// int i = 0;
-	// int index = 2;
-	// int prev = -1;
-	// while (size - i >= 0)
-	// {
-	// 	int jacob = jacobsthal(index);
-	// 	while (jacob > prev && i <= size)
-	// 	{
-	// 		if (jacob >= size)
-	// 			jacob = size - 1;
-	// 		std::vector<int>::iterator it = std::lower_bound(mainArray->begin(), mainArray->end(), (sortVector[jacob])[0]);
-	// 		mainArray->insert(it, (sortVector[jacob])[0]);
-	// 		i++;
-	// 		jacob--;
-	// 	}
-	// 	index++;
-	// 	prev = jacobsthal(index - 1);
-	// }
-}
+	std::vector<int>							temp;
+	std::vector<int>::iterator					it = container->begin();
+	std::vector< std::vector<int> >				pairs;
 
-static std::vector<int>			crateMainArray(std::vector< std::vector<int> > sortVector)
-{
-	std::vector<int> mainArray;
-	std::vector< std::vector<int> >::iterator it = sortVector.begin();
-
-	while(it != sortVector.end() && (*it).size() > 1)
-	{
-		mainArray.push_back((*it)[1]);
-		it++;		
-	}
-	insertOthers(&mainArray, sortVector);
-	return (mainArray);
-}
-
-void				sortInput(std::vector<int>* container)
-{
-	std::vector< std::vector<int> > sortVector;
-	std::vector<int>::iterator it = container->begin();
 	while (it != container->end())
 	{
-		std::vector<int> temp;
-
 		temp.push_back(*it);
-		if (it + 1 != container->end())
-			temp.push_back(*(it + 1));
-		if (temp[0] < temp[1])
-			temp.swap(temp);
-		insert_pair(&sortVector, temp);
-		it += 2;
+		it++;
+		if (temp[0] > *it)
+			temp.insert(temp.begin(), *it);
+		else
+			temp.push_back(*it);
+		it++;
+		pairs.push_back(temp);
 	}
-	*container = crateMainArray(sortVector);
+	sortPairs(&pairs);
+
+	std::vector< std::vector<int> >::iterator	it2 = pairs.begin();
+	while (it2 != pairs.end())
+	{
+		otherContainer->push_back((*it2)[0]);
+		sortedContainer->push_back((*it2)[1]);
+		it2++;
+	}
+}
+
+void	PmergeMe::sortInputVector(std::vector<int>* container)
+{
+	int					straggler = 0;
+	bool				hasStraggler = false;
+	std::vector<int>	otherContainer, sortedContainer;
+
+	checkStraggler(container, &straggler, &hasStraggler);
+	makePairs(container, &otherContainer, &sortedContainer);
+	insertOthers(otherContainer, &sortedContainer);
+	*container = sortedContainer;
+}
+
+void	PmergeMe::printTime(clock_t start, clock_t end, int size, std::string type)
+{
+
+	if (start == -1 || end == -1)
+	{
+		std::cerr << "Error: clock() failed." << std::endl;
+		return ;
+	}
+	double time = static_cast<double>(end - start) / CLOCKS_PER_SEC;
+	std::cout << "Time taken to sort " << size << " elements with std::" \
+	<< type << ":  " << time * 1000 << " ms" << std::endl;
 }
