@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/27 20:11:11 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/28 11:28:01 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/09/25 12:07:50 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,19 @@ T&	max(T& a, T& b)
 }
 
 template <typename T>
+const T&	max(const T& a, const T& b)
+{
+	return (a > b ? a:b);
+}
+
+template <typename T>
 T&	min(T& a, T& b)
+{
+	return (a < b ? a:b);
+}
+
+template <typename T>
+const T&	min(const T& a, const T& b)
 {
 	return (a < b ? a:b);
 }

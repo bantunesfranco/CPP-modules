@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/09/03 16:11:10 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/10/12 15:18:30 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/10/23 14:05:35 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,6 +94,7 @@ void	checkStraggler(std::vector<int>* container, int *straggler, bool *hasStragg
 		*straggler = container->back();
 		container->pop_back();
 		*hasStraggler = true;
+		std::cout << "straggler boiii" << std::endl;
 	}
 }
 
@@ -117,12 +118,12 @@ void	insertOthers(std::vector<int> others, std::vector<int>* sorted)
 		while (jacob1 > temp && it != others.end())
 		{
 			sorted->insert(sorted->begin(), *(it + jacob1 ));
+			std::cout << "inserting " << *(it + jacob1)<< std::endl;
 			--jacob1;
 			it++;
 		}
 		i++;
 	}
-	
 }
 
 void	sortPairs(std::vector< std::vector<int> >* pairs)
@@ -156,7 +157,7 @@ void	makePairs(std::vector<int>* container, std::vector<int>* otherContainer, st
 	std::vector<int>							temp;
 	std::vector<int>::iterator					it = container->begin();
 	std::vector< std::vector<int> >				pairs;
-
+	
 	while (it != container->end())
 	{
 		temp.push_back(*it);
@@ -167,9 +168,9 @@ void	makePairs(std::vector<int>* container, std::vector<int>* otherContainer, st
 			temp.push_back(*it);
 		it++;
 		pairs.push_back(temp);
+		temp.clear();
 	}
 	sortPairs(&pairs);
-
 	std::vector< std::vector<int> >::iterator	it2 = pairs.begin();
 	while (it2 != pairs.end())
 	{
@@ -187,6 +188,10 @@ void	PmergeMe::sortInputVector(std::vector<int>* container)
 
 	checkStraggler(container, &straggler, &hasStraggler);
 	makePairs(container, &otherContainer, &sortedContainer);
+	std::cout << "straggler: " << straggler << std::endl;
+	std::cout << "hasStraggler: " << hasStraggler << std::endl;
+	if (hasStraggler == true)
+		otherContainer.push_back(straggler);
 	insertOthers(otherContainer, &sortedContainer);
 	*container = sortedContainer;
 }
