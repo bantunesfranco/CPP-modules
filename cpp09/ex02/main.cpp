@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/09/03 15:59:48 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/10/23 14:04:06 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/12/16 12:21:24 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,23 +28,18 @@ int	main(int argc, char **argv)
 		std::cout << "Input is sorted" << std::endl;
 		return (0);
 	}
-	PmergeMe::sortInputVector(&inputVector);
+	PmergeMe::sortInputVector(inputVector);
 	std::clock_t end = clock();
 	
-	PmergeMe::printOutput(inputVector);
 	PmergeMe::printTime(start, end, inputVector.size(), std::string("vector"));
+	// PmergeMe::printOutput(inputVector);
 	
 	// PmergeMe::printTime(start, end, inputList.size(), std::string("list"));
 	// PmergeMe::printOutput(inputList);
-	// std::vector<int>::iterator it = inputVector.begin();
-	// while (it != inputVector.end())
-	// {
-	// 	if (it != inputVector.begin() && *it < *(it - 1))
-	// 	{
-	// 		std::cout << "Error: " << *it << " is not sorted." << std::endl;
-	// 		return (1);
-	// 	}
-	// 	it++;
-	// }
-	return (0);
+
+	if (std::is_sorted(inputVector.begin(), inputVector.end()))
+		std::cout << "Input is sorted" << std::endl;
+	else
+		std::cout << "Error: Input is not sorted." << std::endl;
+	// return (0);
 }
