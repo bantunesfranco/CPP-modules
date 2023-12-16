@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/09/03 16:11:10 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/12/16 12:23:09 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/12/16 21:20:48 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ const char* PmergeMe::NaNException::what() const throw()
 	return ("Error: Input is not a number.");
 }
 
-std::vector<int> PmergeMe::parseInputVector(int argc, char **argv)
+std::vector<int>	PmergeMe::parseInputVector(int argc, char **argv)
 {
 	std::vector<int>	input;
 	for (int i = 1; i < argc; i++)
@@ -51,9 +51,38 @@ std::vector<int> PmergeMe::parseInputVector(int argc, char **argv)
 	return (input);
 }
 
-std::list<int> PmergeMe::parseInputList(int argc, char **argv)
+std::list<int>	PmergeMe::parseInputList(int argc, char **argv)
 {
 	std::list<int>	input;
+	for (int i = 1; i < argc; i++)
+	{
+		unsigned long		num;
+		try
+		{
+			if (argv[i] == NULL)
+				throw PmergeMe::NaNException();
+
+			std::stringstream	ss(argv[i]);
+			ss >> num;
+			if (ss.fail())
+				throw PmergeMe::NaNException();
+
+			if (num > 2147483647 || (num < 2147483647 && std::to_string(num).length() > 10))
+					throw PmergeMe::ValueOutOfRangeException();
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+			std::exit(1);
+		}
+		input.push_back(num);
+	}
+	return (input);
+}
+
+std::deque<int>	PmergeMe::parseInputDeque(int argc, char **argv)
+{
+	std::deque<int>	input;
 	for (int i = 1; i < argc; i++)
 	{
 		unsigned long		num;
@@ -85,6 +114,34 @@ void	PmergeMe::sortInputVector(std::vector<int>& container)
 	int					straggler = 0;
 	bool				hasStraggler = false;
 	std::vector<int>	otherContainer, sortedContainer;
+
+	checkStraggler(container, &straggler, &hasStraggler);
+	makePairs(container, otherContainer, sortedContainer);
+	if (hasStraggler == true)
+		otherContainer.push_back(straggler);
+	insertOthers(otherContainer, sortedContainer);
+	container = sortedContainer;
+}
+
+void	PmergeMe::sortInputList(std::list<int>& container)
+{
+	int					straggler = 0;
+	bool				hasStraggler = false;
+	std::list<int>	otherContainer, sortedContainer;
+
+	checkStraggler(container, &straggler, &hasStraggler);
+	makePairs(container, otherContainer, sortedContainer);
+	if (hasStraggler == true)
+		otherContainer.push_back(straggler);
+	insertOthers(otherContainer, sortedContainer);
+	container = sortedContainer;
+}
+
+void	PmergeMe::sortInputDeque(std::deque<int>& container)
+{
+	int					straggler = 0;
+	bool				hasStraggler = false;
+	std::deque<int>	otherContainer, sortedContainer;
 
 	checkStraggler(container, &straggler, &hasStraggler);
 	makePairs(container, otherContainer, sortedContainer);

@@ -1,41 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   list.cpp                                           :+:    :+:            */
+/*   deque.cpp                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2023/12/16 12:20:22 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/12/16 20:49:22 by bfranco       ########   odam.nl         */
+/*   Created: 2023/12/16 21:14:34 by bfranco       #+#    #+#                 */
+/*   Updated: 2023/12/16 21:16:06 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "PmergeMe.hpp"
-#include <iterator>
 
-void	binarySearch(std::list<int>& lst, int num, int start, int end)
+void	binarySearch(std::deque<int>& deq, int num, int start, int end)
 {
-	std::list<int>::iterator	it = lst.begin();
-
 	if (start >= end) {
-		std::advance(it, start);
-		lst.insert(it, num);
+		deq.insert(deq.begin() + start, num);
 		return;
 	}
 
 	int mid = start + (end - start) / 2;
 
-	std::advance(it, mid);
-	if (*it == num) {
-		lst.insert(it, num);
-	} else if (*it > num) {
-		binarySearch(lst, num, start, mid);
+	if (deq[mid] == num) {
+		deq.insert(deq.begin() + mid, num);
+	} else if (deq[mid] > num) {
+		binarySearch(deq, num, start, mid);
 	} else {
-		binarySearch(lst, num, mid + 1, end);
+		binarySearch(deq, num, mid + 1, end);
 	}
 }
 
-void	checkStraggler(std::list<int>& container, int *straggler, bool *hasStraggler)
+void	checkStraggler(std::deque<int>& container, int *straggler, bool *hasStraggler)
 {
 	if (container.size() % 2 == 1)
 	{
@@ -46,9 +41,9 @@ void	checkStraggler(std::list<int>& container, int *straggler, bool *hasStraggle
 	}
 }
 
-void	insertOthers(const std::list<int>& others, std::list<int>& sorted)
+void	insertOthers(const std::deque<int>& others, std::deque<int>& sorted)
 {
-	std::list<int>::const_iterator	it = others.cbegin();
+	std::deque<int>::const_iterator	it = others.cbegin();
 	while (it != others.cend())
 	{
 		binarySearch(sorted, *it, 0, sorted.size());
@@ -56,19 +51,19 @@ void	insertOthers(const std::list<int>& others, std::list<int>& sorted)
 	}
 }
 
-void	sortPairs(std::vector< std::list<int> >& pairs)
+void	sortPairs(std::deque< std::deque<int> >& pairs)
 {
-	std::vector< std::list<int> >::iterator	it = pairs.begin();
-	std::vector< std::list<int> >				temp;
+	std::deque< std::deque<int> >::iterator	it = pairs.begin();
+	std::deque< std::deque<int> >				temp;
 
 	temp.push_back(*it);
 	it++;
 	while (it != pairs.end())
 	{
-		std::vector< std::list<int> >::iterator	it2 = temp.begin();
+		std::deque< std::deque<int> >::iterator	it2 = temp.begin();
 		while (it2 != temp.end())
 		{
-			if ((*it).back() <= (*it2).back())
+			if ((*it)[1] <= (*it2)[1])
 			{
 				temp.insert(it2, *it);
 				break ;
@@ -82,17 +77,17 @@ void	sortPairs(std::vector< std::list<int> >& pairs)
 	pairs = temp;
 }
 
-void	makePairs(const std::list<int>& container, std::list<int>& otherContainer, std::list<int>& sortedContainer)
+void	makePairs(const std::deque<int>& container, std::deque<int>& otherContainer, std::deque<int>& sortedContainer)
 {
-	std::list<int>							temp;
-	std::list<int>::const_iterator			it = container.cbegin();
-	std::vector< std::list<int> >				pairs;
+	std::deque<int>							temp;
+	std::deque<int>::const_iterator			it = container.cbegin();
+	std::deque< std::deque<int> >				pairs;
 	
 	while (it != container.cend())
 	{
 		temp.push_back(*it);
 		it++;
-		if (temp.front() > *it)
+		if (temp[0] > *it)
 			temp.insert(temp.begin(), *it);
 		else
 			temp.push_back(*it);
@@ -101,11 +96,11 @@ void	makePairs(const std::list<int>& container, std::list<int>& otherContainer, 
 		temp.clear();
 	}
 	sortPairs(pairs);
-	std::vector< std::list<int> >::iterator	it2 = pairs.begin();
+	std::deque< std::deque<int> >::iterator	it2 = pairs.begin();
 	while (it2 != pairs.end())
 	{
-		otherContainer.push_back((*it2).front());
-		sortedContainer.push_back((*it2).back());
+		otherContainer.push_back((*it2)[0]);
+		sortedContainer.push_back((*it2)[1]);
 		it2++;
 	}
 }

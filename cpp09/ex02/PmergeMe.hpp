@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/09/03 16:11:18 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/12/16 12:24:49 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/12/16 21:20:20 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 #include <vector>
 #include <list>
+#include <deque>
 #include <string>
 #include <ctime>
 #include <sstream>
@@ -33,8 +34,12 @@ class PmergeMe
 	public:
 		static std::vector<int>	parseInputVector(int argc, char **argv);
 		static std::list<int>	parseInputList(int argc, char **argv);
+		static std::deque<int>	parseInputDeque(int argc, char **argv);
+
 		static void				sortInputVector(std::vector<int>& container);
-		static void				sortInputVector(std::list<int>& container);
+		static void				sortInputList(std::list<int>& container);
+		static void				sortInputDeque(std::deque<int>& container);
+
 		static void				printTime(clock_t start, clock_t end, size_t size, std::string type);
 
 		template <typename T>
@@ -74,4 +79,9 @@ void	checkStraggler(std::vector<int>& container, int *straggler, bool *hasStragg
 void	makePairs(const std::list<int>& container, std::list<int>& otherContainer, std::list<int>& sortedContainer);
 void	insertOthers(const std::list<int>& others, std::list<int>& sorted);
 void	checkStraggler(std::list<int>& container, int *straggler, bool *hasStraggler);
+
+void	makePairs(const std::deque<int>& container, std::deque<int>& otherContainer, std::deque<int>& sortedContainer);
+void	insertOthers(const std::deque<int>& others, std::deque<int>& sorted);
+void	checkStraggler(std::deque<int>& container, int *straggler, bool *hasStraggler);
+
 #endif

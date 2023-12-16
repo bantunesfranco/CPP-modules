@@ -7,7 +7,7 @@ CYAN=\033[1;36m
 END=\033[0m
 
 CC = g++
-SRCS = main.cpp PmergeMe.cpp
+SRCS = main.cpp PmergeMe.cpp vector.cpp list.cpp deque.cpp
 HEADERS = PmergeMe.hpp
 OBJ = $(SRCS:%.cpp=$(OBJ_DIR)/%.o)
 OBJ_DIR = obj
@@ -48,7 +48,10 @@ debug: fclean
 	@$(MAKE) DEBUG=1 all
 
 run:
-	@ARG=`seq -w 1 10000 | shuf -n 3000 | paste -s -d ' '`; \
+	@ARG=`seq -w 1 10000 | shuf -n 100 | paste -s -d ' '`; \
 	./PmergeMe $$ARG
 
-.PHONY: all clean fclean re debug
+test: all
+	@bash test.sh
+
+.PHONY: all clean fclean re debug run test
