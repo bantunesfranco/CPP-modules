@@ -6,13 +6,18 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/09/01 07:59:18 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/03 16:37:42 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/12/16 22:35:39 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "RPN.hpp"
 #include <sstream>
 #include <cstdlib>
+
+const char* RPN::DivideByZeroException::what() const throw()
+{
+	return ("Error: Division by zero");
+};
 
 int	RPN::_add(int n1, int n2)
 {

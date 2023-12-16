@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/31 13:46:05 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/03 16:49:21 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/12/16 22:33:15 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,28 +28,22 @@ class BitcoinExchange
 	public:
 		class InvalidDataBaseException : public std::exception
 		{
-			virtual const char *what() const throw()
-			{ return ("Error: Invalid DataBase File"); }
+			virtual const char *what() const throw();
 		};
 
 		class NegativeValueException : public std::exception
 		{
-			virtual const char *what() const throw()
-			{ return ("Error: not a positive number."); }
+			virtual const char *what() const throw();
 		};
 
 		class ValueTooLargeException : public std::exception
 		{
-			virtual const char *what() const throw()
-			{ return ("Error: too large a number."); }
+			virtual const char *what() const throw();
 		};
 
 		class InvalidDateException : public std::exception
 		{
-			virtual const char *what() const throw()
-			{ 
-				return ("Error: Invalid Date.");
-			}
+			virtual const char *what() const throw();
 		};
 
 		static std::map<std::string, double>	dataParser();

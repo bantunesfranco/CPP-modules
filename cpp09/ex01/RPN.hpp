@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/09/01 07:59:21 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/03 16:35:09 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/12/16 22:34:29 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,8 +36,7 @@ class RPN
 
 		class DivideByZeroException : public std::exception
 		{
-			virtual const char* what() const throw()
-				{return ("Error: Division by zero");}
+			virtual const char* what() const throw();
 		};
 };
 
