@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/29 12:37:14 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/29 14:11:16 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/12/18 19:21:08 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ class ElementNotFoundException : public std::exception
 };
 
 template <typename T>
-typename T::iterator	easyfind(T& container, unsigned int i)
+typename T::iterator	easyfind(T& container, int i)
 {
 	typename T::iterator it;
 

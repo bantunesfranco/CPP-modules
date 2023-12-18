@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/29 12:35:14 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/09/13 15:32:26 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/12/18 19:26:31 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,9 +93,16 @@ int	main(void)
 		vec.push_back(std::rand() % 2000000);
 	{
 		Span sp = Span(10000);
-		sp.addNumber(vec.begin(), vec.end());
-		std::cout << sp.shortestSpan() << std::endl;
-		std::cout << sp.longestSpan() << std::endl;
+		try
+		{
+			sp.addNumber(vec.begin(), vec.end());
+			std::cout << sp.shortestSpan() << std::endl;
+			std::cout << sp.longestSpan() << std::endl;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
 
 	std::cout << std::endl;
@@ -103,10 +110,17 @@ int	main(void)
 	for (int i=0; i < 200000; i++)
 		vec.push_back(std::rand() % 2000000);
 	{
-		Span sp = Span(300000);
-		sp.addNumber(vec.begin(), vec.end());
-		std::cout << sp.shortestSpan() << std::endl;
-		std::cout << sp.longestSpan() << std::endl;
+		Span sp = Span(30000);
+		try 
+		{
+			sp.addNumber(vec.begin(), vec.end());
+			std::cout << sp.shortestSpan() << std::endl;
+			std::cout << sp.longestSpan() << std::endl;
+		}
+		catch(const std::exception& e)
+		{
+			std::cerr << e.what() << std::endl;
+		}
 	}
 
 	return (0);
