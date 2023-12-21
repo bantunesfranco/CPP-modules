@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/09/01 07:59:18 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/12/16 22:35:39 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/12/21 18:02:55 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 const char* RPN::DivideByZeroException::what() const throw()
 {
 	return ("Error: Division by zero");
-};
+}
 
 int	RPN::_add(int n1, int n2)
 {
@@ -59,12 +59,18 @@ void	RPN::calculate(std::string input)
 	
 	int	(*fptr[4])(int n1, int n2) = {&RPN::_add, &RPN::_sub, &RPN::_mult, &RPN::_div};
 
+	if (input.empty())
+	{
+		std::cerr << "Error: Invalid input" << std::endl;
+		std::exit(EXIT_FAILURE);
+	}
+
 	while (std::getline(ss, token, ' '))
 	{
 		if (token.length() != 1 || operators.find(input[input.size() - 1]) == std::string::npos)
 		{
 			std::cerr << "Error: Invalid input" << std::endl;
-			std::exit(EXIT_FAILURE) ;
+			std::exit(EXIT_FAILURE);
 		}
 		else if (operators.find(token[0]) != std::string::npos)
 		{
