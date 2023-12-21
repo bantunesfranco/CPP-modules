@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/12/16 12:20:22 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/12/21 19:16:27 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/12/21 23:58:14 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,24 +37,28 @@ void	checkStraggler(std::vector<int>& container, int *straggler, bool *hasStragg
 		*straggler = container.back();
 		container.pop_back();
 		*hasStraggler = true;
-		std::cout << "straggler boiii" << std::endl;
 	}
 }
 
 void	insertOthers(const std::vector<int>& others, std::vector<int>& sorted)
 {
-	std::vector<int>::const_iterator	it = others.cbegin();
-	size_t								i = 0;
+	size_t								i = 1;
 	int									jacob = 1;
+	int									len = others.size();
 
+	sorted.insert(sorted.begin(), *others.cbegin());
 	while (i != others.size())
 	{
-		for (int j = jacobsthal(jacob); j >= 0 && j >= jacobsthal(jacob - 1); j--)
+		for (int j = jacobsthal(jacob); j > 0 && j > jacobsthal(jacob - 1); j--)
 		{
+			std::vector<int>::const_iterator	it = others.cbegin();
+			if (j >= len)
+				j = len - 1;
 			std::advance(it, j);
 			binarySearch(sorted, *it, 0, sorted.size());
 			++i;
 		}
+		++jacob;
 	}
 }
 
