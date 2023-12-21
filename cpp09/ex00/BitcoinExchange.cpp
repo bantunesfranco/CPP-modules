@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/31 13:46:07 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/12/16 22:33:53 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/12/21 18:53:34 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,22 @@
 const char *BitcoinExchange::InvalidDataBaseException::what() const throw()
 {
 	return ("Error: Invalid DataBase File");
-};
+}
 
 const char *BitcoinExchange::NegativeValueException::what() const throw()
 {
 	return ("Error: not a positive number.");
-};
+}
 
 const char *BitcoinExchange::ValueTooLargeException::what() const throw()
 {
 	return ("Error: too large a number.");
-};
+}
 
 const char *BitcoinExchange::InvalidDateException::what() const throw()
 {
 	return ("Error: Invalid Date.");
-};
+}
 
 std::map<std::string, double>	BitcoinExchange::dataParser()
 {

@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/12/16 12:20:22 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/12/16 12:23:25 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/12/21 19:16:27 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,10 +44,17 @@ void	checkStraggler(std::vector<int>& container, int *straggler, bool *hasStragg
 void	insertOthers(const std::vector<int>& others, std::vector<int>& sorted)
 {
 	std::vector<int>::const_iterator	it = others.cbegin();
-	while (it != others.cend())
+	size_t								i = 0;
+	int									jacob = 1;
+
+	while (i != others.size())
 	{
-		binarySearch(sorted, *it, 0, sorted.size());
-		++it;
+		for (int j = jacobsthal(jacob); j >= 0 && j >= jacobsthal(jacob - 1); j--)
+		{
+			std::advance(it, j);
+			binarySearch(sorted, *it, 0, sorted.size());
+			++i;
+		}
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/09/03 16:11:10 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/12/16 21:20:48 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/12/21 19:19:15 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,15 @@ void	PmergeMe::printTime(clock_t start, clock_t end, size_t size, std::string ty
 		return ;
 	}
 	double time = static_cast<double>(end - start) / CLOCKS_PER_SEC;
-	std::cout << "\nTime taken to sort " << size << " elements with std::" \
-	<< type << ":  " << time * 1000 << " ms\n" << std::endl;
+	std::cout << "Time taken to sort " << size << " elements with std::" \
+	<< type << ":  " << time * 1000 << " ms" << std::endl;
+}
+
+int	jacobsthal(int i)
+{
+	if (i == 0)
+		return (0);
+	if (i == 1)
+		return (1);
+	return (jacobsthal(i - 1) + 2 * jacobsthal(i - 2));
 }

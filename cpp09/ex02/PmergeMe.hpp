@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/09/03 16:11:18 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/12/16 21:20:20 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/12/21 19:01:06 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,7 @@ void	checkStraggler(std::list<int>& container, int *straggler, bool *hasStraggle
 void	makePairs(const std::deque<int>& container, std::deque<int>& otherContainer, std::deque<int>& sortedContainer);
 void	insertOthers(const std::deque<int>& others, std::deque<int>& sorted);
 void	checkStraggler(std::deque<int>& container, int *straggler, bool *hasStraggler);
+
+int		jacobsthal(int i);
 
 #endif

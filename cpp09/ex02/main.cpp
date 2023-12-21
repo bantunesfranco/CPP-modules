@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/09/03 15:59:48 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/12/16 22:04:15 by bfranco       ########   odam.nl         */
+/*   Updated: 2023/12/21 19:20:59 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static void	sortList(int argc, char **argv)
 
 	std::clock_t end = clock();
 	
-	PmergeMe::printTime(start, end, inputList.size(), std::string("list"));
+	PmergeMe::printTime(start, end, inputList.size(), std::string("list  "));
 	// PmergeMe::printOutput(inputList);
 	
 	if (!std::is_sorted(inputList.begin(), inputList.end()))
@@ -57,7 +57,7 @@ static void	sortDeque(int argc, char **argv)
 
 	std::clock_t end = clock();
 	
-	PmergeMe::printTime(start, end, inputDeque.size(), std::string("deque"));
+	PmergeMe::printTime(start, end, inputDeque.size(), std::string("deque "));
 	// PmergeMe::printOutput(inputDeque);
 	
 	if (!std::is_sorted(inputDeque.begin(), inputDeque.end()))
