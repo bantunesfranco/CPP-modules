@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/09/03 15:59:48 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/12/21 23:54:35 by bfranco       ########   odam.nl         */
+/*   Updated: 2024/01/04 19:41:45 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,6 +64,22 @@ static void	sortDeque(int argc, char **argv)
 		std::cerr << "Error: Deque is not sorted." << std::endl;
 }
 
+void	printInput(char **argv)
+{
+	std::string num;
+
+	for (int i = 1; argv[i]; i++)
+	{
+		num = std::string(argv[i]);
+		size_t pos = num.find_first_not_of("0");
+		if (pos == std::string::npos)
+			std::cout << "0" << " ";
+		else
+			std::cout << num.substr(pos) << " ";
+	}
+	std::cout << std::endl;
+}
+
 int	main(int argc, char **argv)
 {
 	if (argc <= 1)
@@ -71,6 +87,8 @@ int	main(int argc, char **argv)
 		std::cerr << "Please enter a list of numbers to sort." << std::endl;
 		return (1);
 	}
+	
+	// printInput(argv);
 	
 	sortVector(argc, argv);
 	sortList(argc, argv);

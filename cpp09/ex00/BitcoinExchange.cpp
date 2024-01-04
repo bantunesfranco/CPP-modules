@@ -125,7 +125,7 @@ void	BitcoinExchange::run(const char* inputFile, std::map<std::string, double> r
 	while (std::getline(file, line))
 	{
 		std::stringstream	ss(line);
-		if (std::getline(ss, date, '|') && ss >> price)
+		if (std::getline(ss, date, '|') && ss >> price && ss.peek() == EOF)
 		{
 			date.erase(0, date.find_first_not_of(" \t\n\r\f\v"));
 			date.erase(date.find_last_not_of(" \t\n\r\f\v") + 1);
