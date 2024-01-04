@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/31 13:46:07 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/12/21 18:53:34 by bfranco       ########   odam.nl         */
+/*   Updated: 2024/01/04 22:35:00 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,7 +35,7 @@ const char *BitcoinExchange::InvalidDateException::what() const throw()
 	return ("Error: Invalid Date.");
 }
 
-std::map<std::string, double>	BitcoinExchange::dataParser()
+const std::map<std::string, double>	BitcoinExchange::dataParser()
 {
 	std::map<std::string, double>	rateDB;
 	std::ifstream					file("data.csv");
@@ -57,12 +57,12 @@ std::map<std::string, double>	BitcoinExchange::dataParser()
 	return (rateDB);
 }
 
-bool	isValidDate(std::string date)
+static bool	isValidDate(const std::string& date)
 {
-	int	year;
-	int	month;
-	int	day;
-	char			del;
+	int					year;
+	int					month;
+	int					day;
+	char				del;
 	std::stringstream	ss(date);
 	
 	if (date.length() != 10 || date[4] != '-' || date[7] != '-')
@@ -91,7 +91,7 @@ bool	isValidDate(std::string date)
 	return (true);
 }
 
-double	findClosestDate(std::map<std::string, double> db, std::string date, double price)
+static double	findClosestDate(const std::map<std::string, double>& db, const std::string& date, double price)
 {
 	if (!isValidDate(date))
 		throw (BitcoinExchange::InvalidDateException());
@@ -100,7 +100,7 @@ double	findClosestDate(std::map<std::string, double> db, std::string date, doubl
 	if (price > 1000)
 		throw (BitcoinExchange::ValueTooLargeException());
 	
-	std::map<std::string, double>::iterator it = db.find(date);
+	std::map<std::string, double>::const_iterator it = db.find(date);
 	if (it == db.end())
 	{
 		it = db.lower_bound(date);
@@ -111,7 +111,7 @@ double	findClosestDate(std::map<std::string, double> db, std::string date, doubl
 	return (it->second);
 }
 
-void	BitcoinExchange::run(const char* inputFile, std::map<std::string, double> rateDB)
+void	BitcoinExchange::run(const char* inputFile, const std::map<std::string, double>& rateDB)
 {
 	std::ifstream	file(inputFile);
 	std::string		line;

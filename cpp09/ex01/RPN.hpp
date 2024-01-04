@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/09/01 07:59:21 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/12/16 22:34:29 by bfranco       ########   odam.nl         */
+/*   Updated: 2024/01/04 22:33:19 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ class RPN
 
 		RPN&	operator=(const RPN& src);
 
-		static int	_add(int n1, int n2);
-		static int	_sub(int n1, int n2);
-		static int	_mult(int n1, int n2);
-		static int	_div(int n1, int n2);
+		static int	_add(const int n1, const int n2);
+		static int	_sub(const int n1, const int n2);
+		static int	_mult(const int n1, const int n2);
+		static int	_div(const int n1, const int n2);
 
 	public:
 		static void	calculate(std::string input);

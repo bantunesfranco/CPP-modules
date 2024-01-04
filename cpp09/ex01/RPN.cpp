@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/09/01 07:59:18 by bfranco       #+#    #+#                 */
-/*   Updated: 2024/01/04 19:17:57 by bfranco       ########   odam.nl         */
+/*   Updated: 2024/01/04 22:33:16 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,22 +19,22 @@ const char* RPN::DivideByZeroException::what() const throw()
 	return ("Error: Division by zero");
 }
 
-int	RPN::_add(int n1, int n2)
+int	RPN::_add(const int n1, const int n2)
 {
 	return (n1 + n2);
 }
 
-int	RPN::_sub(int n1, int n2)
+int	RPN::_sub(const int n1, const int n2)
 {
 	return (n1 - n2);
 }
 
-int	RPN::_mult(int n1, int n2)
+int	RPN::_mult(const int n1, const int n2)
 {
 	return (n1 * n2);
 }
 
-int	RPN::_div(int n1, int n2)
+int	RPN::_div(const int n1, const int n2)
 {
 	try
 	{
@@ -63,7 +63,7 @@ void	RPN::calculate(std::string input)
 	std::string			operators = "+-*/";
 	std::string			token;
 	
-	int	(*fptr[4])(int n1, int n2) = {&RPN::_add, &RPN::_sub, &RPN::_mult, &RPN::_div};
+	int	(*fptr[4])(const int n1, const int n2) = {&RPN::_add, &RPN::_sub, &RPN::_mult, &RPN::_div};
 
 	input.erase(0, input.find_first_not_of(" \t\n\r\f\v"));
 	input.erase(input.find_last_not_of(" \t\n\r\f\v") + 1);

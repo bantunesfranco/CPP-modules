@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/12/16 12:20:22 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/12/21 23:56:09 by bfranco       ########   odam.nl         */
+/*   Updated: 2024/01/04 22:16:28 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,13 +35,13 @@ void	binarySearch(std::list<int>& lst, int num, int start, int end)
 	}
 }
 
-void	checkStraggler(std::list<int>& container, int *straggler, bool *hasStraggler)
+void	checkStraggler(std::list<int>& container, int& straggler, bool& hasStraggler)
 {
 	if (container.size() % 2 == 1)
 	{
-		*straggler = container.back();
+		straggler = container.back();
 		container.pop_back();
-		*hasStraggler = true;
+		hasStraggler = true;
 	}
 }
 

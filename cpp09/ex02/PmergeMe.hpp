@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/09/03 16:11:18 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/12/21 19:01:06 by bfranco       ########   odam.nl         */
+/*   Updated: 2024/01/04 22:39:43 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ class PmergeMe
 		static void				sortInputList(std::list<int>& container);
 		static void				sortInputDeque(std::deque<int>& container);
 
-		static void				printTime(clock_t start, clock_t end, size_t size, std::string type);
+		static void				printTime(const clock_t start, const clock_t end, const size_t size, const std::string& type);
 
 		template <typename T>
 		static void				printOutput(const T& container)
@@ -74,15 +74,15 @@ class PmergeMe
 
 void	makePairs(const std::vector<int>& container, std::vector<int>& otherContainer, std::vector<int>& sortedContainer);
 void	insertOthers(const std::vector<int>& others, std::vector<int>& sorted);
-void	checkStraggler(std::vector<int>& container, int *straggler, bool *hasStraggler);
+void	checkStraggler(std::vector<int>& container, int &straggler, bool &hasStraggler);
 
 void	makePairs(const std::list<int>& container, std::list<int>& otherContainer, std::list<int>& sortedContainer);
 void	insertOthers(const std::list<int>& others, std::list<int>& sorted);
-void	checkStraggler(std::list<int>& container, int *straggler, bool *hasStraggler);
+void	checkStraggler(std::list<int>& container, int& straggler, bool &hasStraggler);
 
 void	makePairs(const std::deque<int>& container, std::deque<int>& otherContainer, std::deque<int>& sortedContainer);
 void	insertOthers(const std::deque<int>& others, std::deque<int>& sorted);
-void	checkStraggler(std::deque<int>& container, int *straggler, bool *hasStraggler);
+void	checkStraggler(std::deque<int>& container, int &straggler, bool &hasStraggler);
 
 int		jacobsthal(int i);
 

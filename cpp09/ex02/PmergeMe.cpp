@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/09/03 16:11:10 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/12/21 19:19:15 by bfranco       ########   odam.nl         */
+/*   Updated: 2024/01/04 22:39:55 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,7 +115,7 @@ void	PmergeMe::sortInputVector(std::vector<int>& container)
 	bool				hasStraggler = false;
 	std::vector<int>	otherContainer, sortedContainer;
 
-	checkStraggler(container, &straggler, &hasStraggler);
+	checkStraggler(container, straggler, hasStraggler);
 	makePairs(container, otherContainer, sortedContainer);
 	if (hasStraggler == true)
 		otherContainer.push_back(straggler);
@@ -129,7 +129,7 @@ void	PmergeMe::sortInputList(std::list<int>& container)
 	bool				hasStraggler = false;
 	std::list<int>	otherContainer, sortedContainer;
 
-	checkStraggler(container, &straggler, &hasStraggler);
+	checkStraggler(container, straggler, hasStraggler);
 	makePairs(container, otherContainer, sortedContainer);
 	if (hasStraggler == true)
 		otherContainer.push_back(straggler);
@@ -143,7 +143,7 @@ void	PmergeMe::sortInputDeque(std::deque<int>& container)
 	bool				hasStraggler = false;
 	std::deque<int>	otherContainer, sortedContainer;
 
-	checkStraggler(container, &straggler, &hasStraggler);
+	checkStraggler(container, straggler, hasStraggler);
 	makePairs(container, otherContainer, sortedContainer);
 	if (hasStraggler == true)
 		otherContainer.push_back(straggler);
@@ -151,7 +151,7 @@ void	PmergeMe::sortInputDeque(std::deque<int>& container)
 	container = sortedContainer;
 }
 
-void	PmergeMe::printTime(clock_t start, clock_t end, size_t size, std::string type)
+void	PmergeMe::printTime(const clock_t start, const clock_t end, const size_t size, const std::string& type)
 {
 	if (start == -1 || end == -1)
 	{

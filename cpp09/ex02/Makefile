@@ -16,7 +16,7 @@ NAME = PmergeMe
 ifdef DEBUG
 CXXFLAGS = -Wall -Werror -Wextra -pedantic -g -fsanitize=address
 else
-CXXFLAGS = -Wall -Werror -Wextra -pedantic
+CXXFLAGS = -Wall -Werror -Wextra -pedantic -O2
 endif
 
 all: $(NAME)
@@ -48,7 +48,7 @@ debug: fclean
 	@$(MAKE) DEBUG=1 all
 
 run:
-	@ARG=`seq -w 1 10000 | shuf -n 100 | paste -s -d ' '`; \
+	@ARG=`seq -w 1 10000 | shuf -n 1000 | paste -s -d ' '`; \
 	./PmergeMe $$ARG
 
 test: all

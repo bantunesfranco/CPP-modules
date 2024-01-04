@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/08/31 13:46:05 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/12/16 22:33:15 by bfranco       ########   odam.nl         */
+/*   Updated: 2024/01/04 22:36:16 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,8 +46,8 @@ class BitcoinExchange
 			virtual const char *what() const throw();
 		};
 
-		static std::map<std::string, double>	dataParser();
-		static void	run(const char* inputFile, std::map<std::string, double> rateDB);
+		static const std::map<std::string, double>	dataParser();
+		static void	run(const char* inputFile, const std::map<std::string, double>& rateDB);
 };
 
 #endif

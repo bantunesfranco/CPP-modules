@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/12/16 21:14:34 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/12/21 23:55:33 by bfranco       ########   odam.nl         */
+/*   Updated: 2024/01/04 22:16:55 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,13 @@ void	binarySearch(std::deque<int>& deq, int num, int start, int end)
 	}
 }
 
-void	checkStraggler(std::deque<int>& container, int *straggler, bool *hasStraggler)
+void	checkStraggler(std::deque<int>& container, int& straggler, bool& hasStraggler)
 {
 	if (container.size() % 2 == 1)
 	{
-		*straggler = container.back();
+		straggler = container.back();
 		container.pop_back();
-		*hasStraggler = true;
+		hasStraggler = true;
 	}
 }
 
