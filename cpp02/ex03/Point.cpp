@@ -6,32 +6,27 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/14 14:43:26 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/17 11:23:33 by bfranco       ########   odam.nl         */
+/*   Updated: 2024/06/12 15:56:28 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "Point.hpp"
 
 // default constructor
-Point::Point()
+Point::Point() : _x(0.f), _y(0.f)
 {
-	this->setX(0.0f);
-	this->setY(0.0f);
 	// std::cout << "Default constructor called" << std::endl;
 }
 
 // float contructor
-Point::Point(float const x, float const y)
+Point::Point(float const x, float const y) : _x(x), _y(y)
 {
-	this->setX(x);
-	this->setY(y);
 	// std::cout << "Int constructor called" << std::endl;
 }
 
 // copy constructor
-Point::Point(const Point &point)
+Point::Point(const Point &point): _x(point._x), _y(point._y)
 {
-	*this = point;
 	// std::cout << "Copy constructor called" << std::endl;
 }
 
@@ -44,12 +39,8 @@ Point::~Point()
 // Assignment operator overload
 Point&	Point::operator=(const Point& point)
 {
-	if (this != &point)
-	{
-		this->_x = point.getX();
-		this->_y = point.getY();
-	}
 	// std::cout << "Copy assignment operator called" << std::endl;
+	(void)point;
 	return (*this);
 }
 
@@ -62,17 +53,6 @@ float	Point::getX() const
 float	Point::getY() const
 {
 	return (this->_y.toFloat());
-}
-
-// setter member func
-void	Point::setX(float const x)
-{
-	this->_x = Fixed(x);
-}
-
-void	Point::setY(float const y)
-{
-	this->_y = Fixed(y);
 }
 
 // insertion operator overload

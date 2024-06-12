@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/13 09:16:28 by bruno         #+#    #+#                 */
-/*   Updated: 2023/07/15 19:03:15 by bfranco       ########   odam.nl         */
+/*   Updated: 2024/06/12 16:01:22 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,14 @@ int	main( void )
 
 		bool		res = bsp(a, b, c, d);
 		std::cout << "Case 7 is " << (res ? "True":"False") << "\n" << std::endl;
+	}
+	{
+		Point a(1.0f, 1.0f);
+		Point b(5.0f, 5.0f);
+		Point c(a);
+
+		a = b;
+		std::cout << "Point a: " << a << "\tPoint b: " << b << "\tPoint c: " << c << std::endl;
 	}
 	return (0);
 }

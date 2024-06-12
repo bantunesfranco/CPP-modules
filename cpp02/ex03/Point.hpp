@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/14 14:43:29 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/07/15 09:58:24 by bfranco       ########   odam.nl         */
+/*   Updated: 2024/06/12 15:49:56 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,8 +18,8 @@
 class	Point
 {
 	private:
-		Fixed	_x;
-		Fixed	_y;
+		const Fixed	_x;
+		const Fixed	_y;
 	
 	public:
 		Point();
