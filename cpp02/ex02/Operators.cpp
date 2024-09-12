@@ -6,7 +6,7 @@
 /*   By: bfranco <bfranco@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2023/06/13 19:25:41 by bfranco       #+#    #+#                 */
-/*   Updated: 2023/08/17 11:09:47 by bfranco       ########   odam.nl         */
+/*   Updated: 2024/09/12 16:48:06 by bfranco       ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,12 @@ Fixed	Fixed::operator*(const Fixed& point) const
 // division operator
 Fixed	Fixed::operator/(const Fixed& point) const
 {
-	Fixed	res;
+	if (point.getRawBits() == 0)
+		throw std::runtime_error("Division by zero");
 
-	res.setRawBits((this->getRawBits() / point.getRawBits()) << _bits);
+	Fixed	res;
+	
+	res.setRawBits((this->getRawBits() << _bits) / point.getRawBits());
 	return (res);
 }
 
